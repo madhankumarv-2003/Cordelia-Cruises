@@ -29,7 +29,7 @@ const destinations = [
 
 const DepMumbai = () => {
   return (
-    <div className="container px-4">
+    <div className="container px-3">
       <h5 className="sectionn-heading mb-2 ms-0">Departure from Mumbai</h5>
       <div className="row mt-4">
         {destinations.map((item, index) => (

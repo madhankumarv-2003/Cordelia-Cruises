@@ -148,9 +148,10 @@ const NavBar = () => {
                     International <FaChevronRight />
                   </NavDropdown.Item>
                   <div className="submenu-panel">
-                    <NavDropdown.Item as={Link} to="/destinations/dubai">Dubai</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/destinations/abu-dhabi">Abu Dhabi</NavDropdown.Item>
-                    <NavDropdown.Item as={Link} to="/destinations/bahrain">Bahrain</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/destinations/srilanka">Srilanka</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/destinations/singapore">Singapore</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/destinations/malaysia">Malaysia</NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/destinations/tailand">Thailand</NavDropdown.Item>
                   </div>
                 </div>
               </NavDropdown>

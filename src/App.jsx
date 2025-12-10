@@ -6,24 +6,22 @@ import ContactBar from "./components/ContactBar/ContactBar";
 import NavBar from "./components/NavBar/NavBar";
 import HeroCarousel from "./components/HeroSection/HeroCarousel";
 
+import MeetTheFleet from "./components//OurShip/MeetTheFleet";
+import FleetCard from "./components/OurShip/FleetCard";
+import DepMumbai from "./components/Destination/DepMumbai/DepMumbai";
+import DepChennai from "./components/Destination/DepChennai/DepChennai";
+import Itinenary from "./components/Itineraries/Itinenary/Itinenary";
+import Voyage from "./components/Itineraries/Voyage/Voyage";
+import CruiseInbox from "./components/CruiseInbox/Cruiseinbox";
+import Testimonials from "./components/Testimonials/Testimonials";
+import RequestCall from "./components/RequestCall/RequestCall";
+import Awards from "./components/Awards/Awards";
+import DownloadApp from "./components/Download/DownloadApp";
+import SafetyProtocols from "./components/SafetyProtocols/SafetyProtocols";
+import Footer from "./components/Footer/Footer";
+
 import Blogs from "./Pages/Blogs";
 import Offers from "./Pages/Offers";
-import MeetTheFleet from "./OurShip/MeetTheFleet";
-import FleetCard from "./OurShip/FleetCard";
-
-import DepMumbai from "./Destination/DepMumbai/DepMumbai";
-import DepChennai from "./Destination/DepChennai/DepChennai";
-
-import Itinenary from "./Itineraries/Itinenary/Itinenary";
-import Voyage from "./Itineraries/Voyage/Voyage";
-import CruiseInbox from "./CruiseInbox/Cruiseinbox";
-import Testimonials from "./Testimonials/Testimonials";
-import RequestCall from "./RequestCall/RequestCall";
-import Awards from "./Awards/Awards";
-import DownloadApp from "./Download/DownloadApp";
-import SafetyProtocols from "./SafetyProtocols/SafetyProtocols";
-
-import Footer from "./Footer/Footer";
 
 import "./App.css";
 
@@ -54,6 +52,7 @@ function App() {
       <Awards/>
       <DownloadApp/>
       <SafetyProtocols />
+      <Footer/>
     </>
   );
 }

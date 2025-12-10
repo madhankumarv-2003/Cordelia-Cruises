@@ -24,7 +24,7 @@ const SafetyProtocols = () => {
 
   return (
     <div className="safety-container">
-      <h2 className="safety-title me-5 mt-2">Safety Protocols</h2>
+      <h2 className="safety-title me-5">Safety Protocols</h2>
       <div className="safety-items">
         {protocols.map((item, index) => (
           <div className="safety-card" key={index}>
@@ -33,7 +33,6 @@ const SafetyProtocols = () => {
           </div>
         ))}
       </div>
-      <div className="sea-wave"></div>
     </div>
   );
 };

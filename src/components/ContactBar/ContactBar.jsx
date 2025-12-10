@@ -1,6 +1,5 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import { TelephoneFill} from "react-bootstrap-icons";
 import whatsapp from "./images/whatsapp-new-icon.svg";
 import call from "./images/call-new-icon.svg";
 import './Contact.css';

@@ -2,53 +2,66 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  background: #0b1d32;
+  background-color: #172c48;
   color: #fff;
-  padding: 60px 70px;
+  padding: 50px 140px;
   flex-wrap: wrap;
 }
 
 .footer-left {
-  width: 35%;
+  width: 48%;
 }
 
 .footer-title {
-  font-size: 24px;
+  font-size: 14px;
   font-weight: bold;
   margin-bottom: 15px;
 }
 
 .footer-text {
   line-height: 1.6;
-  margin-bottom: 20px;
+  opacity: 0.7;
 }
 
 .footer-social svg {
-  font-size: 18px;
-  margin-right: 12px;
+  font-size: 20px;
+  margin-right: 20px;
+  position: relative;
+  top: -20px;
   cursor: pointer;
 }
 
+p6{
+  font-size: 12px;
+  font-weight: 600;
+}
+
 .footer-contact h4 {
-  margin-top: 15px;
+  margin-top: 0px;
   font-size: 16px;
+  font-weight: bold;
 }
 
 .footer-contact p {
-  margin: 5px 0;
+  margin:0;
   display: flex;
   align-items: center;
   gap: 8px;
+  font-size: 14px;
 }
 
 .footer-links,
 .footer-policy {
-  width: 25%;
+  width: 20%;
 }
 
 .footer-links h3,
 .footer-policy h3 {
-  margin-bottom: 12px;
+  margin-bottom: 30px;
+  font-family: 'Playfair Display',serif;
+  color: rgb(214, 86, 40);
+  font-size: 24px;
+  font-weight: 200;
 }
 
 .footer-links ul,
@@ -62,11 +75,13 @@
   margin-bottom: 8px;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 15px;
 }
 
-.footer-links li:hover,
-.footer-policy li:hover {
-  color: #f4b400;
+.footer-wave{
+  width: 100%;
+  margin-top: -50px;
+  z-index: 0;
 }
 
 /* Responsive */

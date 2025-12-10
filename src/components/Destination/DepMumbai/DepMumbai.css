@@ -5,7 +5,8 @@
 }
 .container{
   position: relative;
-  top: -80px;
+  top:0;
+  
 }
 
 .destination-card{

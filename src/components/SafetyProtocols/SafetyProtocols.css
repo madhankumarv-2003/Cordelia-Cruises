@@ -1,15 +1,16 @@
 .safety-container {
   text-align: center;
   padding: 60px 0px;
-  background: rgb(243, 241, 241);
+  height:51vh;
+  background: rgb(248, 245, 245);
   margin-top: 110px;
 }
 
 .safety-title {
-  font-size: 38px;
-  padding-left: 110px;
+  font-size: 35px;
+  padding-left: 120px;
   font-weight: 500;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   font-family: 'Playfair Display',serif;
   color: #222;
   text-align: left;
@@ -20,9 +21,8 @@
   justify-content: space-around;
   align-items: center;
   max-width: 1050px;
-margin-left: 70px;
+  margin-left: 80px;
   flex-wrap: wrap;
-  margin-top: -12px;
   
 }
 
@@ -46,10 +46,4 @@ margin-left: 70px;
   text-align: left;
   display: flex;
   width: 180px;
-}
-
-.sea-wave{
-  background-image: url('./images/footer-wave-desktop.svg');
-  width: 100%;
-  height: auto;
 }
