@@ -1,0 +1,145 @@
+/* ---- CAROUSEL WRAPPER ---- */
+.carousel-wrapper {
+  position: relative;
+  width: 85%;                 /* wider for better alignment */
+  margin: 0 auto;             /* centers the carousel */
+  padding: 0 20px;            /* space on left & right */
+}
+
+/* Exact 20px gap between each slide */
+.slick-slide > div {
+  padding: 0 8px;            /* 20px total gap */
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ---- SLIDE IMAGE ---- */
+.slick-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.slick-card:hover .slick-img {
+  transform: scale(1.05);
+}
+
+/* ---- ARROWS ---- */
+.slick-custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: #888484;
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.20);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slick-custom-arrow svg {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+  stroke-width: 4.5;
+}
+
+.slick-custom-arrow:hover {
+  background-color: #000;
+}
+
+/* Position arrows outside neatly */
+.slick-prev {
+  left: -45px;
+}
+
+.slick-next {
+  right: -45px;
+}
+
+/* Remove default arrows */
+.slick-prev:before,
+.slick-next:before {
+  content: none !important;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+  transition: 0.4s ease;
+}
+
+.card-content {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 2;
+  color: white;
+}
+/* Initial state – move DOWN (reduced gap) */
+.card-content h1,
+.card-content h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  transform: translateY(80px); /* reduced from 145px */
+  opacity: 0;
+  transition: 0.45s ease;
+}
+
+.card-content p,
+.card-content button {
+  transform: translateY(40px); /* reduced from 60px */
+  opacity: 0;
+  transition: 0.45s ease;
+}
+
+/* Hover state */
+.slick-card:hover .card-content h1,
+.slick-card:hover .card-content h3 {
+  transform: translateY(10px);
+  opacity: 1;
+}
+
+.slick-card:hover .card-content p,
+.slick-card:hover .card-content button {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+
+/* ---- MOBILE FIX ---- */
+@media (max-width: 1000px) {
+  .carousel-wrapper {
+    width: 100%;
+    padding: 0 5px;
+  }
+
+  .slick-prev {
+    left: -20px;
+  }
+
+  .slick-next {
+    right: -20px;
+  }
+  .sectionn-heading{
+    font-size: 15px;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .carousel-wrapper {
+    width: 100%;
+    margin: 0 auto;
+  }
+}

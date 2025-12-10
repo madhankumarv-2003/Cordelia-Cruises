@@ -1,0 +1,181 @@
+.carousel-slide {
+  position: relative;
+  width: 100%;
+  height: 88vh;
+  background-size: cover;
+  background-position: center;
+  transition: transform 1s ease-in-out;
+}
+
+/* ---------------- CAROUSEL CONTROL ARROWS ---------------- */
+
+.custom-indicators .carousel-control-prev-icon,
+.custom-indicators .carousel-control-next-icon {
+  width: 12px;         /* Arrow box size */
+  height: 8px;
+  background-image: none !important;  /* Remove default BS icon */
+  position: relative;
+  border: solid #ffffff;
+  border-width: 0 6px 6px 0; /* THICKNESS of arrow (4px) */
+  padding: 7.5px;
+  border-radius: 15%;
+}
+/* ---------- LEFT ARROW ---------- */
+.custom-indicators .carousel-control-prev-icon {
+  transform: rotate(135deg);
+  left: -50px;  /* Rotate into left direction */   
+  border-color: #ffffff;       /* Pull inside slide */
+}
+
+/* ---------- RIGHT ARROW ---------- */
+.custom-indicators .carousel-control-next-icon {
+  transform: rotate(-45deg);  /* Rotate into right direction */
+  right: -50px;
+  border-color: #ffffff;  
+
+}
+
+
+.slide1 {
+  background-image: url("../HeroSection/Images/christmas-cruise-1920x800.webp");
+}
+
+.slide2 {
+  background-image: url("./Images/lakshadweep-cruises.webp");
+}
+
+.slide3 {
+  background-image: url("./Images/newyears-cruise.webp");
+}
+
+.slide4 {
+  background-image: url("./Images/black-friday-sale-desktop-banner-timer.webp");
+}
+.slide5 {
+  background-image: url("./Images/male-colombo-cruises-1920x800.webp");
+}
+
+/* ---- BASE INDICATORS ---- */
+.custom-indicators .carousel-indicators {
+  bottom: 25px;
+  gap: 13px;
+}
+
+
+.custom-indicators .carousel-indicators button {
+  width: 10px;
+  height: 10px;
+  top:65px;
+  border-radius: 50px;
+  background-color: #cfcfcf;
+  border: none;
+  padding: 0;
+  overflow: hidden;
+  opacity: 1;
+  transition: width 0.3s ease-in-out; /* smooth expand, no shake */
+  position: relative;
+}
+
+/* ---- ACTIVE DOT ---- */
+.custom-indicators .carousel-indicators .active {
+  width: 18px; /* smooth pill expand */
+  background-color: #cfcfcf;
+}
+
+/* ---- Loader animation inside active pill ---- */
+.custom-indicators .carousel-indicators .active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0%;
+  background-color: #be0acf; /* purple fill */
+  border-radius: 50px;
+  animation: expandLoader 4.5s linear forwards;
+}
+
+/* Loader keyframes */
+@keyframes expandLoader {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+@media (max-width:1000px){
+  .carousel-slide {
+    position: relative;
+    width: 100%;
+    height: 48vh;
+    object-fit: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+  .custom-indicators .carousel-indicators button{
+    top:115px;
+  }
+}
+@media (max-width:500px){
+  
+.slide1 {
+  background-image: url("./Images/christmas-cruise-562×554.webp");
+}
+
+.slide2 {
+  background-image: url("./Images/Lakshadweep-Exit-Intent_1.webp");
+}
+
+.slide3 {
+  background-image: url("./Images/newyears-cruise-562x554.webp");
+}
+
+.slide4 {
+  background-image: url("./Images/black-friday-sale-mobile-banner-timer.webp");
+}
+.slide5 {
+  background-image: url("./Images/male-colombo-cruises-562x554.webp");
+}
+
+
+  .carousel-slide {
+    position: relative;
+    width: 100%;
+    height: 55vh;
+    background-size: contain;
+    background-position: top;
+    transition: transform 1s ease-in-out;
+  }
+  .custom-indicators .carousel-indicators button{
+    top:110px;
+  }
+}
+@media (max-width:800px){
+  .carousel-slide {
+    position: relative;
+    height: 60vh;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+  .custom-indicators .carousel-indicators button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50px;
+  background-color: #cfcfcf;
+  border: none;
+  padding: 0;
+  overflow: hidden;
+  margin-bottom: 50px;
+  opacity: 1;
+  transition: width 0.3s ease-in-out; /* smooth expand, no shake */
+  position: relative;
+}
+.custom-indicators .carousel-control-prev-icon {
+  display: none;     /* Pull inside slide */
+}
+
+/* ---------- RIGHT ARROW ---------- */
+.custom-indicators .carousel-control-next-icon {
+  display: none;  
+
+}
+}

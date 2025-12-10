@@ -1,0 +1,105 @@
+.section-heading {
+  color: #9b0fab;
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: -8px;
+}
+.align{
+  margin-left: -5px;
+  width: 70%;
+}
+
+.container{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.destinationn-card {
+  position: relative;
+  width: 350px;
+  height: 400px;
+  border-radius: 8px !important;
+  overflow: hidden;
+  margin-bottom: 25px;
+  transition: transform 0.3s ease;
+}
+
+.destinationn-card:hover {
+  transform: scale(1.02);
+}
+.destinationn-img{
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 45%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+}
+
+.destinationn-title{
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-family: "Playfair Display", serif;
+  margin: 0;
+}
+.destination-card .card-content h3 {
+  transform: translateY(10px);
+}
+
+h1{
+    font-size: 70px;
+}
+.voy-section {
+  text-align: left;        /* Ensures left alignment */
+  padding: 50px 20px;
+  padding-top: 90px;
+}
+
+.voy-title {
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  margin-bottom: 20px;
+  color: #000;
+  font-family: "Playfair Display", serif;
+}
+
+.voy-description {
+  font-size: 17px;
+  line-height: 1.6;
+  color: #444;
+  max-width: 750px;        /* Keeps text in a neat readable width */
+}
+
+@media (max-width:1000px) {
+  .destinationn-card {
+    width: 230px;
+    height: 300px;
+    margin-bottom: 0px;
+    bottom: 50px;
+  }
+  .row{
+    position: relative;
+    left: 30px;
+  }
+  .container{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .voy-title{
+    position: relative;
+    left: 8px;
+  }
+  .voy-description{
+    position: relative;
+    left: 8px;
+    color: #000;
+  }
+}

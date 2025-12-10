@@ -1,0 +1,88 @@
+.awards-section {
+  width: 100%;
+  height: 80vh;
+  background-image: url(./images/awards-background.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  align-items: left;   /* centers all items horizontally */
+  justify-content: flex-start;
+  padding: 100px 132px;
+}
+
+/* Heading */
+.awards-section h2 {
+  font-size: 36px;
+  font-weight: 600;
+
+}
+
+/* Awards container */
+.awards-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;   /* centers items */
+  gap: 60px;                 /* spacing between all awards */
+  flex-wrap: wrap;           /* responsive layout */
+  width: 100%;
+  max-width: 1200px;
+}
+.award-item img {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+
+.awards-section h2 {
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 60px;
+  font-family: "Playfair Display",serif;
+}
+
+.awards-list {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.award-border {
+  padding-right: 40px;
+  border-right: 1.5px solid #a79d9d;
+}
+
+.award-card {
+  width: 140px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.award-card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .award-card {
+    width: 120px;
+  }
+}
+
+@media (max-width: 500px) {
+  .award-card {
+    width: 120px;
+  }
+  .awards-section h2 {
+    margin-left: -50px;
+}
+  
+}

@@ -1,0 +1,55 @@
+.safety-container {
+  text-align: center;
+  padding: 60px 0px;
+  background: rgb(243, 241, 241);
+  margin-top: 110px;
+}
+
+.safety-title {
+  font-size: 38px;
+  padding-left: 110px;
+  font-weight: 500;
+  margin-bottom: 40px;
+  font-family: 'Playfair Display',serif;
+  color: #222;
+  text-align: left;
+}
+
+.safety-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1050px;
+margin-left: 70px;
+  flex-wrap: wrap;
+  margin-top: -12px;
+  
+}
+
+.safety-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 250px;
+}
+
+.safety-icon {
+  width: 100px;
+  height: auto;
+}
+
+.safety-text {
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Playfair Display",serif;
+  color: #000;
+  text-align: left;
+  display: flex;
+  width: 180px;
+}
+
+.sea-wave{
+  background-image: url('./images/footer-wave-desktop.svg');
+  width: 100%;
+  height: auto;
+}

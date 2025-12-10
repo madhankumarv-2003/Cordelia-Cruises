@@ -1,0 +1,19 @@
+.contact{
+    position:sticky;
+    background: linear-gradient(to right, #9b309c, #e04c63, #ee6b4d);
+    color: white;
+    font-size: 12px;
+    position:sticky;
+    padding: 8px 8px;
+    z-index: 2;
+    word-spacing:1px;
+    letter-spacing: 0.3px;
+    font-weight:500;
+    border: 2px orange;
+}
+
+@media (max-width: 1200px) {
+  .contact {
+    display: none !important;
+  }
+}
