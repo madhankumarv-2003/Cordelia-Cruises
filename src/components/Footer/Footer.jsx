@@ -93,6 +93,7 @@ const Footer = () => {
         </ul>
       </div>
     </footer>
+    <div className="copy-right d-flex align-items-center justify-content-center p-3">© 2022 Cordelia Cruises All Rights Reserved</div>
     </div>
   );
 };

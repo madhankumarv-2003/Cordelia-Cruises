@@ -94,7 +94,7 @@ export default function DepChennai() {
 
   return (
     <div className="carousel-wrapper">
-      <h5 className="sectionn-heading pb-3 px-2">Departure from Chennai</h5>
+      <h5 className="sectionn-heading pb-3 ms-2">Departure from Chennai</h5>
 
       <Slider {...settings}>
         {images.map((item, index) => (

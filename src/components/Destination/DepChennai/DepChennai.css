@@ -1,7 +1,7 @@
 /* ---- CAROUSEL WRAPPER ---- */
 .carousel-wrapper {
   position: relative;
-  width: 85%;                 /* wider for better alignment */
+  width: 86%;                 /* wider for better alignment */
   margin: 0 auto;             /* centers the carousel */
   padding: 0 20px;            /* space on left & right */
 }

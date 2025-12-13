@@ -20,8 +20,8 @@ import DownloadApp from "./components/Download/DownloadApp";
 import SafetyProtocols from "./components/SafetyProtocols/SafetyProtocols";
 import Footer from "./components/Footer/Footer";
 
-import Blogs from "./Pages/Blogs";
-import Offers from "./Pages/Offers";
+import Blogs from "./Pages/Blogs/Blogs";
+import Offers from "./Pages/Offers/Offers";
 
 import "./App.css";
 

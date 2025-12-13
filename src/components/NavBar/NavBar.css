@@ -582,7 +582,12 @@ body {
 @media (max-width:500px) {
   .mobile-offcanvas.offcanvas-end {
   width: 330px !important;
-  max-width: 470px !important;
+  max-width: 330px !important;
+}
 }
 
+@media (min-width:1000px) {
+  .mobile-offcanvas.offcanvas-end{
+    display: none;
+  }
 }

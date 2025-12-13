@@ -19,7 +19,7 @@
 }
 
 .footer-text {
-  line-height: 1.6;
+  line-height: 1.5;
   opacity: 0.7;
 }
 
@@ -82,6 +82,11 @@ p6{
   width: 100%;
   margin-top: -50px;
   z-index: 0;
+}
+.copy-right{
+  font-family: 'Playfair Display',serif;
+  font-size: 14px;
+  color: #172c48;
 }
 
 /* Responsive */

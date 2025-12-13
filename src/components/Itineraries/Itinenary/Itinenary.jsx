@@ -90,7 +90,7 @@ export default function Itinenary() {
 
       {/* SLIDER SECTION */}
       <div className="carousel-wrapperr col-md-12">
-        <Slider {...settings}>
+        <Slider {...settings}> 
           {images.map((item, index) => (
             <div key={index} className="slide-cardd gap-4 mb-4">
               <img src={item.img} alt={item.title} className="slick-imgg" />

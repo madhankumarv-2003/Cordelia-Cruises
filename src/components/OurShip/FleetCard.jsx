@@ -86,7 +86,7 @@ const FleetCard = () => {
       <div className="overlay-img mt-5">
         <img src={img} style={{width:"280px",height:"280px"}}></img>
       </div>
-      <section className="des-section mb-5 container dep-container ms-3">
+      <section className="des-section container dep-container ms-2">
         <div className="row">
           <div className="col-10 fleet">
             <h2 className="des-title">Destinations</h2>

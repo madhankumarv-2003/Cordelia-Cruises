@@ -23,15 +23,17 @@ const SafetyProtocols = () => {
   ];
 
   return (
-    <div className="safety-container">
-      <h2 className="safety-title me-5">Safety Protocols</h2>
-      <div className="safety-items">
-        {protocols.map((item, index) => (
-          <div className="safety-card" key={index}>
-            <img src={item.icon} alt="icon" className="safety-icon" />
-            <span className="safety-text">{item.title}</span>
-          </div>
-        ))}
+    <div className="pt-4">
+      <div className="safety-container">
+        <h2 className="safety-title me-5">Safety Protocols</h2>
+        <div className="safety-items">
+          {protocols.map((item, index) => (
+            <div className="safety-card" key={index}>
+              <img src={item.icon} alt="icon" className="safety-icon" />
+              <span className="safety-text">{item.title}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
