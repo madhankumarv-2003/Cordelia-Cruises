@@ -591,3 +591,18 @@ body {
     display: none;
   }
 }
+
+.login-link {
+  color: #9b0fab;
+  font-weight: 500;
+}
+
+#account-dropdown .dropdown-menu {
+  border-radius: 6px;
+}
+
+#account-dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

@@ -6,7 +6,7 @@ import img1 from "./images/element-05.svg"
 const CruiseInbox = () => {
   return (
     <section className="newsletter-container mt-5 ms-2">
-      <div className="newsletter-left mt-4 ms-2 ps-2">
+      <div className="newsletter-left mt-4">
         <h2>
           Get Cruise Deals Directly <br /> In Your Inbox
         </h2>
@@ -26,7 +26,7 @@ const CruiseInbox = () => {
           <img className="icon-news" src={img} style={{width:"330px",height:"380px"}}></img>
         </div>
       </div>
-      <div className="overlay-imgg mt-5">
+      <div className="overlay-imgg mt-5 d-none">
               <img src={img1} style={{width:"800px",height:"100px"}}></img>
             </div>
     </section>

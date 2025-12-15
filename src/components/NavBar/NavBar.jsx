@@ -21,7 +21,7 @@ import img5 from "./images/Destination_Nav.svg"
 import img6 from "./images/Offers_Nav.svg"
 import img7 from "./images/Blog.svg"
 import img8 from "./images/Contact_Nav.svg"
-import img9 from "./images/google-play-store-logo.webp"
+import img9 from "./images/google-play-store-logo.webp";
 
 import "./NavBar.css";
 
@@ -29,7 +29,7 @@ const NavBar = () => {
   const [showShips, setShowShips] = useState(false);
   const [showDestination, setShowDestination] = useState(false);
   const [offcanvas, setOffcanvas] = useState(false);
-  const [scrolled, setScrolled] = useState(false);``
+  const [scrolled, setScrolled] = useState(false);
 
   const navigate = useNavigate();
 
