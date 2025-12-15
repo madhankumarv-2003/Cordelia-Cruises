@@ -1,8 +1,8 @@
 import React from "react";
 
-import Image1 from "./Images/empress-cruise-rock-climb-popup-image.webp";
-import Image2 from "./Images/Food-beverages-image.webp";
-import Image3 from "./Images/entertainment-image.webp";
+import Image1 from "./images/empress-cruise-rock-climb-popup-image.webp";
+import Image2 from "./images/Food-beverages-image.webp";
+import Image3 from "./images/entertainment-image.webp";
 
 import "./Voyage.css";
 
