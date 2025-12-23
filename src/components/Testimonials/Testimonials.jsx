@@ -41,7 +41,7 @@ function Testimonials() {
     <>
     <section className="ms-5 px-4">
         <div className="mt-5">
-          <div className="align col-12 text-left mt-2 ms-5">
+          <div className="align col-12 text-left mt-2">
             <h2 className="test-title">What Our Travellers Say</h2>
             <p className="test-description">
               Hear it from the ones who’ve been there and done that.

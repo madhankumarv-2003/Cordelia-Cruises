@@ -9,7 +9,7 @@ import {
   Offcanvas,
 } from "react-bootstrap";
 import { FaUser, FaChevronDown, FaChevronRight } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 
 import logoWhite from "./images/cordelia-new-white-logo.svg";
 import logoColor from "./images/cordelia-new-logo.svg";
@@ -32,30 +32,46 @@ const NavBar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const closeMenu = (path) => {
     navigate(path);
     setOffcanvas(false);
   };
 
-  // Detect scroll > 100px
+  /* =============================
+     SCROLL EFFECT (HOME ONLY)
+  ============================== */
   useEffect(() => {
+    // 👉 NOT home page → always white navbar
+    if (location.pathname !== "/") {
+      setScrolled(true);
+      return;
+    }
+
+    // 👉 Home page → scroll behavior
     const handleScroll = () => {
-      const y = window.pageYOffset || window.scrollY || 0;
-      setScrolled(y > 150); // <--- updated from 150 to 100
+      const y = window.scrollY || 0;
+      setScrolled(y > 150);
     };
 
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   return (
     <>
       <Navbar
         expand="xl"
-        className={`navbar py-1 header ${scrolled ? "navbar-scrolled" : "navbar-top"}`}
+        className={`navbar py-1 header ${
+          location.pathname === "/"
+            ? scrolled
+              ? "navbar-scrolled"
+              : "navbar-top"
+            : "navbar-scrolled"
+        }`}
       >
         <Container
           fluid
@@ -102,13 +118,13 @@ const NavBar = () => {
                   </span>
                 }
               >
-                <NavDropdown.Item as={Link} to="/ships/sky">
+                <NavDropdown.Item as={Link} to="/CordeliaSky">
                   Cordelia Sky
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/ships/suns">
+                <NavDropdown.Item as={Link} to="/CordeliaSun">
                   Cordelia Suns
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/ships/empress">
+                <NavDropdown.Item as={Link} to="/CordeliaEmpress">
                   Cordelia Empress
                 </NavDropdown.Item>
               </NavDropdown>
@@ -167,7 +183,7 @@ const NavBar = () => {
 
               <Button
                 as={Link}
-                to="/checkin"
+                to="/WebCheckIn"
                 className="web-checkin-btn gradient-border"
               >
                 Web Check-in

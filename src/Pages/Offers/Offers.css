@@ -1,0 +1,197 @@
+/* ================= Root ================= */
+.deals-container {
+  width: 100%;
+  background: #fff;
+  font-family: "Playfair Display", serif;
+}
+
+/* ================= Banner ================= */
+.deals-banner {
+  width: 100%;
+  height: 420px;
+  background-size: contain;
+  background-position: bottom;
+  background-repeat: no-repeat;
+}
+
+/* ================= Content ================= */
+.deals-content {
+  padding: 70px 140px;
+  text-align: left;
+}
+
+.deals-content h2 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.deals-content p {
+  font-size: 18px;
+  color: #000;
+  font-weight: 500;
+  line-height: 2;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ================= Offers Wrapper ================= */
+.offers-wrapper {
+  display: flex;
+  gap: 35px;
+  justify-content: center;
+  padding: 0 20px 70px;
+  flex-wrap: wrap;
+}
+
+/* ================= Offer Card ================= */
+.offer-card {
+  width: 39.5%;
+  min-width: 300px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= Card Image ================= */
+.offer-image {
+  height: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+/* ================= Card Body ================= */
+.offer-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* ================= Header (Logo + Title) ================= */
+.offer-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.offer-logo {
+  width: 35px;
+  height: 35px;
+  object-fit: contain;
+}
+
+.offer-title {
+  font-size: 25px;
+  font-weight: 600;
+  margin: 0;
+  color: #000;
+}
+
+/* ================= Subtitle ================= */
+.offer-subtitle {
+  font-size: 19px;
+  font-weight: 500;
+   position: relative;
+  left: -15px;
+  color: #333;
+  margin: -4px 0 16px 47px; /* aligns under title */
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ================= Offer List ================= */
+.offer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+.offer-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 20px;
+  font-family: "Segoe UI", sans-serif;
+  color: #000;
+}
+
+/* Tick icon */
+.tick-icon {
+  width: 18px;
+  height: 14px;
+  margin-top: 4px;
+}
+
+/* ================= Button ================= */
+.offer-btn {
+  margin-top: auto;
+  width: 230px;
+  padding: 15px 25px;
+  background-image: linear-gradient(
+    99.72deg,
+    rgb(146, 39, 143) -17.25%,
+    rgb(234, 114, 91) 105.93%
+  );
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  font-family: "Segoe UI", sans-serif;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.offer-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 992px) {
+  .deals-content {
+    padding: 40px;
+  }
+
+  .deals-content h2 {
+    font-size: 30px;
+  }
+
+  .offer-card {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .deals-banner {
+    height: 280px;
+  }
+
+  .deals-content h2 {
+    font-size: 24px;
+  }
+
+  .deals-content p {
+    font-size: 15px;
+  }
+
+  .offer-title {
+    font-size: 22px;
+  }
+
+  .offer-subtitle {
+    margin-left: 47px;
+    font-size: 14px;
+  }
+
+  .offer-btn {
+    width: 100%;
+  }
+}

@@ -81,8 +81,8 @@
 
 .card-content {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 30px;
+  left:20px;
   z-index: 2;
   color: white;
 }
@@ -90,7 +90,7 @@
 .card-content h1,
 .card-content h3 {
   font-family: "Playfair Display", serif;
-  font-size: 28px;
+  font-size: 35px;
   transform: translateY(80px); /* reduced from 145px */
   opacity: 0;
   transition: 0.45s ease;
@@ -136,10 +136,35 @@
   }
   
 }
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    width: 100%;
+    padding: 0 5px;
+  }
+
+  .slick-prev {
+    left: -20px;
+  }
+
+  .slick-next {
+    right: -20px;
+  }
+  .sectionn-heading{
+    font-size: 15px;
+    width: 200px;
+  }
+  
+}
 
 @media (max-width: 480px) {
   .carousel-wrapper {
     width: 100%;
     margin: 0 auto;
+    top: -50px;
+  }
+  .sectionn-heading{
+    position: relative;
+    left: 0px;
   }
 }
+

@@ -138,6 +138,7 @@
   top: 365px;
   z-index: -1;
   right: 80px;
+  display: none;
 }
 
 .dep-container{
@@ -147,7 +148,7 @@
 .des-section {
   text-align: left;        /* Ensures left alignment */
   padding: 0;
-  padding-top: 30px;
+  padding-top: 0px;
   position: relative;
   left: 62px;
 }
@@ -174,7 +175,7 @@
   }
   .des-section {
   text-align: left;        /* Ensures left alignment */
-  padding: 0px 20px;
+  padding: 0px 0px;
   padding-top: 0px;
   position: relative;
   left: 0;
@@ -209,38 +210,58 @@
 }
 
 @media (max-width:500px) {
+  .cruise-container{
+    width:340px;
+    position: relative;
+    left:0px;
+  }
+  .cruise-title{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .cruise-desc{
+    font-size: 14px;
+  }
+  .explore-btn{
+    padding: 10px 20px;
+    font-size: 14px;
+  }
   .des-section {
-  text-align: left;        /* Ensures left alignment */
-  padding: 0;
-  position: relative;
+      padding:0;
+      position: relative;
 }
   .des-title{
     position:relative;
-    left: -20px;
+    left: -10px;
 
   }
   .des-description{
     max-width: 280px;
     position: relative;
-    left: -20px;
+    left: 0;
+    color: #000;
   }
+  
 }
 
 @media (max-width:768px) {
+  .cruise-container{
+    width:100%;
+  }
   .des-section {
-  text-align: left;        /* Ensures left alignment */
-  padding: 0;
-  position: relative;
+      padding: 0;
+      position: relative;
 }
   .des-title{
     position:relative;
-    left: -15px;
+    left: -10px;
 
   }
   .des-description{
-    max-width: 800px;
+    width: 750px;
     position: relative;
-    left: -15px;
+    left: -10px;
+    color: #000;
   }
 }
 

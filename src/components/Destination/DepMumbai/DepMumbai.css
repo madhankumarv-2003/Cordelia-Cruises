@@ -7,6 +7,14 @@
   position: relative;
   top:0;
 }
+.fleet{
+  position: relative;
+  left: 8px;
+}
+.row {
+  --bs-gutter-x: 15px;
+  --bs-gutter-y: 10px;
+}
 
 .destination-card{
   position: relative;
@@ -78,7 +86,7 @@
 
 .destination-img {
   width: 100%;
-  height: 300px;
+  height: 320px;
   object-fit: cover;
   transition: 0.5s ease;
 }
@@ -97,7 +105,7 @@
 .card-content {
   position: absolute;
   bottom: 30px;
-  left: 25px;
+  left:0px;
   z-index: 2;
   color: white;
 }
@@ -120,14 +128,69 @@
 }
 
 @media (max-width:800px) {
+  .sectionn-heading{
+    position: relative;
+    left: 25px;
+  }
+  .fleet{
+    left: -90px;
+  }
   .container{
     position: relative;
-    left: -30px;
+    left: -45px;
   }
   .destination-card{
   position: relative;
   border-radius: 8px !important;
   overflow: hidden;
   margin-bottom: 25px;
+  width: 235px;
 }
+.destination-img {
+  height: 300px;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+.row {
+  --bs-gutter-x:50px;
+  --bs-gutter-y: 10px;
+}
+
+}
+@media (max-width:500px) {
+  .sectionn-heading{
+    position: relative;
+    left: -20px;
+  }
+  .fleet{
+    left: -95px;
+  }
+  .container{
+    position: relative;
+    left:0px;
+    margin-left: 18px;
+    top: -50px;
+  }
+  .des-align{
+    position: relative;
+    left: -90px;
+  }
+  .destination-card{
+  position: relative;
+  border-radius: 8px !important;
+  overflow: hidden;
+  margin-bottom: 25px;
+  width: 290px;
+
+}
+.destination-img {
+  height: 300px;
+  object-fit: cover;
+  transition: 0.4s ease;
+}
+.row {
+  --bs-gutter-x:0px;
+  --bs-gutter-y: 0px;
+}
+
 }

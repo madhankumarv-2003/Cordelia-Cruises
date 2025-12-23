@@ -1,40 +1,49 @@
+/* =========================
+   NEWSLETTER SECTION
+========================= */
+
 .newsletter-container {
-  padding: 100px;
+  padding: 80px 100px;
   background-image: url("./images/newsletter-background.webp");
-  background-size: cover;       /* Proper responsive scaling */
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 20px;
   position: relative;
-  height: 85vh;
+  min-height: 85vh;
+
   display: flex;
-  flex-direction: row;
-  justify-content: center;       /* Center content vertically */
-  align-items: flex-start;       /* Left align */
-  color: #fff;                   /* White text */
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LEFT CONTENT */
+.newsletter-left {
+  max-width: 600px;
 }
 
 .newsletter-left h2 {
-    display: flex;
-    font-size: 36px;
-    font-weight: 500;
-    margin-top: 25px;
-    color: #1d1d1d;
-    line-height: 1.4;
-    font-family: "Playfair Display",serif;
+  font-size: 36px;
+  font-weight: 500;
+  margin-top: 25px;
+  color: #1d1d1d;
+  line-height: 1.4;
+  font-family: "Playfair Display", serif;
 }
 
 .subtitle {
   margin-top: 15px;
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.5;
   color: #202020;
-  width: 60%;
+  width: 100%;
+  max-width: 500px;
 }
 
+/* INPUT BOX */
 .newsletter-input-box {
-  margin-top: 20px;
+  margin-top: 25px;
   display: flex;
   max-width: 555px;
 }
@@ -43,94 +52,103 @@
   flex: 1;
   padding: 16px;
   border: 1px solid #1d1d1d;
-  border-radius:4px 0px 0px 4px;
+  border-radius: 4px 0 0 4px;
   font-size: 16px;
   outline: none;
 }
 
 .newsletter-input-box button {
-  padding: 16px 55px;
-  background-image: linear-gradient(99.72deg, rgb(146, 39, 143) -17.25%, rgb(234, 114, 91) 105.93%);
-  border: none;
-  border-radius:0px 3px 3px 0px;
-  font-size: 16px;
-  font-weight: 600;
-  color: white;
-  cursor: pointer;
-}
-.icon-news{
-    position: relative;
-    left: -55px;
-    top: 0px;
-}
-
-.newsletter-right {
-  position: relative;
-}
-
-/* Responsive */
-@media (max-width: 500px) {
-  .newsletter-container {
-    flex-direction: column;
-    margin-top: 30px;
-    text-align: left;
-    width: 100%;
-    position: relative;
-    left:-50px;
-  }
-
-  .newsletter-right {
-    margin-top: 50px;
-  }
-}
-@media (max-width: 1000px) {
-  .newsletter-container {
-    flex-direction: row;
-    margin-top: 0px;
-    text-align: left;
-    left: -50px;
-    width: 100%;
-    background-size: cover;
-    position: relative;
-
-  }
-  .subtitle{
-    width: 100%;
-  }
-
-  .newsletter-right {
-    display: none;
-  }
-  .newsletter-left h2 {
-    font-size: 28px;
-}
-.newsletter-input-box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-}
-
-.newsletter-input-box input {
-  flex: 1;
-  padding: 12px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-.newsletter-input-box button {
-  padding: 16px 30px;
+  padding: 16px 45px;
   background-image: linear-gradient(
     99.72deg,
     rgb(146, 39, 143) -17.25%,
     rgb(234, 114, 91) 105.93%
   );
   border: none;
-  border-radius: 4px; /* separate button shape */
+  border-radius: 0 4px 4px 0;
   font-size: 16px;
   font-weight: 600;
-  color: white;
+  color: #fff;
   cursor: pointer;
 }
 
+/* ICON */
+.icon-news {
+  position: relative;
+  left: -45px;
+}
+
+/* RIGHT IMAGE / CONTENT */
+.newsletter-right {
+  position: relative;
+}
+
+/* =========================
+   TABLET (≤ 768px)
+========================= */
+
+@media (max-width: 768px) {
+  .newsletter-container {
+    padding: 60px 40px;
+    min-height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .newsletter-right {
+    display: none;
+  }
+
+  .newsletter-left h2 {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    max-width: 100%;
+  }
+
+  .newsletter-input-box {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .newsletter-input-box input {
+    border-radius: 4px;
+  }
+
+  .newsletter-input-box button {
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .icon-news {
+    display: none;
+  }
+}
+
+/* =========================
+   MOBILE (≤ 500px)
+========================= */
+
+@media (max-width: 500px) {
+  .newsletter-container {
+    padding: 80px 20px;
+    border-radius: 14px;
+    position: relative;
+    top: -80px;
+  }
+
+  .newsletter-left h2 {
+    font-size: 24px;
+
+  }
+  .newsletter-left{
+    position: relative;
+    top: -20px;
+  }
+  .subtitle {
+    font-size: 15px;
+  }
 }

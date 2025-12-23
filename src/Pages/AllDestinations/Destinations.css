@@ -1,0 +1,193 @@
+/* Wrapper */
+.ports-wrapper {
+  padding: 110px 140px;
+  background: #fff;
+}
+
+/* Titles */
+.ports-title,
+.india-title {
+  font-size: 36px;
+  color: #000;
+  font-weight: 600;
+  font-family: "Playfair Display", serif;
+}
+
+.ports-desc,
+.india-desc {
+  max-width: 1300px;
+  color: #000;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 15px 0 35px;
+  line-height: 2.0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Tabs */
+.ports-tabs {
+  display: flex;
+  gap: 10px;
+}
+
+.ports-tab {
+  padding: 12px 24px;
+  border: 2px solid #c8378a;
+  border-radius: 6px;
+  background: transparent;
+  color: #c8378a;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.ports-tab.active {
+  background-image: linear-gradient(
+    99.72deg,
+    rgb(146, 39, 143) -17.25%,
+    rgb(234, 114, 91) 105.93%
+  );
+  color: #fff;
+  border: none;
+}
+
+/* Divider */
+.ports-divider {
+  margin: 52px 0;
+  height: 1.5px;
+  border: none;
+  background: #8b8888;
+}
+
+/* Grid */
+.india-grid {
+  display: flex;
+  flex-wrap: wrap;          /* ✅ allow wrapping */
+  gap: 30px;
+}
+
+/* Card = col-6 */
+.destination-cardd {
+  flex: 0 0 calc(50% - 15px); /* 50% width minus gap */
+  max-width: calc(50% - 15px);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .destination-cardd {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* Carousel */
+.destination-image {
+  position: relative;
+  height: 280px;
+}
+
+.destination-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Big Blue Arrow */
+.arrow-box {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background: none ;
+  opacity: 0.5;
+  color: #fff;
+  font-size: 50px;
+  font-weight: 400;
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  transition: 0.3s;
+}
+.arrow-box.left {
+  left: 12px;
+}
+
+.arrow-box.right {
+  right: 12px;
+}
+
+/* Dots */
+.dots {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+}
+
+.dot.active {
+  background: #fff;
+}
+
+/* Content */
+.destination-content {
+  padding: 25px 12px;
+}
+
+.destination-content h3 {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: "Playfair Display", serif;
+}
+.destination-content p {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.8;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.explore-btn {
+  margin-top: 30px;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 6px;
+  background-image: linear-gradient(
+    99.72deg,
+    rgb(146, 39, 143) -17.25%,
+    rgb(234, 114, 91) 105.93%
+  );
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .india-grid {
+    flex-direction: column;
+  }
+
+  .destination-cardd {
+    width: 100%;
+  }
+
+  .ports-wrapper {
+    padding: 40px 20px;
+  }
+}

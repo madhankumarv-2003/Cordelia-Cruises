@@ -113,6 +113,7 @@ h5{
   .testimonial-card{
     width: 95%;
     position: relative;
+    top: -30px;
 
   }
   .test-title {
@@ -122,7 +123,7 @@ h5{
   margin-bottom: 20px;
   color: #000;
   position: relative;
-  top: -40px;
+  top: -30px;
   right: 106px;
   font-family: "Playfair Display", serif;
 }
@@ -131,7 +132,7 @@ h5{
   font-size: 14px;
   line-height: 1.6;
   position: relative;
-  top: -50px;
+  top: -40px;
   right: 106px;
   color: #444;
   max-width:700px;        /* Keeps text in a neat readable width */

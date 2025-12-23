@@ -29,9 +29,20 @@ const destinations = [
 
 const DepMumbai = () => {
   return (
+    <div>
+    <section className="mt-5 ms-4">
+        <div className="mt-4">
+          <div className="des-align ps-5 ms-5">
+            <h2 className="des-title">Destinations</h2>
+            <p className="des-description">
+              Discover the breathtaking beauty of both Domestic and International destinations with Cordelia Cruises
+            </p>
+          </div>
+        </div>
+      </section>
     <div className="container px-3">
-      <h5 className="sectionn-heading mb-2 ms-0">Departure from Mumbai</h5>
-      <div className="row mt-4">
+      <h5 className="sectionn-heading ms-0">Departure from Mumbai</h5>
+      <div className="row mt-3">
         {destinations.map((item, index) => (
           <div key={index} className="col-md-4">
             <div className="destination-card">
@@ -50,6 +61,7 @@ const DepMumbai = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

@@ -1,7 +1,10 @@
+/* ===============================
+   SAFETY SECTION – BASE (DESKTOP)
+================================= */
+
 .safety-container {
   text-align: center;
-  padding: 60px 0px;
-  height:51vh;
+  padding: 60px 0;
   background: rgb(248, 245, 245);
   margin-top: 110px;
 }
@@ -11,7 +14,7 @@
   padding-left: 120px;
   font-weight: 500;
   margin-bottom: 25px;
-  font-family: 'Playfair Display',serif;
+  font-family: "Playfair Display", serif;
   color: #222;
   text-align: left;
 }
@@ -23,7 +26,6 @@
   max-width: 1050px;
   margin-left: 80px;
   flex-wrap: wrap;
-  
 }
 
 .safety-card {
@@ -31,6 +33,7 @@
   flex-direction: row;
   align-items: center;
   width: 250px;
+  gap: 12px;
 }
 
 .safety-icon {
@@ -41,9 +44,158 @@
 .safety-text {
   font-size: 18px;
   font-weight: 500;
-  font-family: "Playfair Display",serif;
+  font-family: "Playfair Display", serif;
   color: #000;
-  text-align: left;
-  display: flex;
   width: 180px;
+  text-align: left;
+}
+
+/* ===============================
+   MOBILE (≤ 575px)
+================================= */
+
+@media (max-width: 575px) {
+
+  .safety-container {
+    padding: 40px 15px;
+    margin-top: 60px;
+    height: auto;
+  }
+
+  .safety-title {
+    font-size: 26px;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .safety-items {
+    margin-left: 0;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .safety-card {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+  }
+
+  .safety-icon {
+    width: 80px;
+  }
+
+  .safety-text {
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+/* ===============================
+   SMALL TABLET (576px – 767px)
+================================= */
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+  .safety-container {
+    padding: 50px 20px;
+    margin-top: 80px;
+    height: auto;
+  }
+
+  .safety-title {
+    font-size: 28px;
+    padding-left: 20px;
+  }
+
+  .safety-items {
+    margin-left: 0;
+    justify-content: space-between;
+    gap: 25px;
+  }
+
+  .safety-card {
+    width: 48%;
+  }
+
+  .safety-icon {
+    width: 90px;
+  }
+
+  .safety-text {
+    font-size: 17px;
+    width: auto;
+  }
+}
+
+/* ===============================
+   TABLET / SMALL LAPTOP (768px – 991px)
+================================= */
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+  .safety-container {
+    padding: 60px 30px;
+    margin-top: 90px;
+  }
+
+  .safety-title {
+    font-size: 30px;
+    padding-left: 40px;
+  }
+
+  .safety-items {
+    margin-left: 0;
+    justify-content: space-around;
+    gap: 30px;
+  }
+
+  .safety-card {
+    width: 45%;
+  }
+
+  .safety-icon {
+    width: 95px;
+  }
+}
+
+/* ===============================
+   LAPTOP (992px – 1199px)
+================================= */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+  .safety-title {
+    font-size: 32px;
+    padding-left: 60px;
+  }
+
+  .safety-items {
+    margin-left: 30px;
+  }
+
+  .safety-card {
+    width: 240px;
+  }
+}
+
+/* ===============================
+   LARGE DESKTOP (≥ 1200px)
+================================= */
+
+@media (min-width: 1200px) {
+
+  .safety-container {
+    padding: 70px 0;
+  }
+
+  .safety-title {
+    font-size: 35px;
+    padding-left: 120px;
+  }
+
+  .safety-items {
+    margin-left: 80px;
+  }
 }

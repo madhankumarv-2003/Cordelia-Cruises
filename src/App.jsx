@@ -1,57 +1,63 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import FraudAlert from "./components/FraudAlert/FraudAlert";
 import ContactBar from "./components/ContactBar/ContactBar";
 import NavBar from "./components/NavBar/NavBar";
-import HeroCarousel from "./components/HeroSection/HeroCarousel";
-
-import MeetTheFleet from "./components//OurShip/MeetTheFleet";
-import FleetCard from "./components/OurShip/FleetCard";
-import DepMumbai from "./components/Destination/DepMumbai/DepMumbai";
-import DepChennai from "./components/Destination/DepChennai/DepChennai";
-import Itinenary from "./components/Itineraries/Itinenary/Itinenary";
-import Voyage from "./components/Itineraries/Voyage/Voyage";
-import CruiseInbox from "./components/CruiseInbox/Cruiseinbox";
-import Testimonials from "./components/Testimonials/Testimonials";
-import RequestCall from "./components/RequestCall/RequestCall";
-import Awards from "./components/Awards/Awards";
-import DownloadApp from "./components/Download/DownloadApp";
-import SafetyProtocols from "./components/SafetyProtocols/SafetyProtocols";
 import Footer from "./components/Footer/Footer";
 
+import Home from "./Home/Home";
 import Blogs from "./Pages/Blogs/Blogs";
 import Offers from "./Pages/Offers/Offers";
+import CordeliaSky from "./Pages/CordeliaSky/CordeliaSky";
+import WebCheckIn from "./Pages/WebCheckIn/WebCheckIn";
+import FindCruise from "./Pages/Findcruise/Findcruise";
+import Destinations from "./Pages/AllDestinations/Destinations";
 
 import "./App.css";
 
 function App() {
+  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    // ❌ Disable scroll effect on non-home pages
+    if (location.pathname !== "/") {
+      setScrolled(false);
+      return;
+    }
+
+    const handleScroll = () => {
+      const y = window.scrollY || window.pageYOffset || 0;
+      setScrolled(y > 150);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [location.pathname]);
+
   return (
     <>
       <div className="sticky-group">
-          <FraudAlert />
-          <ContactBar />
-          <NavBar />
+        {location.pathname === "/" && <FraudAlert />}
+
+        <ContactBar />
+        <NavBar scrolled={scrolled} />
       </div>
 
+      {/* Routes */}
       <Routes>
-        <Route path="/" element={<HeroCarousel />} />
+        <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/offers" element={<Offers />} />
+        <Route path="/destinations" element={<Destinations/>} />
+        <Route path="/CordeliaSky" element={<CordeliaSky />} />
+        <Route path="/find-cruise" element={<FindCruise/>} />
+        <Route path="/WebCheckIn" element={<WebCheckIn />} />
       </Routes>
-      
-      <MeetTheFleet />
-      <FleetCard />
-      <DepMumbai />
-      <DepChennai/>
-      <Itinenary/>
-      <Voyage />
-      <CruiseInbox/>
-      <Testimonials/>
-      <RequestCall/>
-      <Awards/>
-      <DownloadApp/>
-      <SafetyProtocols />
+
       <Footer/>
     </>
   );

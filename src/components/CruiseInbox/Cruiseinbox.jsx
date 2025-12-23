@@ -5,7 +5,7 @@ import img1 from "./images/element-05.svg"
 
 const CruiseInbox = () => {
   return (
-    <section className="newsletter-container mt-5 ms-2">
+    <section className="newsletter-container mt-5">
       <div className="newsletter-left mt-4">
         <h2>
           Get Cruise Deals Directly <br /> In Your Inbox

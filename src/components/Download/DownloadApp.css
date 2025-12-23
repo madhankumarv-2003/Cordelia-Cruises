@@ -1,41 +1,46 @@
+/* ================= DOWNLOAD SECTION ================= */
+
 .download-section {
   display: flex;
   align-items: center;
-  justify-content:left;
+  justify-content: flex-start;
   padding: 60px 30px;
   background: #fdf3f1;
-  width:80%;
+  width: 80%;
   height: 50vh;
-  margin-left: 270px;
+  margin: 0 auto;
 }
 
+/* LEFT SIDE */
 .download-left {
   display: flex;
   align-items: flex-start;
 }
 
+/* PHONE IMAGE */
 .phone-img {
   width: 500px;
   border-radius: 30px;
   margin-top: 30px;
-  display: flex;
-  position: relative;
-  right: 200px;
   background-color: #fff;
 }
-.download-right{
-  margin-left: -135px;
+
+/* RIGHT SIDE */
+.download-right {
+  margin-left: 60px;
 }
 
+/* HEADING */
 .download-right h1 {
   font-size: 35px;
   font-weight: 600;
   color: #000;
   line-height: 1.6;
-  margin-bottom: 5px;
-  font-family: "Playfair Display",serif;
+  margin-bottom: 15px;
+  font-family: "Playfair Display", serif;
 }
 
+/* INPUT + BUTTON */
 .input-container {
   display: flex;
   align-items: center;
@@ -53,46 +58,126 @@
 .input-container button {
   padding: 16px 14px;
   border: none;
-  background-image: linear-gradient(99.72deg, rgb(146, 39, 143) -17.25%, rgb(234, 114, 91) 105.93%);
+  background-image: linear-gradient(
+    99.72deg,
+    rgb(146, 39, 143) -17.25%,
+    rgb(234, 114, 91) 105.93%
+  );
   color: #fff;
   font-weight: 400;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
 }
 
+/* STORE BUTTONS */
 .store-buttons img {
   width: 130px;
   margin-right: 15px;
   cursor: pointer;
 }
 
-@media (max-width:1000px) {
-  .overlay-img{
-    display: none;
-  }
+/* ===================================================== */
+/* =================== TABLET VIEW ===================== */
+/* ===================================================== */
+
+@media (max-width: 1024px) {
   .download-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content:center;
-  padding: 50px 0px;
-  background: #fdf3f1;
-  width: 80%;
-  height: 50vh;
-  margin-left: -100px;
-}
-.phone-img {
-  width: 300px;
-  border-radius: 30px;
-  margin-top: 30px;
-}
-.input-container input {
-  width: 200px;
-}
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: auto;
+    padding: 50px 20px;
+  }
+
+  .download-left {
+    justify-content: center;
+  }
+
+  .phone-img {
+    width: 350px;
+    margin-bottom: 30px;
+  }
+
+  .download-right {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .download-right h1 {
+    font-size: 30px;
+  }
+
+  .input-container {
+    justify-content: center;
+  }
+
+  .input-container input {
+    width: 260px;
+  }
+
+  .store-buttons {
+    display: flex;
+    justify-content: center;
+  }
 }
 
-@media (max-width:800px) {
+/* ===================================================== */
+/* =================== MOBILE VIEW ===================== */
+/* ===================================================== */
+
+@media (max-width: 768px) {
   .download-section {
-  margin-left: -100px;
+    width: 100%;
+    padding: 40px 15px;
+  }
+
+  .phone-img {
+    width: 260px;
+    margin-top: 20px;
+  }
+
+  .download-right h1 {
+    font-size: 26px;
+    line-height: 1.4;
+  }
+
+  .input-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .input-container input {
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .input-container button {
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .store-buttons img {
+    width: 120px;
+    margin: 8px;
+  }
 }
+
+/* ===================================================== */
+/* ================= SMALL MOBILE ====================== */
+/* ===================================================== */
+
+@media (max-width: 480px) {
+  .phone-img {
+    width: 220px;
+  }
+
+  .download-right h1 {
+    font-size: 22px;
+  }
+
+  .store-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
 }

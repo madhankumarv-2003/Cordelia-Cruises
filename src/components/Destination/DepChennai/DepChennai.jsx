@@ -101,7 +101,7 @@ export default function DepChennai() {
           <div key={index} className="slide-card">
             <img src={item.image} alt={item.title} className="slick-img mb-4" />
 
-            <div className="card-content">
+            <div>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
               {item.button && (

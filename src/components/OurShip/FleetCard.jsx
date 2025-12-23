@@ -86,16 +86,6 @@ const FleetCard = () => {
       <div className="overlay-img mt-5">
         <img src={img} style={{width:"280px",height:"280px"}}></img>
       </div>
-      <section className="des-section container dep-container ms-2">
-        <div className="row">
-          <div className="col-10 fleet">
-            <h2 className="des-title">Destinations</h2>
-            <p className="des-description">
-              Discover the breathtaking beauty of both Domestic and International destinations with Cordelia Cruises
-            </p>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
