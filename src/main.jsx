@@ -12,6 +12,10 @@ import "slick-carousel/slick/slick-theme.css";
 
 import "@fontsource/open-sans";         // Default weight 400
 import "@fontsource/open-sans/700.css"; // Bold
+import '@fontsource/inter'; // default 400
+
+import '@fontsource/inter/600.css';
+
 
 import App from "./App";
 import "./App.css";

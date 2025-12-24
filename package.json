@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
     "@fontsource/open-sans": "^5.2.7",
     "bootstrap": "^5.3.8",
     "lucide-react": "^0.554.0",

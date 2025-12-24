@@ -1,0 +1,289 @@
+/* ================= TRENDING SECTION ================= */
+.trending {
+  padding: 60px 125px;
+  background: #fff;
+  font-family: 'Inter',sans-serif;
+}
+
+.trending-heading {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-family: "Playfair Display", serif;
+}
+
+/* ================= LAYOUT ================= */
+.trending-wrapper {
+  display: flex;
+  gap: 32px;
+}
+
+/* ================= LEFT BIG CARD ================= */
+.trending-left {
+  width: 51.5%;
+}
+
+.left-card {
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.left-card img {
+  width: 100%;
+  height: 435px;
+  object-fit: cover;
+}
+
+/* LEFT CONTENT */
+.left-content {
+  padding: 30px 25px;
+}
+
+.left-content .meta {
+  font-size: 18px;
+  color: #f15a5f;
+  font-weight: 600;
+  font-family: Inter, sans-serif;
+}
+
+.meta-date {
+  color: #646161;
+}
+
+
+.left-content h3 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #444;
+  margin: 12px 0;
+  line-height: 1.5;
+}
+
+.left-content p {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #444;
+}
+
+.left-content .read-more {
+  display: inline-block;
+  margin-top: 0px;
+  font-weight:bolder;
+  font-size: 24px;
+  color: #b34caa;
+  text-decoration: none;
+}
+
+/* ================= RIGHT LIST ================= */
+.trending-right {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* RIGHT ITEM */
+.right-item {
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eee;
+}
+
+.right-item:last-child {
+  border-bottom: none;
+}
+
+.right-item img {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+
+/* RIGHT CONTENT */
+.right-content {
+  flex: 1;
+}
+
+.right-content .author {
+  font-size: 18px;
+  color: #f15a5f;
+  font-weight: 600;
+}
+
+.right-content h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.right-content p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.right-content a {
+  font-size: 18px;
+  font-weight: 600;
+  position: relative;
+  top: -10px;
+  color: #b34caa;
+  text-decoration: none;
+}
+
+.right-content .date {
+  display: block;
+  font-size: 15px;
+  color: #888;
+  position: relative;
+  top: -3px;
+}
+
+/* ================= DESKTOP / LAPTOP (1200px and below) ================= */
+@media (max-width: 1200px) {
+  .trending {
+    padding: 60px 70px;
+  }
+
+  .trending-heading {
+    font-size: 32px;
+  }
+
+  .left-content h3 {
+    font-size: 26px;
+  }
+
+  .left-content p {
+    font-size: 18px;
+  }
+
+  .right-item img {
+    width: 180px;
+    height: 220px;
+  }
+}
+
+/* ================= TABLET LANDSCAPE (992px and below) ================= */
+@media (max-width: 992px) {
+  .trending {
+    padding: 50px 40px;
+  }
+
+  .trending-wrapper {
+    flex-direction: column;
+  }
+
+  .trending-left,
+  .trending-right {
+    width: 100%;
+  }
+
+  .left-card img {
+    height: 380px;
+  }
+
+  .right-item {
+    gap: 20px;
+  }
+}
+
+/* ================= TABLET PORTRAIT (768px and below) ================= */
+@media (max-width: 768px) {
+  .trending {
+    padding: 40px 25px;
+  }
+
+  .trending-heading {
+    font-size: 28px;
+  }
+
+  .left-content {
+    padding: 22px 20px;
+  }
+
+  .left-content h3 {
+    font-size: 24px;
+  }
+
+  .left-content p {
+    font-size: 17px;
+  }
+
+  .right-item {
+    flex-direction: column;
+  }
+
+  .right-item img {
+    width: 100%;
+    height: 260px;
+  }
+
+  .right-content h4 {
+    font-size: 18px;
+  }
+}
+
+/* ================= MOBILE LARGE (576px and below) ================= */
+@media (max-width: 576px) {
+  .trending {
+    padding: 35px 18px;
+  }
+
+  .trending-heading {
+    font-size: 24px;
+  }
+
+  .left-card img {
+    height: 250px;
+  }
+
+  .left-content h3 {
+    font-size: 20px;
+  }
+
+  .left-content p {
+    font-size: 16px;
+  }
+
+  .left-content .read-more {
+    font-size: 18px;
+  }
+
+  .right-content h4 {
+    font-size: 17px;
+  }
+
+  .right-content p {
+    font-size: 15px;
+  }
+}
+
+/* ================= MOBILE SMALL (420px and below) ================= */
+@media (max-width: 420px) {
+  .trending {
+    padding: 30px 15px;
+  }
+
+  .trending-heading {
+    font-size: 22px;
+  }
+
+  .left-content .meta {
+    font-size: 15px;
+  }
+
+  .right-content .author {
+    font-size: 15px;
+  }
+
+  .right-content .date {
+    font-size: 13px;
+  }
+}

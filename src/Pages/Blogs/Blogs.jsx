@@ -1,10 +1,17 @@
 import React from "react";
-import CarouselSky from "../CordeliaSky/CarouselSky/CarouselSky";
+
+import BlogCarousel from "./BlogCarousel/BlogCarousel";
+import Trending from "./Trending/Trending";
+import ContactForm from './ContactForm/ContactForm';
+import FeaturedNews from "./FeaturedNews/FeaturedNews";
 
 const Blogs = () => {
   return (
     <>
-      <CarouselSky/>
+      <BlogCarousel/>
+      <Trending />
+      <ContactForm />
+      <FeaturedNews />
     </>
   );
 };
