@@ -45,9 +45,9 @@ const Voyage = () => {
               <img src={item.image} alt={item.title} className="destinationn-img" />
 
               {/* Correct overlay name */}
-              <div className="overlay"></div>
+              <div className="overlay-voy"></div>
 
-              <div className="card-content" style={{ fontFamily: "Playfair Display, serif" }}>
+              <div className="card-content" style={{ fontFamily: "Playfair Display, serif"}}>
                 <h1>{item.shows}</h1>
                 <h3>{item.title}</h3>
               </div>

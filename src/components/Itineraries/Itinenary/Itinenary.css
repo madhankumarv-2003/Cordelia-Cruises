@@ -2,7 +2,7 @@
   padding: 40px 0;
   width: 80%;
   margin: 0 auto;
-  z-index:1;
+  z-index:50;
 }
 
 /* HEADER */
@@ -107,7 +107,7 @@
 }
 
 /* ARROWS */
-.slick-prev { left: -40px; }
+.slick-prev { left: -40px;}
 .slick-next { right: -40px; }
 
 /* RESPONSIVE */

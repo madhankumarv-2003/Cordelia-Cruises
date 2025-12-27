@@ -39,17 +39,13 @@ const NavBar = () => {
     setOffcanvas(false);
   };
 
-  /* =============================
-     SCROLL EFFECT (HOME ONLY)
-  ============================== */
   useEffect(() => {
-    // 👉 NOT home page → always white navbar
-    if (location.pathname !== "/") {
+    const scrollPages = ["/", "/CordeliaSky"];
+    if (!scrollPages.includes(location.pathname)) {
       setScrolled(true);
       return;
     }
 
-    // 👉 Home page → scroll behavior
     const handleScroll = () => {
       const y = window.scrollY || 0;
       setScrolled(y > 150);
@@ -61,18 +57,20 @@ const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
 
+
   return (
     <>
       <Navbar
-        expand="xl"
-        className={`navbar py-1 header ${
-          location.pathname === "/"
-            ? scrolled
-              ? "navbar-scrolled"
-              : "navbar-top"
-            : "navbar-scrolled"
+          expand="xl"
+          className={`navbar py-1 header ${
+            ["/", "/CordeliaSky"].includes(location.pathname)
+              ? scrolled
+                ? "navbar-scrolled"
+                : "navbar-top"
+              : "navbar-scrolled"
         }`}
-      >
+>
+
         <Container
           fluid
           className="d-flex align-items-center justify-content-between"

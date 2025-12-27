@@ -254,13 +254,16 @@
 }
   .des-title{
     position:relative;
-    left: -10px;
+    top:-10px;
+    left: -100px;
 
   }
   .des-description{
     width: 750px;
     position: relative;
-    left: -10px;
+
+    top: -10px;
+    left: -100px;
     color: #000;
   }
 }

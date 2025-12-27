@@ -1,5 +1,4 @@
 import React from "react";
-
 import "./SkySection.css";
 
 import img1 from "./Images/sky-cruise-pickle-ball-popup-image.webp";
@@ -14,9 +13,10 @@ const highlights = [
   { count: "5+", title: "Entertainment", img: img4 },
 ];
 
-const SkySection = () => {
+const SkySection = ({ onOpenGallery }) => {
   return (
     <section className="sky-section">
+      
       {/* ===== TEXT SECTION ===== */}
       <div className="sky-intro">
         <div className="sky-container">
@@ -32,18 +32,21 @@ const SkySection = () => {
             <p>
               Set sail on the Sky, where modern comfort meets vibrant
               entertainment. Enjoy exquisite dining, a relaxing spa, and a
-              fitness centre. With live performances, lively bars, and spacious
-              staterooms, every moment promises relaxation and excitement.
+              fitness centre.
             </p>
           </div>
         </div>
       </div>
 
       {/* ===== HIGHLIGHTS GRID ===== */}
-      <div className="sky-highlights mb-5">
+      <div className="sky-highlights">
         <div className="highlight-grid">
           {highlights.map((item, index) => (
-            <div className="highlight-card" key={index}>
+            <div
+              className="highlight-card"
+              key={index}
+              onClick={onOpenGallery}   // 🔥 CLICK HERE
+            >
               <img src={item.img} alt={item.title} />
               <div className="highlight-overlay">
                 <h3>{item.count}</h3>
@@ -53,6 +56,7 @@ const SkySection = () => {
           ))}
         </div>
       </div>
+
     </section>
   );
 };

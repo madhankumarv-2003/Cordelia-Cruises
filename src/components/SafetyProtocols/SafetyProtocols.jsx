@@ -23,7 +23,7 @@ const SafetyProtocols = () => {
   ];
 
   return (
-    <div className="pt-4">
+    <div className="pt-4 mt-4">
       <div className="safety-container">
         <h2 className="safety-title me-5">Safety Protocols</h2>
         <div className="safety-items">

@@ -15,6 +15,9 @@ import Goa3 from "./Images/goa-3-mobile.webp";
 import Kochi1 from "./Images/kochi-1-mobile.webp";
 import Kochi2 from "./Images/kochi-2-mobile.webp";
 import Kochi3 from "./Images/kochi-3-mobile.webp";
+import Chennai from './Images/chennai-1-mobile.webp'
+import Visakhapatnam from './Images/cordelia-visakhapatnam-destination-image.webp'
+import Puducherry from './Images/cordelia-pondicherry-destination-image-02.webp'
 
 import SriLanka from "../../components/Destination/DepChennai/Images/cordelia-srilanka-destination-image.webp";
 import Singapore from "../../components/Destination/DepChennai/Images/cordelia-singapore-destination-image-02_1.webp";
@@ -33,7 +36,7 @@ const Destinations = () => {
           laks1,laks2,laks3,
         ],
         description:
-          "Lakshadweep’s magnificence lies underwater with 4200 sq km of archipelago lagoons and coral reefs, making it the only place in India where you can snorkel in the reefs. The unlimited onboard experiences and the numerous excursions make our Lakshadweep cruises extraordinary.",
+          "Lakshadweep’s magnificence lies underwater with 4200 sq km of archipelago lagoons and coral reefs, making it the only place in India where you can snorkel in the reefs. The unlimited onboard experiences and the numerous excursions make our Lakshadweep cruises extraordinary and unforgettable.",
       },
       {
         title: "Mumbai",
@@ -58,6 +61,30 @@ const Destinations = () => {
         ],
         description:
           "Kochi, formerly known as Cochin is Kerala’s commercial capital, and a cosmopolitan city which has brilliantly upheld the distinct cultural and historical identity of the state. A modern reflection of India’s new identity, Kochi is an interesting mix of hilly areas and backwaters attracting travelers and traders.",
+      },
+      {
+        title: "Chennai",
+        images: [
+            Chennai
+        ],
+        description:
+          "Adorned gracefully by numerous beaches, temples, and museums, Chennai is a brilliant reflection of culinary brilliance, cosmopolitan vibes, and timeless traditions. Your visit to this is incomplete without a taste of the authentic South Indian delicacies and a visit to Marina beach.",
+      },
+      {
+        title: "Visakhapatnam",
+        images: [
+          Visakhapatnam,
+        ],
+        description:
+          "Visakhapatnam, is a coastal gem that offers pristine beaches, awe-inspiring hills, and rich cultural heritage. Explore the perfect blend of natural beauty and modern development in this vibrant city by the sea.",
+      },
+      {
+        title: "Puducherry",
+        images: [
+          Puducherry,
+        ],
+        description:
+          "Puducherry, a charming coastal town with French colonial influences, is a serene getaway offering tranquil beaches, vibrant culture, and a blend of both traditional and European charm.",
       },
     ],
 
@@ -93,7 +120,7 @@ const Destinations = () => {
         ],
         description:
           "Set sail to Phuket's soft sandy beaches and take in the stunning turquoise waters, showing why it's known as Thailand's crown jewel. The adventurous, lush rainforests and the buzzing nightlife are ready to be explored.",
-      },
+      }
     ],
   };
 
@@ -166,11 +193,11 @@ const CarouselCard = ({ item }) => {
           &raquo;
         </span>
 
-        <div className="dots">
+        <div className="dotss">
           {item.images.map((_, i) => (
             <span
               key={i}
-              className={`dot ${current === i ? "active" : ""}`}
+              className={`dott ${current === i ? "active" : ""}`}
               onClick={() => setCurrent(i)}
             />
           ))}
