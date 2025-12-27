@@ -6,6 +6,7 @@
   color: #fff;
   padding: 50px 140px;
   flex-wrap: wrap;
+  z-index: 50;
 }
 
 .footer-left {
@@ -81,8 +82,9 @@ p6{
 .footer-wave{
   width: 100%;
   margin-top: -50px;
-  z-index: 0;
+  z-index: 1;
 }
+
 .copy-right{
   font-family: 'Playfair Display',serif;
   font-size: 14px;
@@ -90,10 +92,13 @@ p6{
 }
 
 /* Responsive */
-@media (max-width: 900px) {
+@media (max-width: 1200px) {
   .footer {
     flex-direction: column;
     padding: 40px;
+  }
+  .footer-wave{
+    margin-top: 20px;
   }
 
   .footer-left,

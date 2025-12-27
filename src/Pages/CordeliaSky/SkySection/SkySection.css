@@ -1,0 +1,127 @@
+/* ================= SECTION WRAPPER ================= */
+.sky-section {
+  background: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+/* ================= INTRO TEXT ================= */
+.sky-intro {
+  padding: 82px 125px;
+}
+
+.sky-container {
+  display: flex;
+  gap: 65px;
+}
+
+.sky-left {
+  flex: 1.8;
+}
+
+.sky-left h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.sky-right {
+  flex: 4.0;
+}
+
+.sky-right p {
+  font-size: 17.5px;
+  line-height: 1.6;
+  color: #000;
+  font-weight: 600;
+  max-width: 900px;
+}
+
+/* ================= HIGHLIGHTS GRID ================= */
+.sky-highlights {
+    margin-top: -35px;
+    padding: 0px 120px 80px;   
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.highlight-card {
+  position: relative;
+  height: 420px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.highlight-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gradient Overlay */
+.highlight-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.15)
+  );
+}
+
+/* Text Overlay */
+.highlight-overlay {
+  position: absolute;
+  bottom: 0px;
+  left: 15px;
+  z-index: 2;
+  color: #fff;
+}
+
+.highlight-overlay h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 80px;
+  margin: 0;
+}
+
+.highlight-overlay p {
+  font-size: 20px;
+  margin-top: 6px;
+  font-weight: bold;
+  font-family: 'Playfair Display',serif;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1200px) {
+  .highlight-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sky-container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .sky-intro {
+    padding: 60px 40px;
+  }
+
+  .sky-highlights {
+    padding: 20px 40px 60px;
+  }
+}
+
+@media (max-width: 600px) {
+  .highlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sky-left h2 {
+    font-size: 32px;
+  }
+}

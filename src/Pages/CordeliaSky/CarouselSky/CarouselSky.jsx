@@ -9,7 +9,7 @@ import './CarouselSky.css';
 
 const CarouselSky = () => {
   return (
-    <Carousel interval={4500} indicators={true} className="custom-indicators">
+    <Carousel interval={4500} indicators={false} className="custom-indicators">
       <Carousel.Item>
          <img src={img} className="carousel-slidee"></img>
       </Carousel.Item>

@@ -21,7 +21,6 @@ function App() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    // ❌ Disable scroll effect on non-home pages
     if (location.pathname !== "/") {
       setScrolled(false);
       return;

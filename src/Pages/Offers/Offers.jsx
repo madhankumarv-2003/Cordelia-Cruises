@@ -10,6 +10,7 @@ import img4 from "./images/UnlimitedBeverage.webp";
 import img5 from "./images/Book_now_pay_later_.webp";
 import img6 from "./images/KidsSailFree_offer.webp";
 import Tick from "./images/tick-icon.svg";
+import CruiseInbox from "../../components/CruiseInbox/Cruiseinbox";
 
 const offerCards = [
   {
@@ -122,6 +123,7 @@ const Offers = () => {
           </div>
         ))}
       </div>
+      <CruiseInbox/>
     </div>
   );
 };

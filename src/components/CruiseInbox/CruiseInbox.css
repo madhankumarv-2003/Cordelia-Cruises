@@ -4,7 +4,7 @@
 
 .newsletter-container {
   padding: 80px 100px;
-  background-image: url("./images/newsletter-background.webp");
+  background-image: white;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
