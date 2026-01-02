@@ -20,7 +20,7 @@
   font-size: 18px;
   font-weight: 500;
   margin: 15px 0 35px;
-  line-height: 2;
+  line-height: 1.8;
   font-family: "Inter", sans-serif;
 }
 
@@ -75,8 +75,8 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   overflow: hidden;
 
-  display: flex;              /* ✅ */
-  flex-direction: column;     /* ✅ */
+  display: flex;
+  flex-direction: column; 
 }
 
 /* Responsive */
@@ -114,7 +114,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 25px;
   cursor: pointer;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
   transition: 0.3s;
@@ -204,4 +204,8 @@
   .ports-wrapper {
     padding: 40px 20px;
   }
+}
+
+@media (max-width:768) {
+  
 }

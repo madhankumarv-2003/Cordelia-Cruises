@@ -36,3 +36,9 @@
     height: 25vh;
   }
 }
+
+@media (max-width:768px) {
+  .carousel-slidee{
+    height:59vh;
+  }
+}

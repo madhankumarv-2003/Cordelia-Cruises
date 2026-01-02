@@ -25,7 +25,7 @@ const Trending = () => {
 
 
               <h3>
-                Why Christmas Cruises Are the <br />
+                Why Christmas Cruises Are the
                 New Family Tradition
               </h3>
 

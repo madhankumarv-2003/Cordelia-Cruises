@@ -121,15 +121,41 @@
 /* RESPONSIVE */
 @media (max-width: 768px) {
   .hero-content {
+    position: relative;
+    top: -60px;
+    left: 20px;
     padding-left: 25px;
     padding-right: 25px;
   }
+  .blog-hero{
+    height: 51.5vh;
+  }
 
   .hero-content h1 {
-    font-size: 30px;
+    font-size: 20px;
   }
+  .meta-desc{
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #fff;
+}
 
+.meta-desc span {
+  color: #ff4d4d;
+}
   .description {
-    font-size: 16px;
+    font-size: 12px;
+    width: 35%;
   }
+  .arrow svg{
+    width: 25px;
+    height: 25px;
+  }
+  .arrow.left {
+  left: 0px;
+}
+
+.arrow.right {
+  right: 0px;
+}
 }

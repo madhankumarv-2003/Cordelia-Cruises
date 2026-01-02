@@ -117,7 +117,10 @@
 /* RESPONSIVE */
 @media (max-width: 1024px) {
   .featured-news {
-    padding: 60px 40px;
+    padding: 20px 10px;
+  }
+  .section-title{
+    font-size: 25px;
   }
 
   .news-grid {
@@ -125,7 +128,7 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .news-grid {
     grid-template-columns: 1fr;
   }

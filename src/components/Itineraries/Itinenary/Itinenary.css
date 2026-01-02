@@ -1,6 +1,6 @@
 .itinerary-container {
   padding: 40px 0;
-  width: 80%;
+  width:82.5%;
   margin: 0 auto;
   z-index:50;
 }
@@ -14,8 +14,8 @@
 }
 
 .itinerary-title {
-  font-size: 32px;
-  font-weight: 600;
+  font-size: 36px;
+  font-weight: 500;
   font-family: "Playfair Display", serif;
 }
 

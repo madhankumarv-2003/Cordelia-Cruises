@@ -30,9 +30,9 @@ const SkySection = ({ onOpenGallery }) => {
 
           <div className="sky-right">
             <p>
-              Set sail on the Sky, where modern comfort meets vibrant
-              entertainment. Enjoy exquisite dining, a relaxing spa, and a
-              fitness centre.
+              Set sail on the Sky, where modern comfort meets vibrant entertainment. 
+              Enjoy exquisite dining, a relaxing spa, and a fitness centre. With live performances, 
+              lively bars, and spacious staterooms, every moment promises relaxation and excitement.
             </p>
           </div>
         </div>
@@ -45,7 +45,7 @@ const SkySection = ({ onOpenGallery }) => {
             <div
               className="highlight-card"
               key={index}
-              onClick={onOpenGallery}   // 🔥 CLICK HERE
+              onClick={onOpenGallery}
             >
               <img src={item.img} alt={item.title} />
               <div className="highlight-overlay">

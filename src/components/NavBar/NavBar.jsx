@@ -40,7 +40,7 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    const scrollPages = ["/", "/CordeliaSky"];
+    const scrollPages = ["/", "/CordeliaSky","CordeliaSun"];
     if (!scrollPages.includes(location.pathname)) {
       setScrolled(true);
       return;
@@ -63,7 +63,7 @@ const NavBar = () => {
       <Navbar
           expand="xl"
           className={`navbar py-1 header ${
-            ["/", "/CordeliaSky"].includes(location.pathname)
+            ["/", "/CordeliaSky","/CordeliaSun"].includes(location.pathname)
               ? scrolled
                 ? "navbar-scrolled"
                 : "navbar-top"

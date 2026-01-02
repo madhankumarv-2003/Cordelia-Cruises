@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
 import CarouselSky from "./CarouselSky/CarouselSky";
 import SkySection from "./SkySection/SkySection";
-import SkyItinenary from './SkyItinenary/SkyItinenary'
-import GalleryModel from "../GalleryModel/GalleryModel";
+import SkyItinenary from './SkyItinenary/SkyItinenary';
+import SuiteShow from "./SuiteShowcase/SuiteShow";
+import AboutSky from "./AboutSky/AboutSky";
+import ExploreSea from "./ExploreSea/ExlporeSea";
+import SubscribeSection from "./SubscribeSection/SubscribeSection";
 
 const CordeliaSky = () => {
-  const [openGallery, setOpenGallery] = useState(false);
-
   return (
     <div className="sky-wrapper">
       
@@ -18,14 +19,14 @@ const CordeliaSky = () => {
 
       {/* Overlay Content */}
       <div className="overlay-bac">
-        <SkySection onOpenGallery={() => setOpenGallery(true)} />
+        <SkySection />
+        <SuiteShow />
+        <AboutSky />
         <SkyItinenary />
+        <ExploreSea/>
+        <SubscribeSection/>
+
       </div>
-
-      {openGallery && (
-        <GalleryModel onClose={() => setOpenGallery(false)} />
-      )}
-
     </div>
   );
 };
