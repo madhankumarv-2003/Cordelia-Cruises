@@ -1,0 +1,194 @@
+.explore-ships {
+  width: 100%;
+  padding:3px 40px 60px;
+  text-align: center;
+  background: #fff;
+}
+
+.explore-ships h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  font-weight: 500;
+  margin-bottom: 19px;
+}
+
+.explore-ships p {
+  font-family: "Inter", sans-serif;
+  font-size: 17.9px;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 50px;
+}
+
+/* GRID */
+.ships-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  width: 87%;
+  margin: 0 auto;
+}
+
+/* CARD */
+.ship-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.ship-card img {
+  width: 100%;
+  height: 305px;
+  object-fit: cover;
+  display: block;
+}
+
+/* OVERLAY */
+.ship-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(102, 100, 100, 0.35);
+}
+
+.ship-overlay h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  color: #fff;
+  font-weight: 600;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* HOVER EFFECT */
+.ship-card img {
+  transition: transform 0.6s ease;
+}
+
+.ship-card:hover img {
+  transform: scale(1.05);
+}
+
+/* ===============================
+   LARGE DESKTOP (≥1400px)
+================================ */
+@media (min-width: 1400px) {
+  .ships-grid {
+    width: 80%;
+    gap: 20px;
+  }
+
+  .ship-card img {
+    height: 360px;
+  }
+}
+
+/* ===============================
+   DESKTOP (1200px – 1399px)
+================================ */
+@media (max-width: 1399px) {
+  .ships-grid {
+    width: 85%;
+  }
+}
+
+/* ===============================
+   LAPTOP (992px – 1199px)
+================================ */
+@media (max-width: 1199px) {
+  .explore-ships {
+    padding: 40px 30px 60px;
+  }
+
+  .explore-ships h2 {
+    font-size: 32px;
+  }
+
+  .explore-ships p {
+    font-size: 16px;
+  }
+
+  .ship-card img {
+    height: 280px;
+  }
+}
+
+/* ===============================
+   TABLET (768px – 991px)
+================================ */
+@media (max-width: 991px) {
+  .ships-grid {
+    width: 95%;
+    gap: 12px;
+  }
+
+  .explore-ships h2 {
+    font-size: 30px;
+  }
+
+  .ship-overlay h3 {
+    font-size: 30px;
+  }
+
+  .ship-card img {
+    height: 260px;
+  }
+}
+
+/* ===============================
+   MOBILE (≤768px)
+================================ */
+@media (max-width: 768px) {
+  .explore-ships {
+    padding: 30px 20px 50px;
+  }
+
+  .ships-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .explore-ships h2 {
+    font-size: 26px;
+  }
+
+  .explore-ships p {
+    font-size: 15px;
+    margin-bottom: 35px;
+  }
+
+  .ship-overlay h3 {
+    font-size: 26px;
+  }
+
+  .ship-card img {
+    height: 260px;
+  }
+}
+
+/* ===============================
+   SMALL MOBILE (≤480px)
+================================ */
+@media (max-width: 480px) {
+  .explore-ships {
+    padding: 25px 15px 40px;
+  }
+
+  .explore-ships h2 {
+    font-size: 22px;
+  }
+
+  .explore-ships p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .ship-overlay h3 {
+    font-size: 22px;
+  }
+
+  .ship-card img {
+    height: 230px;
+  }
+}

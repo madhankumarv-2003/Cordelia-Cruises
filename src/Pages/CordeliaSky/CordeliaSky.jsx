@@ -7,6 +7,7 @@ import SuiteShow from "./SuiteShowcase/SuiteShow";
 import AboutSky from "./AboutSky/AboutSky";
 import ExploreSea from "./ExploreSea/ExlporeSea";
 import SubscribeSection from "./SubscribeSection/SubscribeSection";
+import ExploreShips from './ExploreShips/ExploreShips';
 
 const CordeliaSky = () => {
   return (
@@ -25,6 +26,7 @@ const CordeliaSky = () => {
         <SkyItinenary />
         <ExploreSea/>
         <SubscribeSection/>
+        <ExploreShips/>
 
       </div>
     </div>
