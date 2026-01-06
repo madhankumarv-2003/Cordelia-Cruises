@@ -1,0 +1,196 @@
+/* ===============================
+   PHOTO GALLERY SECTION
+================================ */
+.photo-gallery {
+  display: flex;
+  align-items: flex-start;
+  padding: 40px 0px;
+  background: #fff;
+  margin-left: -10px;
+}
+
+.arrow-image{
+  width: 120px;
+  height: 300px;
+  position: relative;
+  left: 10px;
+  top: -15px;
+}
+/* ===============================
+   LEFT CONTENT
+================================ */
+.gallery-content {
+  max-width: 20%;
+  position: relative;
+  left: 15px;
+}
+
+.gallery-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.gallery-content p {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.gallery-btn {
+  padding: 10px 26px;
+  background: transparent;
+  border: 1.5px solid #c8378a;
+  color: #c8378a;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.gallery-btn:hover {
+  background: #c8378a;
+  color: #fff;
+}
+
+/* ===============================
+   GRID
+================================ */
+.gallery-grid {
+  width: 70%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  position: relative;
+  top: 200px;
+  left: -210px;
+
+}
+
+/* STAGGERED LAYOUT */
+.gallery-grid .grid-item:nth-child(1) {
+    width: 350px;
+  height: 250px;
+  transform: translateY(40px);
+}
+
+.gallery-grid .grid-item:nth-child(2) {
+    width: 360px;
+  height: 285px;
+  transform: translateY(-40px);
+}
+
+.gallery-grid .grid-item:nth-child(3) {
+    width: 360px;
+  height: 260px;
+  transform: translateY(-120px);
+}
+
+.gallery-grid .grid-item:nth-child(4) {
+  width: 350px;
+  height: 255px;
+  transform: translateY(5px);
+}
+
+.gallery-grid .grid-item:nth-child(5) {
+  width: 360px;
+  height: 300px;
+  transform: translateY(-40px);
+}
+
+.gallery-grid .grid-item:nth-child(6) {
+    width: 360px;
+  height: 402px;
+  transform: translateY(-143px);
+}
+
+/* ===============================
+   CARD
+================================ */
+.grid-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+}
+
+.grid-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.grid-item:hover img {
+  transform: scale(1.08);
+}
+
+/* ===============================
+   TABLET – 1024px
+================================ */
+@media (max-width: 1024px) {
+  .photo-gallery {
+    padding: 60px 60px;
+    gap: 40px;
+  }
+
+  .gallery-content {
+    width: 35%;
+    position: relative;
+    top: 0;
+  }
+
+  .gallery-grid {
+    width: 65%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid .grid-item {
+    height: 260px;
+    transform: none !important;
+  }
+}
+
+/* ===============================
+   MOBILE – 768px
+================================ */
+@media (max-width: 768px) {
+  .photo-gallery {
+    flex-direction: column;
+    padding: 60px 20px;
+  }
+
+  .gallery-content {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    top: 0;
+  }
+
+  .gallery-grid {
+    width: 100%;
+    grid-template-columns: 1fr;
+    margin-top: 30px;
+  }
+
+  .gallery-grid .grid-item {
+    height: 260px;
+    transform: none !important;
+  }
+}
+
+/* ===============================
+   SMALL MOBILE – 480px
+================================ */
+@media (max-width: 480px) {
+  .gallery-content h2 {
+    font-size: 28px;
+  }
+
+  .gallery-content p {
+    font-size: 15px;
+  }
+}

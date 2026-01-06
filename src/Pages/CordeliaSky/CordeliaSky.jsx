@@ -8,6 +8,7 @@ import AboutSky from "./AboutSky/AboutSky";
 import ExploreSea from "./ExploreSea/ExlporeSea";
 import SubscribeSection from "./SubscribeSection/SubscribeSection";
 import ExploreShips from './ExploreShips/ExploreShips';
+import PhotoGallery from "./PhotoGallery/PhotoGallery";
 
 const CordeliaSky = () => {
   return (
@@ -22,9 +23,10 @@ const CordeliaSky = () => {
       <div className="overlay-bac">
         <SkySection />
         <SuiteShow />
-        <AboutSky />
+        
         <SkyItinenary />
         <ExploreSea/>
+        <PhotoGallery/>
         <SubscribeSection/>
         <ExploreShips/>
 

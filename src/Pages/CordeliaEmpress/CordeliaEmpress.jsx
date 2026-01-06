@@ -9,7 +9,7 @@ import SubscribeSection from "../CordeliaSky/SubscribeSection/SubscribeSection";
 import ExploreShips from '../CordeliaSky/ExploreShips/ExploreShips';
 import PhotoGallery from "../CordeliaSky/PhotoGallery/PhotoGallery";
 
-const CordeliaSun = () => {
+const CordeliaEmpress = () => {
   return (
     <div className="sky-wrapper">
       
@@ -33,4 +33,4 @@ const CordeliaSun = () => {
   );
 };
 
-export default CordeliaSun;
+export default CordeliaEmpress;

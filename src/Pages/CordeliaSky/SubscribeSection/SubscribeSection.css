@@ -7,7 +7,7 @@
   position: relative;
   display: flex;
   width: 100%;
-  padding: 50px 0;
+  padding: 120px 0 80px;
   min-height: 462px;
   overflow: hidden;
 }
@@ -45,6 +45,7 @@
 
   width: 648px;
   padding: 50px 100px;
+  margin-top: 20px;
 
   background: #fff4ef;
   text-align: center;

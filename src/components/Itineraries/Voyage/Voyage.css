@@ -64,6 +64,7 @@
   margin-bottom: 15px;
   color: #000;
   font-family: "Playfair Display", serif;
+  max-width: 500px;
 }
 
 .voy-description {
@@ -96,9 +97,6 @@
 
 /* ================= TABLET ================= */
 @media (max-width: 768px) {
-  .align {
-    max-width: 100%;
-  }
   .container{
     position: relative;
     left: -18px;
@@ -132,11 +130,12 @@
   }
 
   .voy-title {
+    max-width: 300;
     font-size: 24px;
   }
 
   .voy-description {
     font-size: 14px;
-    width: 100%;
+  
   }
 }
