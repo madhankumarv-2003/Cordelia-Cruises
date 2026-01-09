@@ -28,14 +28,12 @@ import img9 from "./images/google-play-store-logo.webp";
 import "./NavBar.css";
 
 const NavBar = () => {
-    const [showShips, setShowShips] = useState(false);
-    const [showDestination, setShowDestination] = useState(false);
-    const [offcanvas, setOffcanvas] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const [authMode, setAuthMode] = useState("login"); // login | register
-    const [showLogin, setShowLogin] = useState(false);
-
-
+  const [showShips, setShowShips] = useState(false);
+  const [showDestination, setShowDestination] = useState(false);
+  const [offcanvas, setOffcanvas] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [authMode, setAuthMode] = useState("login");
+  const [showLogin, setShowLogin] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -240,7 +238,6 @@ const NavBar = () => {
               className="mobile-item"
               onClick={() => {
                 setOffcanvas(false);
-                setActiveTab("login");
                 setShowLogin(true);
               }}
             >
@@ -318,117 +315,117 @@ const NavBar = () => {
         </Offcanvas.Body>
       </Offcanvas>
       <Modal
-  show={showLogin}
-  onHide={() => setShowLogin(false)}
-  centered
-  backdrop="static"
->
-  <Modal.Body className="p-4 position-relative text-center">
+        show={showLogin}
+        onHide={() => setShowLogin(false)}
+        centered
+        backdrop="static"
+      >
+        <Modal.Body className="p-4 position-relative text-center">
 
-    {/* CLOSE */}
-    <button
-      onClick={() => setShowLogin(false)}
-      style={{
-        position: "absolute",
-        top: 12,
-        right: 15,
-        border: "none",
-        background: "transparent",
-        fontSize: "22px",
-        cursor: "pointer",
-      }}
-    >
-      ✕
-    </button>
-
-    {/* LOGO */}
-    <img src={logoColor} alt="Cordelia" height="40" className="mb-3" />
-
-    {/* ================= LOGIN ================= */}
-    {authMode === "login" && (
-      <>
-        <h5 className="mb-3">Login</h5>
-
-        <input
-          type="text"
-          className="form-control mb-3"
-          placeholder="Username or Email"
-        />
-
-        <input
-          type="password"
-          className="form-control mb-3"
-          placeholder="Password"
-        />
-
-        <Button className="w-100 mb-2">Login</Button>
-
-        <p style={{ fontSize: "13px" }}>
-          Forgot password?{" "}
-          <span className="forgot-link">Reset</span>
-        </p>
-
-        <p style={{ fontSize: "14px" }}>
-          New user?{" "}
-          <span
-            style={{ color: "#b12a87", cursor: "pointer" }}
-            onClick={() => setAuthMode("register")}
+          {/* CLOSE */}
+          <button
+            onClick={() => setShowLogin(false)}
+            style={{
+              position: "absolute",
+              top: 12,
+              right: 15,
+              border: "none",
+              background: "transparent",
+              fontSize: "22px",
+              cursor: "pointer",
+            }}
           >
-            Register here
-          </span>
-        </p>
-      </>
-    )}
+            ✕
+          </button>
 
-    {/* ================= REGISTER ================= */}
-    {authMode === "register" && (
-      <>
-        <h5 className="mb-3">Create Account</h5>
+          {/* LOGO */}
+          <img src={logoColor} alt="Cordelia" height="40" className="mb-3" />
 
-        <input
-          type="text"
-          className="form-control mb-2"
-          placeholder="First Name"
-        />
+          {/* ================= LOGIN ================= */}
+          {authMode === "login" && (
+            <>
+              <h5 className="mb-3">Login</h5>
 
-        <input
-          type="text"
-          className="form-control mb-2"
-          placeholder="Last Name"
-        />
+              <input
+                type="text"
+                className="form-control mb-3"
+                placeholder="Username or Email"
+              />
 
-        <input
-          type="tel"
-          className="form-control mb-2"
-          placeholder="Phone Number"
-        />
+              <input
+                type="password"
+                className="form-control mb-3"
+                placeholder="Password"
+              />
 
-        <input
-          type="date"
-          className="form-control mb-2"
-        />
+              <Button className="w-100 mb-2">Login</Button>
 
-        <input
-          type="password"
-          className="form-control mb-3"
-          placeholder="Password"
-        />
+              <p style={{ fontSize: "13px" }}>
+                Forgot password?{" "}
+                <span className="forgot-link">Reset</span>
+              </p>
 
-        <Button className="w-100 mb-2">Register</Button>
+              <p style={{ fontSize: "14px" }}>
+                New user?{" "}
+                <span
+                  style={{ color: "#b12a87", cursor: "pointer" }}
+                  onClick={() => setAuthMode("register")}
+                >
+                  Register here
+                </span>
+              </p>
+            </>
+          )}
 
-        <p style={{ fontSize: "14px" }}>
-          Already have an account?{" "}
-          <span
-            style={{ color: "#b12a87", cursor: "pointer" }}
-            onClick={() => setAuthMode("login")}
-          >
-            Login
-          </span>
-        </p>
-      </>
-    )}
-  </Modal.Body>
-</Modal>
+          {/* ================= REGISTER ================= */}
+          {authMode === "register" && (
+            <>
+              <h5 className="mb-3">Create Account</h5>
+
+              <input
+                type="text"
+                className="form-control mb-2"
+                placeholder="First Name"
+              />
+
+              <input
+                type="text"
+                className="form-control mb-2"
+                placeholder="Last Name"
+              />
+
+              <input
+                type="tel"
+                className="form-control mb-2"
+                placeholder="Phone Number"
+              />
+
+              <input
+                type="date"
+                className="form-control mb-2"
+              />
+
+              <input
+                type="password"
+                className="form-control mb-3"
+                placeholder="Password"
+              />
+
+              <Button className="w-100 mb-2">Register</Button>
+
+              <p style={{ fontSize: "14px" }}>
+                Already have an account?{" "}
+                <span
+                  style={{ color: "#b12a87", cursor: "pointer" }}
+                  onClick={() => setAuthMode("login")}
+                >
+                  Login
+                </span>
+              </p>
+            </>
+          )}
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
