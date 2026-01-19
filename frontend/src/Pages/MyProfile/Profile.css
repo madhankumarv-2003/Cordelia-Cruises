@@ -1,0 +1,79 @@
+.profile-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  background: #ffffff;
+}
+
+.profile-container {
+  width: 100%;
+  max-width: 430px;
+  padding: 20px;
+  margin-top: 30px;
+  background: white;
+}
+
+.profile-title {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.profile-input,
+.profile-input-small {
+  width: 100%;
+  padding: 14px 14px;
+  border: none;
+  background: #f0eeee;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  margin-bottom: 15px;
+  height: 46px;
+  box-sizing: border-box;
+}
+
+.profile-input-small {
+  width: 80px;
+  text-align: center;
+}
+
+.profile-row {
+  display: flex;
+  gap: 10px;
+}
+
+.profile-input:focus,
+.profile-input-small:focus {
+  border-color: #c23dbd;
+}
+
+/* Date Picker UI improvements */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* Button */
+.profile-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  background-image: linear-gradient(
+    99.72deg,
+    rgb(146, 39, 143) -17.25%,
+    rgb(234, 114, 91) 105.93%
+  );
+  transition: opacity 0.2s ease;
+}
+
+.profile-btn:hover {
+  opacity: 0.92;
+}

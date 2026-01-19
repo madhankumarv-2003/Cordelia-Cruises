@@ -7,22 +7,22 @@ const HeroCarousel = () => {
   return (
     <Carousel interval={4500} indicators={true} className="custom-indicators">
       <Carousel.Item>
-        <div className="carousel-slide slide1"></div>
+        <div className="carouseel-slide slide1"></div>
       </Carousel.Item>
 
       <Carousel.Item>
-        <div className="carousel-slide slide2"></div>
+        <div className="carouseel-slide slide2"></div>
       </Carousel.Item>
 
       <Carousel.Item>
-        <div className="carousel-slide slide3"></div>
+        <div className="carouseel-slide slide3"></div>
       </Carousel.Item>
 
       <Carousel.Item>
-        <div className="carousel-slide slide4"></div>
+        <div className="carouseel-slide slide4"></div>
       </Carousel.Item>
       <Carousel.Item>
-        <div className="carousel-slide slide5"></div>
+        <div className="carouseel-slide slide5"></div>
       </Carousel.Item>
     </Carousel>
   );

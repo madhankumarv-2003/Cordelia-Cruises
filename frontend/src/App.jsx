@@ -12,9 +12,11 @@ import Offers from "./Pages/Offers/Offers";
 import CordeliaSky from "./Pages/CordeliaSky/CordeliaSky";
 import CordeliaSun from "./Pages/CordeliaSun/CordeliaSun";
 import CordeliaEmpress from "./Pages/CordeliaEmpress/CordeliaEmpress";
-import WebCheckIn from "./Pages/WebCheckIn/WebCheckIn";
 import FindCruise from "./Pages/Findcruise/Findcruise";
 import Destinations from "./Pages/AllDestinations/Destinations";
+import WebCheckIn from "./Pages/WebCheckIn/WebCheckIn";
+import Bookings from "./Pages/MyBookings/Bookings";
+import Profile from './Pages/MyProfile/Profile';
 
 import "./App.css";
 
@@ -58,7 +60,9 @@ function App() {
         <Route path="/CordeliaSun" element={<CordeliaSun />} />
         <Route path="/CordeliaEmpress" element={<CordeliaEmpress />} />
         <Route path="/find-cruise" element={<FindCruise/>} />
-        <Route path="/WebCheckIn" element={<WebCheckIn />} />
+        <Route path="/WebCheckIn" element={<WebCheckIn/>} />
+        <Route path="/my-profile" element={<Profile/>} />
+        <Route path="/manage-bookings" element={<Bookings/>} />
       </Routes>
 
       <Footer/>

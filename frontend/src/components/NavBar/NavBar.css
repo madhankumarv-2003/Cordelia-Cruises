@@ -1,5 +1,5 @@
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 .header {
@@ -81,7 +81,7 @@ body {
   color: rgb(0 0 0 / var(--tw-text-opacity));
   font-weight: 500;
   font-size: 14px;
-  margin-left: -28px;
+  margin-left: -25px;
 }
 
 .dropdown-title {
@@ -618,13 +618,12 @@ body {
 
 /* Modal box */
 .modal-content {
-  width: 95%;
+  width: 90%;
   border-radius: 14px;
   border: none;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
 }
 
-/* Modal body spacing */
 .modal-body {
   padding: 32px 34px 30px;
   font-family: "Inter", sans-serif;
@@ -646,6 +645,26 @@ body {
   font-weight: 600;
   margin-bottom: 10px;
 }
+/* ===========================
+   MODAL AUTH
+=========================== */
+.modal-body input.form-control {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.modal-body input.form-control:focus {
+  border-color: #b12a87;
+  box-shadow: 0 0 0 0.15rem rgba(177,42,135,0.25);
+}
+
+.text-danger {
+  font-size: 12px;
+  text-align: left;
+  margin-top: -4px;
+}
 
 /* Description text */
 .modal-body p {
@@ -658,7 +677,7 @@ body {
 .modal-body .form-control,
 .modal-body .form-select {
   height: 46px;
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 6px;
   border: 1px solid #e5e5e5;
   box-shadow: none;
@@ -723,4 +742,91 @@ body {
   .modal-body h5 {
     font-size: 18px;
   }
+}
+/* Wrapper */
+.account-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #111;
+  font-size: 15px;
+  gap: 6px;
+  padding: 10px 0px;
+  left: -20px;
+}
+
+/* Purple icon (first icon) */
+.account-wrapper svg:first-child {
+  color: #8e2b8a;
+  font-size: 18px;
+}
+
+/* Chevron icon */
+.account-wrapper .chevron-down {
+  transition: transform 0.2s ease;
+  font-size: 14px;
+}
+
+/* Rotate on hover */
+.account-wrapper:hover .chevron-down {
+  transform: rotate(180deg);
+
+}
+
+/* Dropdown panel base */
+.account-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  left: 1px;
+  width: 150px;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 3px 16px rgba(0,0,0,0.25);
+  padding: 0;
+  z-index: 2000;
+
+  /* Hidden by default */
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Show when hovering parent */
+.account-wrapper:hover .account-dropdown {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Dropdown item */
+.account-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid #ededed;
+  font-size: 14px;
+  color: #111;
+}
+
+/* Remove last border */
+.account-dropdown-item:last-child {
+  border-bottom: none;
+}
+
+/* Icons inside dropdown */
+.account-dropdown-item svg {
+  color: #8e2b8a;
+  font-size: 18px;
+}
+
+/* Hover state */
+.account-dropdown-item:hover {
+  background: #f5f5f5;
 }

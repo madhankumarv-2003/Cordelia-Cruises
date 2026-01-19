@@ -10,11 +10,10 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import "@fontsource/open-sans";         // Default weight 400
+import "@fontsource/open-sans/500.css";
 import "@fontsource/open-sans/700.css"; // Bold
-import '@fontsource/inter'; // default 400
-
 import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
 
 
 import App from "./App";

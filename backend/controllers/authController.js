@@ -1,54 +1,67 @@
-const bcrypt = require("bcryptjs");
-const User = require("../models/User");
-const generateToken = require("../utils/generateToken");
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
 
-/* REGISTER */
-exports.registerUser = async (req, res) => {
+export const registerUser = async (req, res) => {
   try {
-    const { firstName, lastName, phone, email, password } = req.body;
+    const { fname, lname, phone, dob, email, password } = req.body;
 
     const exists = await User.findOne({ email });
-    if (exists) return res.status(400).json({ message: "User already exists" });
+    if (exists) return res.status(400).json({ msg: "Email already exists" });
 
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashed = await bcrypt.hash(password, 10);
 
     await User.create({
-      firstName,
-      lastName,
+      fname,
+      lname,
       phone,
+      dob,
       email,
-      password: hashedPassword,
+      password: hashed,
     });
 
-    res.status(201).json({ message: "Registered successfully" });
+    return res.json({ msg: "Registration successful" });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ msg: "Server error" });
   }
 };
 
-/* LOGIN */
-exports.loginUser = async (req, res) => {
+export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ message: "Invalid credentials" });
+    if (!user) return res.status(400).json({ msg: "User not found" });
 
-    const match = await bcrypt.compare(password, user.password);
-    if (!match)
-      return res.status(400).json({ message: "Invalid credentials" });
+    const check = await bcrypt.compare(password, user.password);
+    if (!check) return res.status(400).json({ msg: "Invalid password" });
 
-    const token = generateToken(user._id);
+    const token = jwt.sign(
+      { id: user._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "7d" }
+    );
 
-    res.json({
+    return res.json({
+      msg: "Login successful",
       token,
       user: {
         id: user._id,
-        firstName: user.firstName,
-        email: user.email,
-      },
+        fname: user.fname,
+        lname: user.lname,
+        email: user.email
+      }
     });
   } catch (err) {
-    res.status(500).json({ message: err.message });
+    return res.status(500).json({ msg: "Server error" });
+  }
+};
+
+export const getProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password");
+    return res.json(user);
+  } catch (err) {
+    return res.status(500).json({ msg: "Server error" });
   }
 };
