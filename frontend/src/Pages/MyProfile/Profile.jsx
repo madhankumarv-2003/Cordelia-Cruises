@@ -3,25 +3,24 @@ import "./Profile.css";
 
 const Profile = () => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    fname: "",
+    lname: "",
     email: "",
     phone: "",
-    countryCode: "+91",
-    dob: ""
+    dob: "",
+    countryCode: "+91"
   });
 
-  // Load user from localStorage
   useEffect(() => {
     const savedUser = JSON.parse(localStorage.getItem("user"));
     if (savedUser) {
       setFormData({
-        firstName: savedUser.firstName || "",
-        lastName: savedUser.lastName || "",
+        fname: savedUser.fname || "",
+        lname: savedUser.lname || "",
         email: savedUser.email || "",
         phone: savedUser.phone || "",
-        countryCode: savedUser.countryCode || "+91",
-        dob: savedUser.dob || ""
+        dob: savedUser.dob || "",
+        countryCode: savedUser.countryCode || "+91"
       });
     }
   }, []);
@@ -32,11 +31,11 @@ const Profile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // update storage
-    const updatedUser = { ...JSON.parse(localStorage.getItem("user")), ...formData };
-    localStorage.setItem("user", JSON.stringify(updatedUser));
+    const existing = JSON.parse(localStorage.getItem("user")) || {};
+    const updated = { ...existing, ...formData };
 
-    alert("Profile Updated!");
+    localStorage.setItem("user", JSON.stringify(updated));
+    alert("Profile updated successfully!");
   };
 
   return (
@@ -45,9 +44,30 @@ const Profile = () => {
         <h1 className="profile-title">My Profile</h1>
 
         <form onSubmit={handleSubmit}>
-          <input name="firstName" value={formData.firstName} onChange={handleChange} className="profile-input" />
-          <input name="lastName" value={formData.lastName} onChange={handleChange} className="profile-input" />
-          <input type="email" name="email" value={formData.email} onChange={handleChange} className="profile-input" />
+          <input
+            name="fname"
+            value={formData.fname}
+            onChange={handleChange}
+            className="profile-input"
+            placeholder="First Name"
+          />
+
+          <input
+            name="lname"
+            value={formData.lname}
+            onChange={handleChange}
+            className="profile-input"
+            placeholder="Last Name"
+          />
+
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="profile-input"
+            placeholder="Email"
+          />
 
           <div className="profile-row">
             <input
@@ -61,6 +81,7 @@ const Profile = () => {
               value={formData.phone}
               onChange={handleChange}
               className="profile-input"
+              placeholder="Phone"
             />
           </div>
 
@@ -71,13 +92,17 @@ const Profile = () => {
             onFocus={(e) => (e.target.type = "date")}
             onBlur={(e) => {
               e.target.type = "text";
-              e.target.value = formData.dob ? new Date(formData.dob).toLocaleDateString("en-GB") : "";
+              e.target.value = formData.dob
+                ? new Date(formData.dob).toLocaleDateString("en-GB")
+                : "";
             }}
             onChange={(e) => setFormData({ ...formData, dob: e.target.value })}
             className="profile-input"
+            placeholder="Date of Birth"
           />
-
-          <button type="submit" className="profile-btn">Save Changes</button>
+          <button type="submit" className="profile-btn">
+            Save Changes
+          </button>
         </form>
       </div>
     </div>

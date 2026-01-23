@@ -1,186 +1,206 @@
-import React, { useState } from "react";
-import {
-  FaShip,
-  FaFilter,
-  FaSortAmountDown,
-  FaCheckCircle,
-} from "react-icons/fa";
-
-import img1 from "./Images/SNPL_UCP_web.webp";
-
-import Promo1 from "../CruiseCard/Images/SNPL_UCP_web.webp";
-import Promo2 from "../CruiseCard/Images/FamilyFun_Upcoming.webp";
-import Promo3 from "../CruiseCard/Images/WhySettle_Upcoming.webp";
-import Promo4 from "../CruiseCard/Images/YourNext_Upcoming.webp";
+import React, { useState, useRef, useEffect } from "react";
+import { FaPhone, FaSlidersH } from "react-icons/fa";
 
 import "./CruiseCard.css";
 
-/* ================================
-   CRUISE DATA
-================================ */
-const cruisesData = [
-  {
-    id: 1,
-    image: img1,
-    date: "07 Jan 2026 → 10 Jan 2026",
-    tripType: "One Way Trip",
-    title: "Kochi - Lakshadweep - Mumbai (3N/4D)",
-    ports: ["Kochi", "Lakshadweep", "Mumbai"],
-    ship: "EMPRESS",
-    offers: [
-      "Exclusive Value Fare",
-      "2nd Guest Free",
-      "Kids Sail Absolutely Free",
-      "3rd / 4th Pax Free",
-    ],
-    shoreExcursion: true,
-  },
-  {
-    id: 2,
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-    date: "12 Jan 2026 → 15 Jan 2026",
-    tripType: "Round Trip",
-    title: "Mumbai - Goa - Mumbai (3N/4D)",
-    ports: ["Mumbai", "Goa"],
-    ship: "EMPRESS",
-    offers: ["Kids Sail Free"],
-    shoreExcursion: false,
-  },
-  {
-    id: 3,
-    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-    date: "20 Jan 2026 → 24 Jan 2026",
-    tripType: "One Way Trip",
-    title: "Chennai - Colombo (4N/5D)",
-    ports: ["Chennai", "Colombo"],
-    ship: "EMPRESS",
-    offers: ["Early Bird Offer"],
-    shoreExcursion: true,
-  },
-];
+import call from "../../../components/ContactBar/images/call-new-icon.svg";
+import Img1 from "./Images/WhySettle_Upcoming.webp";
 
-/* ================================
-   PROMO BANNER
-================================ */
-const promoBanners = [Promo1, Promo2, Promo3, Promo4];
+const CruiseCard = () => {
+  const [items] = useState([
+    {
+      id: 1,
+      ship: "EMPRESS",
+      title: "2-Night Mumbai Weekend Cruise",
+      start: "Jan 24, 2026",
+      end: "Jan 26, 2026",
+      route: "Mumbai Round Trip",
+      ports: "Mumbai • Mumbai",
+      price: "₹46,184",
+      viewing: 204,
+      img: Img1
+    },
+    {
+      id: 2,
+      ship: "EMPRESS",
+      title: "2-Night Mumbai Weekend Cruise",
+      start: "Jan 24, 2026",
+      end: "Jan 26, 2026",
+      route: "Mumbai Round Trip",
+      ports: "Mumbai • Mumbai",
+      price: "₹46,184",
+      viewing: 204,
+      img: Img1
+    }
+  ]);
 
-const PromoBanner = ({ image }) => (
-  <div className="promo-banner full-width">
-    <img src={image} alt="Promo" />
-  </div>
-);
+  const [sortOpen, setSortOpen] = useState(false);
+  const [openFilter, setOpenFilter] = useState(false);
+  const sortRef = useRef(null);
 
-const ShoreBadge = () => {
+  useEffect(() => {
+    const handler = (e) => {
+      if (sortRef.current && !sortRef.current.contains(e.target)) {
+        setSortOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
   return (
-    <div className="shore-badge">
-      Shore Excursions Available
+    <div className="crz-container">
 
-      <span className="info-icon">i</span>
+      {/* LEFT PANEL */}
+      <div className="crz-help-wrapper">
+        <div className="crz-help-panel">
+          <div className="crz-help-icon">
+            <img src={call} style={{ width: 32, height: 32 }} alt="" />
+          </div>
+          <h3 className="crz-help-title">
+            Your perfect cruise is<br />one call away.
+          </h3>
+          <p className="crz-help-sub">
+            Get instant help from our<br />cruise specialist.
+          </p>
 
-      <div className="shore-tooltip">
-        <p>
-          A shore excursion is a group tour or activity aimed at cruise
-          travelers who can spend time in each port they're visiting.
-        </p>
-        <p>
-          All shore excursions are available at an additional cost.
-        </p>
+          <button className="crz-help-call-btn">
+            <FaPhone style={{ marginRight: 6 }} /> Call - 022-68811111
+          </button>
+
+          <button className="crz-help-outline-btn">Request a Callback</button>
+        </div>
       </div>
+
+      {/* RIGHT MAIN */}
+      <div className="crz-main">
+
+        <div className="crz-top-row">
+          <h3 className="crz-results-title">
+            Cruise Search Results <span>({items.length})</span>
+          </h3>
+
+          <div className="crz-top-actions">
+
+            {/* SORT */}
+            <div className="sort-dropdown" ref={sortRef}>
+              <button className="crz-top-btn" onClick={() => setSortOpen(!sortOpen)}>
+                <span className="txt-sort">Sort By</span>
+                <span className="sort-bars-icon"><div></div></span>
+              </button>
+
+              {sortOpen && (
+                <div className="sort-menu">
+                  <div className="sort-item">Price Low to High</div>
+                  <div className="sort-item">Price High to Low</div>
+                  <div className="sort-item">Earliest Date</div>
+                </div>
+              )}
+            </div>
+
+            {/* FILTER BUTTON */}
+            <button className="crz-top-btn" onClick={() => setOpenFilter(true)}>
+              <span className="txt-filter">Filter By</span>
+              <FaSlidersH className="crz-filter-icon" />
+            </button>
+
+          </div>
+        </div>
+
+        {/* CARDS */}
+        {items.map(item => (
+          <div className="crz-card" key={item.id}>
+            <div className="crz-left">
+              <span className="crz-tag">🛳️ {item.ship}</span>
+              <img src={item.img} alt="" />
+            </div>
+
+            <div className="crz-mid">
+              <h2 className="crz-title-txt">{item.title}</h2>
+              <div className="crz-date-row">
+                <span>{item.start}</span>
+                <span className="crz-arrow">➜</span>
+                <span>{item.end}</span>
+                <span className="crz-arrow">➜</span>
+                <span>{item.route}</span>
+              </div>
+
+              <hr className="crz-divider" />
+
+              <p className="crz-ports"><strong>Ports:</strong> {item.ports}</p>
+
+              <div className="crz-offers">
+                <span className="crz-offers-link">Available Offers</span>
+                <div className="crz-offer-item">
+                  <span className="crz-offer-dot"></span> Kids Sail Free*
+                </div>
+              </div>
+            </div>
+
+            <div className="crz-right">
+              <span className="crz-view-badge">{item.viewing} Viewing</span>
+              <p className="crz-price-label">Starting From</p>
+              <h2 className="crz-price-txt">{item.price}</h2>
+              <p className="crz-price-sub">Excl. GST Per Person<br />in Double Occupancy</p>
+              <button className="crz-btn-itinerary">View Itinerary</button>
+              <button className="crz-btn-booknow">Book Now</button>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* FILTER MODAL */}
+      {openFilter && (
+  <>
+    <div className="filter-overlay" onClick={() => setOpenFilter(false)} />
+
+    <div className="filter-modal">
+
+      {/* HEADER */}
+      <div className="filter-header-bar">
+        <h2 className="filter-title">Filters</h2>
+        <button className="filter-close" onClick={() => setOpenFilter(false)}>✕</button>
+      </div>
+
+      {/* TRIP TYPE */}
+      <div className="filter-section">
+        <p className="filter-label">Trip Type</p>
+        <div className="filter-pills">
+          <button className="pill pill-icon">➜ One Way</button>
+          <button className="pill pill-icon">↺ Round Trip</button>
+        </div>
+      </div>
+
+      {/* DEPARTURE PORT */}
+      <div className="filter-section">
+        <p className="filter-label">Departure Port</p>
+        <div className="filter-pills">
+          <button className="pill">Kochi</button>
+          <button className="pill">Goa</button>
+          <button className="pill">Mumbai</button>
+          <button className="pill">Sydney</button>
+          <button className="pill">Chennai</button>
+          <button className="pill">Singapore</button>
+          <button className="pill">Visakhapatnam</button>
+        </div>
+      </div>
+
+      {/* DIVIDER */}
+      <div className="filter-footer-divider"></div>
+
+      {/* FOOTER CTAS */}
+      <div className="filter-footer">
+        <button className="btn-reset">Reset All</button>
+        <button className="btn-apply" onClick={() => setOpenFilter(false)}>Apply</button>
+      </div>
+
+    </div>
+  </>
+)}
+
+
     </div>
   );
 };
 
-/* ================================
-   MAIN COMPONENT
-================================ */
-export default function CruiseCard() {
-  const [sortBy, setSortBy] = useState("title");
-  const [filterShip, setFilterShip] = useState("ALL");
-
-  const cruises = cruisesData
-    .filter((c) => filterShip === "ALL" || c.ship === filterShip)
-    .sort((a, b) =>
-      sortBy === "title"
-        ? a.title.localeCompare(b.title)
-        : a.date.localeCompare(b.date)
-    );
-
-  return (
-    <div className="cruise-results">
-      {/* HEADER */}
-      <div className="cruise-results__header">
-        <h3>Cruise Search Results ({cruises.length})</h3>
-
-        <div className="cruise-results__actions">
-          <span onClick={() => setSortBy(sortBy === "title" ? "date" : "title")}>
-            <FaSortAmountDown /> Sort
-          </span>
-
-          <span
-            onClick={() =>
-              setFilterShip(filterShip === "ALL" ? "EMPRESS" : "ALL")
-            }
-          >
-            <FaFilter /> Filter
-          </span>
-        </div>
-      </div>
-
-      {/* CARDS */}
-      {cruises.map((item, index) => (
-        <React.Fragment key={item.id}>
-          <div className="cruise-results__card">
-            {/* IMAGE */}
-            <div className="cruise-results__image">
-              <img src={item.image} alt="Cruise" />
-
-              {item.shoreExcursion && <ShoreBadge />}
-            </div>
-
-            {/* CONTENT */}
-            <div className="cruise-results__content">
-              <div className="cruise-results__top">
-                <span className="cruise-results__date">
-                  {item.date} → {item.tripType}
-                </span>
-
-                <span className="cruise-results__ship">
-                  <FaShip /> {item.ship}
-                </span>
-              </div>
-
-              <h4 className="cruise-results__title">{item.title}</h4>
-
-              <div className="cruise-results__ports">
-                <span>Visiting Ports</span>
-                <p>{item.ports.join(" | ")}</p>
-              </div>
-
-              <div className="cruise-results__bottom">
-                <div className="cruise-results__offers">
-                  <span>Available Offers</span>
-                  <ul>
-                    {item.offers.map((offer, i) => (
-                      <li key={i}>
-                        <FaCheckCircle /> {offer}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <button className="reveal-btn">Reveal Prices</button>
-              </div>
-            </div>
-          </div>
-
-          {/* PROMO AFTER EVERY 3 CARDS */}
-          {(index + 1) % 3 === 0 && (
-            <PromoBanner
-              image={promoBanners[Math.floor(index / 3) % promoBanners.length]}
-            />
-          )}
-        </React.Fragment>
-      ))}
-    </div>
-  );
-}
+export default CruiseCard;

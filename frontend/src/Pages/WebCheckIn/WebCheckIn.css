@@ -1,8 +1,7 @@
 .checkin-page {
-  font-family: "Segoe UI", sans-serif;
-  padding:250px 80px;
+  font-family: "Inter", sans-serif;
+  padding:120px 80px;
   background: #ffffff;
-  margin-top: -150px;
 }
 .back-arrow{
   width: 28px;

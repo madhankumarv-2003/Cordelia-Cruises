@@ -1,4 +1,3 @@
-// NavBar.js
 import React, { useState, useEffect } from "react";
 import {
   Navbar,
@@ -10,6 +9,7 @@ import {
   Offcanvas,
 } from "react-bootstrap";
 import { FaSuitcase, FaSignOutAlt, FaUser, FaChevronDown, FaChevronRight } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import logoWhite from "./images/cordelia-new-white-logo.svg";
@@ -35,53 +35,84 @@ const NavBar = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showAccountMenu, setShowAccountMenu] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRegPassword, setShowRegPassword] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  // FORM STATES
   const [loginForm, setLoginForm] = useState({ email: "", password: "" });
   const [regForm, setRegForm] = useState({
-    fname: "", lname: "", phone: "", dob: "", password: "",
+    fname: "",
+    lname: "",
+    phone: "",
+    dob: "",
+    email: "",
+    password: "",
   });
+
   const [errors, setErrors] = useState({});
 
-  // REGEX VALIDATORS
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$/;
   const phoneRegex = /^[0-9]{10}$/;
   const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$/;
 
+  // ===================== REGISTER =====================
   const handleRegister = () => {
     const e = {};
+
     if (!regForm.fname.trim()) e.fname = "First name required";
     if (!regForm.lname.trim()) e.lname = "Last name required";
     if (!phoneRegex.test(regForm.phone)) e.phone = "Phone must be 10 digits";
     if (!regForm.dob) e.dob = "Date of birth required";
+    if (!emailRegex.test(regForm.email)) e.email = "Valid email required";
     if (!passwordRegex.test(regForm.password))
-      e.password = "Password must have 1 uppercase, 1 number, min 6 chars";
+      e.password = "Password must contain uppercase + number + 6 chars";
 
     setErrors(e);
-    if (Object.keys(e).length !== 0) return;
+    if (Object.keys(e).length !== 0) {
+      alert("Please fix validation errors!");
+      return;
+    }
 
-    alert("Registration Successful!");
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ ...regForm })
+    );
+
+    alert("Registration successful! Please login now.");
     setAuthMode("login");
-    setRegForm({ fname: "", lname: "", phone: "", dob: "", password: "" });
+    setRegForm({ fname: "", lname: "", phone: "", dob: "", email: "", password: "" });
     setErrors({});
   };
 
+  // ===================== LOGIN =====================
   const handleLogin = () => {
+    const stored = JSON.parse(localStorage.getItem("user"));
     const e = {};
-    if (!emailRegex.test(loginForm.email)) e.email = "Invalid email format";
-    if (!loginForm.password) e.password = "Password required";
+
+    if (!stored) {
+      alert("No user found. Please register first!");
+      setAuthMode("register");
+      setShowLogin(true);
+      return;
+    }
+
+    if (loginForm.email !== stored.email) e.email = "Email not registered";
+    if (loginForm.password !== stored.password) e.password = "Incorrect password";
 
     setErrors(e);
-    if (Object.keys(e).length !== 0) return;
+
+    if (Object.keys(e).length !== 0) {
+      alert("Invalid credentials!");
+      return;
+    }
 
     setIsLoggedIn(true);
     setShowLogin(false);
-    setShowAccountMenu(false);
     setLoginForm({ email: "", password: "" });
     setErrors({});
+    alert("Login successful!");
   };
 
   const closeMenu = (path) => {
@@ -110,7 +141,7 @@ const NavBar = () => {
     document.addEventListener("click", handleOutside);
     return () => document.removeEventListener("click", handleOutside);
   }, []);
-
+  
   return (
     <>
       <Navbar
@@ -229,8 +260,10 @@ const NavBar = () => {
                       <div
                         className="account-dropdown-item"
                         onClick={() => {
+                          localStorage.removeItem("user");
                           setIsLoggedIn(false);
                           setShowAccountMenu(false);
+                          alert("Logout successful!");
                         }}
                       >
                         <FaSignOutAlt /> Log Out
@@ -238,7 +271,6 @@ const NavBar = () => {
                     </div>
                   )}
                 </div>
-
               )}
             </div>
           </Navbar.Collapse>
@@ -330,6 +362,7 @@ const NavBar = () => {
       </Offcanvas>
 
       {/* Login/Register Modal */}
+
        <Modal show={showLogin} onHide={() => setShowLogin(false)} centered backdrop="static">
         <Modal.Body className="p-4 text-center position-relative">
           <button onClick={() => setShowLogin(false)}
@@ -337,19 +370,40 @@ const NavBar = () => {
 
           <img src={logoColor} height="40" className="mb-3" />
 
-          {authMode === "login" && (
+           {authMode === "login" && (
             <>
               <h5 className="mb-3">Login</h5>
-
-              <input type="text" className="form-control mb-1" placeholder="Email"
+              <input
+                className="form-control mb-1"
+                placeholder="Email"
                 value={loginForm.email}
-                onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })} />
-              {errors.email && <div className="text-danger mt-1 mb-1">{errors.email}</div>}
+                onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
+              />
+              {errors.email && <div className="text-danger">{errors.email}</div>}
 
-              <input type="password" className="form-control mb-2" placeholder="Password"
-                value={loginForm.password}
-                onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })} />
-              {errors.password && <div className="text-danger mt-1 mb-1">{errors.password}</div>}
+              <div className="position-relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="form-control mb-2"
+                  placeholder="Password"
+                  value={loginForm.password}
+                  onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                />
+
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: "absolute",
+                    right: 10,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer"
+                  }}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
+              {errors.password && <div className="text-danger">{errors.password}</div>}
 
               <Button className="w-100 mb-2" onClick={handleLogin}>Login</Button>
 
@@ -360,35 +414,58 @@ const NavBar = () => {
             </>
           )}
 
+          {/* REGISTER */}
           {authMode === "register" && (
             <>
               <h5 className="mb-3">Create Account</h5>
 
               <input className="form-control mb-1" placeholder="First Name"
                 value={regForm.fname}
-                onChange={(e) => setRegForm({ ...regForm, fname: e.target.value })} />
-              {errors.fname && <div className="text-danger  mt-1  mb-1">{errors.fname}</div>}
+                onChange={(e) => setRegForm({ ...regForm, fname: e.target.value })}/>
+              {errors.fname && <div className="text-danger">{errors.fname}</div>}
 
               <input className="form-control mb-1" placeholder="Last Name"
                 value={regForm.lname}
-                onChange={(e) => setRegForm({ ...regForm, lname: e.target.value })} />
-              {errors.lname && <div className="text-danger mt-1  mb-1">{errors.lname}</div>}
+                onChange={(e) => setRegForm({ ...regForm, lname: e.target.value })}/>
+              {errors.lname && <div className="text-danger">{errors.lname}</div>}
 
               <input className="form-control mb-1" placeholder="Phone Number"
                 value={regForm.phone}
-                onChange={(e) => setRegForm({ ...regForm, phone: e.target.value })} />
-              {errors.phone && <div className="text-danger mt-1  mb-1">{errors.phone}</div>}
+                onChange={(e) => setRegForm({ ...regForm, phone: e.target.value })}/>
+              {errors.phone && <div className="text-danger">{errors.phone}</div>}
 
               <input type="date" className="form-control mb-1"
                 value={regForm.dob}
-                onChange={(e) => setRegForm({ ...regForm, dob: e.target.value })} />
-              {errors.dob && <div className="text-danger mt-1  mb-1">{errors.dob}</div>}
+                onChange={(e) => setRegForm({ ...regForm, dob: e.target.value })}/>
+              {errors.dob && <div className="text-danger">{errors.dob}</div>}
 
-              <input type="password" className="form-control mb-2" placeholder="Password"
-                value={regForm.password}
-                onChange={(e) => setRegForm({ ...regForm, password: e.target.value })} />
-              {errors.password && <div className="text-danger mt-1  mb-1">{errors.password}</div>}
+              <input className="form-control mb-1" placeholder="Email"
+                value={regForm.email}
+                onChange={(e) => setRegForm({ ...regForm, email: e.target.value })}/>
+              {errors.email && <div className="text-danger">{errors.email}</div>}
 
+             <div className="position-relative">
+                <input
+                  type={showRegPassword ? "text" : "password"}
+                  className="form-control mb-2"
+                  placeholder="Password"
+                  value={regForm.password}
+                  onChange={(e) => setRegForm({ ...regForm, password: e.target.value })}
+                />
+
+                <span
+                  onClick={() => setShowRegPassword(!showRegPassword)}
+                  style={{
+                    position: "absolute",
+                    right: 10,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer"
+                  }}
+                >
+                  {showRegPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
               <Button className="w-100 mb-2" onClick={handleRegister}>Register</Button>
 
               <p style={{ fontSize: 14 }}>

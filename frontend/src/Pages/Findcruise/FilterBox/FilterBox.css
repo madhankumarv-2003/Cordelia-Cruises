@@ -1,22 +1,22 @@
 .explore-cruise {
   width: 100%;
-  padding: 120px 20px;
+  padding: 100px 20px;
   text-align: center;
   background: #fff;
 }
 
 .explore-cruise h2 {
   font-family: "Playfair Display", serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 600;
   margin-bottom: 30px;
 }
 
 /* FILTER CONTAINER */
 .filter-box {
-  width: 84.5%;
+  width: 75%;
   margin: 0 auto;
-  padding: 20px;
+  padding: 15px;
   display: flex;
   align-items: center;
   gap: 15px;
@@ -57,7 +57,7 @@
 }
 
 /* APPLY BUTTON */
-.apply-btn {
+.apply-bttn {
   padding: 20px 40px;
   width: 20%;
   border: none;

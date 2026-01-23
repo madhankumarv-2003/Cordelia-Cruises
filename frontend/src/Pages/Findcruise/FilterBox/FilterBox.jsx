@@ -13,7 +13,6 @@ const months = [
   "Jul","Aug","Sep","Oct","Nov","Dec",
 ];
 
-// ✅ NUMBERS ONLY (important)
 const nightsList = [2, 3, 4, 5, 6, 7, 10, 34];
 
 const cruises = ["SKY", "SUN", "EMPRESS"];
@@ -58,7 +57,7 @@ const FilterBox = () => {
               setOpen(open === "dest" ? null : "dest");
             }}
           >
-            <span>{destination || "Select Destination"}</span>
+            <span>{destination || "Where to?"}</span>
             <FaChevronDown className="dropdown-icon" />
           </div>
 
@@ -100,7 +99,7 @@ const FilterBox = () => {
               setOpen(open === "month" ? null : "month");
             }}
           >
-            <span>{month ? formatMonth() : "Select Month"}</span>
+            <span>{month ? formatMonth() : "Travel Month"}</span>
             <FaChevronDown className="dropdown-icon" />
           </div>
 
@@ -144,7 +143,6 @@ const FilterBox = () => {
           )}
         </div>
 
-        {/* ✅ NIGHTS (EXACT LIKE IMAGE) */}
         <div className="filter-item">
           <label>Select Night</label>
           <div
@@ -154,7 +152,7 @@ const FilterBox = () => {
               setOpen(open === "nights" ? null : "nights");
             }}
           >
-            <span>{nights ? `${nights}N` : "Select Night"}</span>
+            <span>{nights ? `${nights}N` : "Nights"}</span>
             <FaChevronDown className="dropdown-icon" />
           </div>
 
@@ -196,7 +194,7 @@ const FilterBox = () => {
               setOpen(open === "cruise" ? null : "cruise");
             }}
           >
-            <span>{cruise || "Select Cruise"}</span>
+            <span>{cruise || "Cruise name?"}</span>
           </div>
 
           {open === "cruise" && (
@@ -227,7 +225,7 @@ const FilterBox = () => {
           )}
         </div>
 
-        <button className="apply-btn">Apply</button>
+        <button className="apply-bttn">Apply</button>
       </div>
 
       {/* SELECTED TAGS */}
