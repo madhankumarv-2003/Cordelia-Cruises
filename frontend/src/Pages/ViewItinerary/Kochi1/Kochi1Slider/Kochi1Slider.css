@@ -1,0 +1,173 @@
+/* OUTER CONTAINER */
+.cruiseHighlight_container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 35px 0px 20px;
+  width: 81%;
+  margin: 32px auto;
+  box-shadow: 0 0 5px 1px #e6e6e6;
+}
+
+/* TITLE */
+.cruiseHighlight_title {
+  font-size: 22px;
+  font-weight: bolder;
+  color: #000;
+  padding-bottom: 35px;
+  margin-bottom: 35px;
+  padding-left: 30px;
+  border-bottom: 1px solid #e6e6e6;
+  font-family: 'Inter',sans-serif;
+}
+
+/* SWIPER */
+.cruiseHighlight_swiper {
+  width: 100%;
+  margin: 15px auto;
+  cursor: pointer;
+}
+
+/* CENTER SLIDES GROUP */
+.swiper-wrapper {
+  justify-content: left;
+}
+
+/* SLIDE SIZE */
+.cruiseHighlight_slide {
+  width: 300px !important;
+}
+
+/* IMAGE CARD */
+.cruiseHighlight_card {
+  width: 100%;
+  height: 280px;
+  border-radius: 6px 6px 0px 0px;
+  overflow: hidden;
+}
+
+.cruiseHighlight_card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* REMOVE ARROWS */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+}
+/* =========================================
+   LARGE DESKTOP (1400px and above)
+========================================= */
+@media (min-width: 1400px) {
+  .cruiseHighlight_container {
+    width: 75%;
+  }
+
+  .cruiseHighlight_slide {
+    width: 320px !important;
+  }
+
+  .cruiseHighlight_card {
+    height: 300px;
+  }
+}
+
+
+/* =========================================
+   DESKTOP (1200px - 1399px)
+========================================= */
+@media (max-width: 1399px) {
+  .cruiseHighlight_container {
+    width: 85%;
+  }
+
+  .cruiseHighlight_slide {
+    width: 280px !important;
+  }
+}
+
+
+/* =========================================
+   SMALL LAPTOP (992px - 1199px)
+========================================= */
+@media (max-width: 1199px) {
+  .cruiseHighlight_container {
+    width: 90%;
+  }
+
+  .cruiseHighlight_slide {
+    width: 260px !important;
+  }
+
+  .cruiseHighlight_card {
+    height: 260px;
+  }
+}
+
+
+/* =========================================
+   TABLET (768px - 991px)
+========================================= */
+@media (max-width: 991px) {
+  .cruiseHighlight_container {
+    width: 95%;
+  }
+
+  .cruiseHighlight_title {
+    font-size: 20px;
+  }
+
+  .cruiseHighlight_slide {
+    width: 220px !important;
+  }
+
+  .cruiseHighlight_card {
+    height: 230px;
+  }
+}
+
+
+/* =========================================
+   MOBILE (Below 768px)
+========================================= */
+@media (max-width: 767px) {
+  .cruiseHighlight_container {
+    width: 95%;
+    padding: 25px 0px 15px;
+  }
+
+  .cruiseHighlight_title {
+    font-size: 18px;
+    padding-left: 20px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+  }
+
+  .cruiseHighlight_slide {
+    width: 180px !important;
+  }
+
+  .cruiseHighlight_card {
+    height: 200px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE (Below 480px)
+========================================= */
+@media (max-width: 480px) {
+  .cruiseHighlight_slide {
+    width: 160px !important;
+  }
+
+  .cruiseHighlight_card {
+    height: 180px;
+  }
+
+  .cruiseHighlight_title {
+    font-size: 16px;
+  }
+}

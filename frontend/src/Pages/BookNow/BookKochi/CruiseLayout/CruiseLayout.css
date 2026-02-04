@@ -1,0 +1,471 @@
+/* ================= WRAPPER ================= */
+
+.corz_wrapper {
+  display: flex;
+  gap: 24px;
+  padding: 10px 80px;
+  font-family: "Inter", sans-serif;
+  align-items: flex-start;
+}
+
+/* ================= HELP CARD ================= */
+
+.corz_helpCard {
+  position: sticky;
+  top: 150px;
+  background: #fff;
+  border: 1px solid #e6b3d1;
+  border-radius: 10px;
+  padding: 35px 20px 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 300px;
+  margin: 40px auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Phone Icon Circle */
+.corz_phoneIcon {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #a54db5, #f0727f);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  box-shadow: 0 10px 25px rgba(240, 114, 127, 0.4);
+}
+
+/* Title */
+.corz_helpTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #c0559b;
+  margin-bottom: 5px;
+  font-family: 'Playfair Display',sans-serif;
+}
+
+/* Text */
+.corz_helpText {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Primary Button */
+.corz_btnPrimary {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #a54db5, #f0727f);
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: 0.3s ease;
+}
+
+.corz_btnPrimary:hover {
+  opacity: 0.9;
+}
+
+/* Outline Button */
+.corz_btnOutline {
+  width: 100%;
+  padding: 8px;
+  border-radius: 30px;
+  background: #fff;
+  border: 2px solid #d57ab7;
+  color: #a54db5;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.corz_btnOutline:hover {
+  background: #fdf2f9;
+}
+
+/* ================= CABIN SECTION ================= */
+
+.corz_cabinSection {
+  flex: 1;
+}
+
+.corz_cabinCard {
+  display: flex;
+  background: #fff;
+  height: 250px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.corz_imageWrapper {
+  width: 220px;
+  height: auto;
+}
+
+.corz_cabinImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.corz_cabinContent {
+  flex: 1;
+  padding: 18px;
+}
+
+.corz_topRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.corz_title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.corz_desc {
+  font-size: 13px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.corz_priceBox {
+  text-align: right;
+}
+
+.corz_price {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.corz_priceSub {
+  font-size: 12px;
+  color: #777;
+}
+
+.corz_capacityRow {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.corz_actionRow {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.corz_amenitiesLink {
+  font-size: 13px;
+  cursor: pointer;
+  color: #2563eb;
+}
+
+.corz_chooseBtn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px #a54db5;
+  color: #a83b88;
+  cursor: pointer;
+  font-size: 13px;
+}
+/* ================= CABIN SELECTION CONTAINER ================= */
+
+.corz_cabinSelectionBox {
+  border: 1px solid #dcdfe4;
+  border-radius: 0px;
+  padding: 0;
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+/* ================= SINGLE CABIN ================= */
+
+.corz_singleCabin {
+  padding: 0;
+}
+
+/* ================= HEADER ================= */
+
+.corz_cabinHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #dcdfe4;
+}
+
+.corz_cabinHeader h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+}
+
+/* Add New Cabin */
+
+.corz_addCabin {
+  font-size: 14px;
+  font-weight: 600;
+  color: #d38bb3;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.corz_addCabin:hover {
+  opacity: 0.8;
+}
+
+/* ================= PEOPLE ROW ================= */
+
+.corz_peopleRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 20px;
+  gap: 25px;
+}
+
+/* ================= PEOPLE BOX ================= */
+
+.corz_peopleBox {
+  flex: 1;
+}
+
+.corz_peopleBox label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.corz_peopleBox p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+/* ================= SELECT ================= */
+
+.corz_peopleBox select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #cfd5dc;
+ 
+  font-size: 16px;
+  outline: none;
+  cursor: pointer;
+}
+
+.corz_peopleBox select:focus {
+  border-color: #999;
+}
+
+/* ================= REMOVE SECTION ================= */
+
+.corz_removeCabin {
+  padding: 14px 20px;
+  border-top: 1px solid #dcdfe4;
+  font-size: 14px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.corz_removeCabin span {
+  text-decoration: underline;
+}
+
+.corz_removeCabin:hover {
+  opacity: 0.8;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .corz_peopleRow {
+    flex-direction: column;
+  }
+}
+
+
+/* ================= RIGHT SUMMARY ================= */
+
+.corz_itineraryCard {
+  position: sticky;
+  top: 80px;
+  width: 300px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+  padding: 22px;
+}
+
+.corz_tripTitle {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.corz_tripTitle span {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Timeline */
+
+.corz_timelineSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+}
+
+.corz_portBlock h4 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.corz_portBlock p {
+  font-size: 13px;
+  margin: 4px 0;
+}
+
+.corz_portBlock span {
+  font-size: 12px;
+  color: #666;
+}
+
+.corz_timelineMiddle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.corz_shipCircle {
+  width: 36px;
+  height: 36px;
+  background: #e74c6a;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.corz_dottedLine {
+  height: 40px;
+  border-left: 2px dashed #ccc;
+  margin-top: 6px;
+}
+
+.corz_divider {
+  height: 1px;
+  background: #ddd;
+  margin: 18px 0;
+}
+
+/* Visiting */
+
+.corz_visitingPorts h4 {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.corz_visitingPorts p {
+  font-size: 13px;
+}
+
+/* Summary Row */
+
+.corz_summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.corz_summaryLeft {
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.corz_summaryRight h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.corz_summaryRight span {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Proceed Button */
+
+.corz_proceedBtn {
+  margin-top: 20px;
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  background: linear-gradient(90deg, #a83b88, #f26b4f);
+}
+
+.corz_proceedBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+  .corz_wrapper {
+    flex-direction: column;
+  }
+
+  .corz_helpCard,
+  .corz_itineraryCard {
+    width: 100%;
+  }
+
+  .corz_cabinCard {
+    flex-direction: column;
+  }
+
+  .corz_imageWrapper {
+    width: 100%;
+    height: 200px;
+  }
+}

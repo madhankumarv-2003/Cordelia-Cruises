@@ -1,0 +1,185 @@
+.ci-wrapper {
+  padding: 0px 50px 30px;
+}
+
+.ci-cardContainer {
+  background: #fff;
+  border-radius: 8px;
+  padding: 35px 35px;
+  width: 92%;
+  margin: auto;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+  font-family: "Inter", sans-serif;
+}
+
+/* HEADER */
+.ci-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.ci-header p {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.ci-divider {
+  width: calc(100% + 70px); /* match container padding */
+  margin: 35px -35px 24px;
+  height: 1px;
+  background-color: #d3d5d8;
+}
+
+/* DAY ROW */
+.ci-dayRow {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+/* DAY BADGE */
+.ci-dayBadge {
+  min-width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  background-image: linear-gradient(
+      99.72deg,
+      rgb(146, 39, 143) -17.25%,
+      rgb(234, 114, 91) 105.93%
+    );
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ci-dayBadge span {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.ci-dayBadge strong {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* CONTENT */
+.itinerary-content {
+  max-width: 780px;
+}
+
+.itinerary-content h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.itinerary-subtitle {
+  margin: 4px 0 8px;
+  font-size: 17.5px;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.itinerary-desc {
+  font-size: 16px;
+  font-weight: 400;
+  padding-top: 35px;
+  margin-left: -80px;
+  line-height: 1.7;
+  color: #6b7280;
+}
+
+/* SHORE EXCURSIONS */
+.ci-excursions {
+  margin-top: 18px;
+}
+
+.ci-excursions h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* CAROUSEL */
+.ci-carousel {
+  position: relative;
+}
+
+.ci-trackWrapper {
+  overflow: hidden;
+}
+
+.ci-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.ci-card {
+  min-width: 35%;
+  padding: 20px;
+}
+
+.ci-cardImage img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.ci-cardBody h5 {
+  font-size: 14px;
+  margin: 10px 0 6px;
+}
+
+.ci-cardBody p {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+.ci-readMore {
+  font-size: 12px;
+  color: #2563eb;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* NAV */
+.ci-nav {
+  position: absolute;
+  top: 40%;
+  background: #fff;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.ci-nav.left {
+  left: -10px;
+}
+
+.ci-nav.right {
+  right: -10px;
+}
+
+/* FOOTER */
+.ci-footerToggle {
+  margin-top: 8px;
+}
+
+.ci-footerToggle button {
+  background: none;
+  border: none;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}

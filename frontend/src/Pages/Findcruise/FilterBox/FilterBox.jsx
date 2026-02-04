@@ -262,7 +262,7 @@ const FilterBox = () => {
         {nights && (
           <span className="filter-tag">
             {nights} Nights
-            <button className="close-btn" onClick={() => setNights(null)}>×</button>
+            <button onClick={() => setNights(null)}>×</button>
           </span>
         )}
 

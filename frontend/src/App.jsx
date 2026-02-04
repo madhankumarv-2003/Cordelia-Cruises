@@ -16,13 +16,19 @@ import FindCruise from "./Pages/Findcruise/Findcruise";
 import Destinations from "./Pages/AllDestinations/Destinations";
 import WebCheckIn from "./Pages/WebCheckIn/WebCheckIn";
 import Bookings from "./Pages/MyBookings/Bookings";
-import Profile from './Pages/MyProfile/Profile';
+import Profile from "./Pages/MyProfile/Profile";
+
+import ViewItinerary from "./Pages/ViewItinerary/ViewItinerary";
+import BookNow from "./Pages/BookNow/BookNow";
 
 import "./App.css";
 
 function App() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+
+  // Detect Book page
+  const isBookPage = location.pathname.startsWith("/book/");
 
   useEffect(() => {
     if (location.pathname !== "/") {
@@ -46,8 +52,12 @@ function App() {
       <div className="sticky-group">
         {location.pathname === "/" && <FraudAlert />}
 
-        <ContactBar />
-        <NavBar scrolled={scrolled} />
+        {!isBookPage && (
+          <>
+            <ContactBar />
+            <NavBar scrolled={scrolled} />
+          </>
+        )}
       </div>
 
       {/* Routes */}
@@ -55,17 +65,19 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/offers" element={<Offers />} />
-        <Route path="/destinations" element={<Destinations/>} />
+        <Route path="/destinations" element={<Destinations />} />
         <Route path="/CordeliaSky" element={<CordeliaSky />} />
         <Route path="/CordeliaSun" element={<CordeliaSun />} />
         <Route path="/CordeliaEmpress" element={<CordeliaEmpress />} />
-        <Route path="/find-cruise" element={<FindCruise/>} />
-        <Route path="/WebCheckIn" element={<WebCheckIn/>} />
-        <Route path="/my-profile" element={<Profile/>} />
-        <Route path="/manage-bookings" element={<Bookings/>} />
+        <Route path="/find-cruise" element={<FindCruise />} />
+        <Route path="/WebCheckIn" element={<WebCheckIn />} />
+        <Route path="/my-profile" element={<Profile />} />
+        <Route path="/manage-bookings" element={<Bookings />} />
+        <Route path="/itinerary/:id" element={<ViewItinerary />} />
+        <Route path="/book/:id" element={<BookNow />} />
       </Routes>
 
-      <Footer/>
+      {!isBookPage && <Footer />}
     </>
   );
 }

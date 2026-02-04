@@ -1,0 +1,304 @@
+.kochi-img {
+  width: 100%;
+  height: 65vh;
+  object-fit: cover;
+  display: block;
+}
+.cruisecard_container {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 25px 140px 10px;
+  border-bottom: 1px solid #e3e3e3;
+  font-family: "Inter", sans-serif;
+  background: #fff;
+  box-shadow: 0 0 5px 1px #e6e6e6;
+}
+
+/* LEFT SECTION */
+.cruisecard_left {
+  flex: 1.2;
+  padding-right: 0px;
+}
+
+.cruisecard_title {
+  font-size: 21px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0 0 4px 0;
+}
+
+.cruisecard_duration {
+  font-size: 20px;
+  font-weight: bolder;
+  margin-left: 6px;
+  color: #7d2ba6;
+}
+
+/* Icons Row */
+.cruisecard_row {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 10px;
+}
+
+.cruisecard_item {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #444;
+}
+
+.card_icon {
+  font-size: 15px;
+  color: #8b2dc2;
+  margin-right: 6px;
+}
+
+.cruisecard_item strong {
+  color: #444;
+  font-weight: 600;
+}
+
+.cruisecard_portsTitle {
+  font-size: 15px;
+  color: #666;
+}
+
+.cruisecard_ports {
+  font-size: 15px;
+  color: #000000;
+  margin-top: -9px;
+}
+
+.cruisecard_divider {
+  width: 0.5px;
+  background: #dbd7d7;
+  align-self: stretch;
+  margin: 0 25px;
+}
+.cps_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: 'Inter', sans-serif;
+  padding: 0px 30px;
+}
+
+.cps_label {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.cps_price {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.cps_subtext {
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+/* View cabins button */
+.cps_btnCabin {
+  background-image: linear-gradient(
+      99.72deg,
+      rgb(146, 39, 143) -17.25%,
+      rgb(234, 114, 91) 105.93%
+    );
+  border: none;
+  color: #fff;
+  padding: 16px 0px;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 10px;
+  width: 200px;
+}
+
+/* Change itinerary link */
+.cps_btnChange {
+  background: transparent;
+  border: none;
+  color: #2d79ff;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.cps_btnChange:hover {
+  text-decoration: underline;
+}
+
+.cps_changeIcon {
+  font-size: 18px;
+  margin-left: 8px;
+}
+
+/* =========================================
+   LARGE DESKTOP (1400px+)
+========================================= */
+@media (min-width: 1400px) {
+  .cruisecard_container {
+    padding: 30px 200px 15px;
+  }
+
+  .kochi-img {
+    height: 70vh;
+  }
+}
+
+
+/* =========================================
+   DESKTOP (1200px - 1399px)
+========================================= */
+@media (max-width: 1399px) {
+  .cruisecard_container {
+    padding: 25px 100px 10px;
+  }
+}
+
+
+/* =========================================
+   SMALL LAPTOP (992px - 1199px)
+========================================= */
+@media (max-width: 1199px) {
+  .cruisecard_container {
+    padding: 25px 60px 10px;
+  }
+
+  .cruisecard_title {
+    font-size: 19px;
+  }
+
+  .cruisecard_duration {
+    font-size: 18px;
+  }
+
+  .cps_price {
+    font-size: 28px;
+  }
+}
+
+
+/* =========================================
+   TABLET (768px - 991px)
+========================================= */
+@media (max-width: 991px) {
+  .cruisecard_container {
+    flex-direction: column;
+    padding: 20px 40px;
+    gap: 20px;
+  }
+
+  .cruisecard_divider {
+    display: none;
+  }
+
+  .cruisecard_left {
+    padding-right: 0;
+  }
+
+  .cruisecard_row {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .cps_wrapper {
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .cps_btnCabin {
+    width: 100%;
+  }
+
+  .kochi-img {
+    height: 55vh;
+  }
+}
+
+
+/* =========================================
+   MOBILE (Below 768px)
+========================================= */
+@media (max-width: 767px) {
+  .cruisecard_container {
+    padding: 18px 20px;
+  }
+
+  .cruisecard_title {
+    font-size: 17px;
+  }
+
+  .cruisecard_duration {
+    font-size: 16px;
+  }
+
+  .cruisecard_item {
+    font-size: 14px;
+  }
+
+  .cruisecard_portsTitle,
+  .cruisecard_ports {
+    font-size: 14px;
+  }
+
+  .cps_price {
+    font-size: 24px;
+  }
+
+  .cps_btnCabin,
+  .cps_btnChange {
+    font-size: 16px;
+  }
+
+  .kochi-img {
+    height: 45vh;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE (Below 480px)
+========================================= */
+@media (max-width: 480px) {
+  .cruisecard_container {
+    padding: 15px;
+  }
+
+  .cruisecard_title {
+    font-size: 15px;
+  }
+
+  .cruisecard_row {
+    gap: 10px;
+  }
+
+  .cps_price {
+    font-size: 22px;
+  }
+
+  .cps_btnCabin {
+    padding: 14px 0;
+    font-size: 15px;
+  }
+
+  .cps_btnChange {
+    font-size: 15px;
+  }
+
+  .kochi-img {
+    height: 38vh;
+  }
+}
