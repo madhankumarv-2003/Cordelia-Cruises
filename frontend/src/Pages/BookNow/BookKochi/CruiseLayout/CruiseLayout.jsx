@@ -6,10 +6,11 @@ import {
   FaShip,
   FaCog
 } from "react-icons/fa";
+import maxcapacity from "./Images/max-capacity-icon.svg";
+import amenities from "./Images/view_amenities.svg";
 
 export default function CruiseLayout({nextStep}) {
 
-  /* ================= CABIN DATA ================= */
   const cabinTypes = [
     {
       id: 1,
@@ -25,7 +26,7 @@ export default function CruiseLayout({nextStep}) {
       title: "Ocean View Deluxe",
       description: "Enjoy breathtaking ocean views from your cabin.",
       price: 68999,
-      capacity: 4,
+      capacity: 2,
       image:
         "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
     },
@@ -34,7 +35,7 @@ export default function CruiseLayout({nextStep}) {
       title: "Balcony Suite",
       description: "Luxury suite with private balcony access.",
       price: 85999,
-      capacity: 4,
+      capacity: 3,
       image:
         "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2"
     },
@@ -52,7 +53,7 @@ export default function CruiseLayout({nextStep}) {
       title: "Balcony Suite",
       description: "Luxury suite with private balcony access.",
       price: 85999,
-      capacity: 4,
+      capacity: 2,
       image:
         "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2"
     }
@@ -170,17 +171,21 @@ export default function CruiseLayout({nextStep}) {
                     <h2 className="corz_price">
                       ₹ {cabin.price.toLocaleString()}
                     </h2>
-                    <p className="corz_priceSub">Per Person</p>
+                    <p className="corz_priceSub">Per Person in Double Occupancy</p>
+                    <span className="corz_gst">
+                      Excl. GST charges
+                    </span>
                   </div>
                 </div>
 
                 <div className="corz_capacityRow">
-                  <FaUsers /> Max Capacity: {cabin.capacity} Guests
+                  <img src={maxcapacity}></img>
+                    Max Capacity: 0{cabin.capacity} Guests
                 </div>
 
                 <div className="corz_actionRow">
                   <div style={{ display: "flex", gap: "6px" }}>
-                    <FaCog />
+                    <img src={amenities}></img>
                     <span className="corz_amenitiesLink">
                       View Amenities
                     </span>
@@ -194,16 +199,14 @@ export default function CruiseLayout({nextStep}) {
                       )
                     }
                   >
-                    {selectedCabinId === cabin.id
-                      ? "Choose Cabin"
-                      : "Choose Cabin"}
+                    Choose Cabin
                   </button>
                 </div>
               </div>
             </div>
 
             {selectedCabinId === cabin.id && (
-              <div className="corz_cabinSelectionBox">
+              <div className="corz_cabinSelectionBox mb-4">
                 {cabins.map((item) => (
                   <div key={item.id} className="corz_singleCabin">
                     <div className="corz_cabinHeader">
@@ -244,7 +247,7 @@ export default function CruiseLayout({nextStep}) {
                             updateCabin(item.id, "children", e.target.value)
                           }
                         >
-                          {[0,1,2,3,4].map((num) => (
+                          {[0,1,2].map((num) => (
                             <option key={num}>{num}</option>
                           ))}
                         </select>
@@ -345,11 +348,17 @@ export default function CruiseLayout({nextStep}) {
         <button 
           className="corz_proceedBtn"
           disabled={!isValid}
-          onClick={nextStep}
+          onClick={() => {
+            nextStep({
+              selectedCabin,
+              cabins,
+              totalGuests,
+              totalPrice
+            });
+          }}
         >
           Proceed
         </button>
-
 
       </div>
     </div>

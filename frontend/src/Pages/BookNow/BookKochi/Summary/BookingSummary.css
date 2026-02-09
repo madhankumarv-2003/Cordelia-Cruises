@@ -1,0 +1,131 @@
+.booking_container {
+  display: flex;
+  gap: 25px;
+  padding: 25px;
+  background: #f4f4f4;
+}
+
+.booking_left {
+  flex: 2;
+}
+
+.booking_right {
+  flex: 1;
+}
+
+/* MAIN CARD */
+.booking_card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+}
+
+.booking_id span {
+  color: #18a34a;
+  font-weight: 600;
+}
+
+.divider {
+  border-top: 1px dashed #ddd;
+  margin: 20px 0;
+}
+
+/* INFO ROW */
+.info_row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info_row > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.info_icon {
+  color: #d946ef;
+}
+
+/* CABIN CARD */
+.cabin_card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.guest_row {
+  display: flex;
+  gap: 35px;
+  margin-top: 10px;
+}
+
+.cabin_image img {
+  width: 110px;
+  border-radius: 8px;
+}
+
+/* PRICE CARD */
+.price_card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.price_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price_header span {
+  color: #3b82f6;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.price_total {
+  margin-top: 15px;
+  background: #f4e6ea;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.price_total h2 {
+  color: #9333ea;
+  margin-top: 5px;
+}
+
+/* AGREE BOX */
+.agree_box {
+  margin: 20px 0;
+  padding: 12px;
+  background: #f3f3f3;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+/* BUTTON */
+.proceed_btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #c86dd7, #e9a5a5);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.proceed_btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -20,6 +20,8 @@ import Profile from "./Pages/MyProfile/Profile";
 
 import ViewItinerary from "./Pages/ViewItinerary/ViewItinerary";
 import BookNow from "./Pages/BookNow/BookNow";
+import AuthPage from "./AuthPage/AuthPage";
+
 
 import "./App.css";
 
@@ -65,6 +67,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/offers" element={<Offers />} />
+        <Route path="/login" element={<AuthPage />} />
+        <Route path="/register" element={<AuthPage />} />
         <Route path="/destinations" element={<Destinations />} />
         <Route path="/CordeliaSky" element={<CordeliaSky />} />
         <Route path="/CordeliaSun" element={<CordeliaSun />} />

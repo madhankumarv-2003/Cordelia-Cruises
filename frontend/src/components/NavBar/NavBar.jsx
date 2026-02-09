@@ -5,12 +5,12 @@ import {
   Container,
   Button,
   NavDropdown,
-  Modal,
   Offcanvas,
 } from "react-bootstrap";
 import { FaSuitcase, FaSignOutAlt, FaUser, FaChevronDown, FaChevronRight } from "react-icons/fa";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import AuthModal from "../../AuthPage/AuthPage";
 
 import logoWhite from "./images/cordelia-new-white-logo.svg";
 import logoColor from "./images/cordelia-new-logo.svg";
@@ -361,122 +361,27 @@ const NavBar = () => {
         </Offcanvas.Body>
       </Offcanvas>
 
-      {/* Login/Register Modal */}
-
-       <Modal show={showLogin} onHide={() => setShowLogin(false)} centered backdrop="static">
-        <Modal.Body className="p-4 text-center position-relative">
-          <button onClick={() => setShowLogin(false)}
-            style={{ position: "absolute", top: 12, right: 15, background: "transparent", border: "none", fontSize: 22 }}>✕</button>
-
-          <img src={logoColor} height="40" className="mb-3" />
-
-           {authMode === "login" && (
-            <>
-              <h5 className="mb-3">Login</h5>
-              <input
-                className="form-control mb-1"
-                placeholder="Email"
-                value={loginForm.email}
-                onChange={(e) => setLoginForm({ ...loginForm, email: e.target.value })}
-              />
-              {errors.email && <div className="text-danger">{errors.email}</div>}
-
-              <div className="position-relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  className="form-control mb-2"
-                  placeholder="Password"
-                  value={loginForm.password}
-                  onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
-                />
-
-                <span
-                  onClick={() => setShowPassword(!showPassword)}
-                  style={{
-                    position: "absolute",
-                    right: 10,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    cursor: "pointer"
-                  }}
-                >
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </span>
-              </div>
-              {errors.password && <div className="text-danger">{errors.password}</div>}
-
-              <Button className="w-100 mb-2" onClick={handleLogin}>Login</Button>
-
-              <p style={{ fontSize: 14 }}>
-                New user? <span style={{ color: "#b12a87", cursor: "pointer" }}
-                  onClick={() => { setAuthMode("register"); setErrors({}); }}>Register here</span>
-              </p>
-            </>
-          )}
-
-          {/* REGISTER */}
-          {authMode === "register" && (
-            <>
-              <h5 className="mb-3">Create Account</h5>
-
-              <input className="form-control mb-1" placeholder="First Name"
-                value={regForm.fname}
-                onChange={(e) => setRegForm({ ...regForm, fname: e.target.value })}/>
-              {errors.fname && <div className="text-danger">{errors.fname}</div>}
-
-              <input className="form-control mb-1" placeholder="Last Name"
-                value={regForm.lname}
-                onChange={(e) => setRegForm({ ...regForm, lname: e.target.value })}/>
-              {errors.lname && <div className="text-danger">{errors.lname}</div>}
-
-              <input className="form-control mb-1" placeholder="Phone Number"
-                value={regForm.phone}
-                onChange={(e) => setRegForm({ ...regForm, phone: e.target.value })}/>
-              {errors.phone && <div className="text-danger">{errors.phone}</div>}
-
-              <input type="date" className="form-control mb-1"
-                value={regForm.dob}
-                onChange={(e) => setRegForm({ ...regForm, dob: e.target.value })}/>
-              {errors.dob && <div className="text-danger">{errors.dob}</div>}
-
-              <input className="form-control mb-1" placeholder="Email"
-                value={regForm.email}
-                onChange={(e) => setRegForm({ ...regForm, email: e.target.value })}/>
-              {errors.email && <div className="text-danger">{errors.email}</div>}
-
-             <div className="position-relative">
-                <input
-                  type={showRegPassword ? "text" : "password"}
-                  className="form-control mb-2"
-                  placeholder="Password"
-                  value={regForm.password}
-                  onChange={(e) => setRegForm({ ...regForm, password: e.target.value })}
-                />
-
-                <span
-                  onClick={() => setShowRegPassword(!showRegPassword)}
-                  style={{
-                    position: "absolute",
-                    right: 10,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    cursor: "pointer"
-                  }}
-                >
-                  {showRegPassword ? <FaEyeSlash /> : <FaEye />}
-                </span>
-              </div>
-              <Button className="w-100 mb-2" onClick={handleRegister}>Register</Button>
-
-              <p style={{ fontSize: 14 }}>
-                Already have an account?{" "}
-                <span style={{ color: "#b12a87", cursor: "pointer" }}
-                  onClick={() => { setAuthMode("login"); setErrors({}); }}>Login</span>
-              </p>
-            </>
-          )}
-        </Modal.Body>
-      </Modal>
+      <AuthModal
+        showLogin={showLogin}
+        setShowLogin={setShowLogin}
+        authMode={authMode}
+        setAuthMode={setAuthMode}
+        loginForm={loginForm}
+        setLoginForm={setLoginForm}
+        regForm={regForm}
+        setRegForm={setRegForm}
+        handleLogin={handleLogin}
+        handleRegister={handleRegister}
+        errors={errors}
+        showPassword={showPassword}
+        setShowPassword={setShowPassword}
+        showRegPassword={showRegPassword}
+        setShowRegPassword={setShowRegPassword}
+        logoColor={logoColor}
+        show={showLogin}
+        handleClose={() => setShowLogin(false)}
+        onLoginSuccess={() => setIsLoggedIn(true)}
+      />
     </>
   );
 };

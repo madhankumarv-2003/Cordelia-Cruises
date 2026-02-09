@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import { Container, Button } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
-import logoColor from "../components/images/cordelia-new-logo.svg"; // adjust path
+import logoColor from "../components/NavBar/images/cordelia-new-logo.svg";
 
-import "./AuthPage.css";
-
-const AuthPage = () => {
-  const navigate = useNavigate();
-
+const AuthModal = ({ show, handleClose, onLoginSuccess }) => {
   const [authMode, setAuthMode] = useState("login");
   const [showPassword, setShowPassword] = useState(false);
   const [showRegPassword, setShowRegPassword] = useState(false);
@@ -25,30 +20,44 @@ const AuthPage = () => {
 
   const [errors, setErrors] = useState({});
 
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.com$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^[0-9]{10}$/;
   const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9]).{6,}$/;
 
   // ================= REGISTER =================
   const handleRegister = () => {
-    const e = {};
+    let newErrors = {};
 
-    if (!regForm.fname.trim()) e.fname = "First name required";
-    if (!regForm.lname.trim()) e.lname = "Last name required";
-    if (!phoneRegex.test(regForm.phone)) e.phone = "Phone must be 10 digits";
-    if (!regForm.dob) e.dob = "Date of birth required";
-    if (!emailRegex.test(regForm.email)) e.email = "Valid email required";
+    if (!regForm.fname.trim())
+      newErrors.fname = "First name is required";
+
+    if (!regForm.lname.trim())
+      newErrors.lname = "Last name is required";
+
+    if (!phoneRegex.test(regForm.phone))
+      newErrors.phone = "Phone must be 10 digits";
+
+    if (!regForm.dob)
+      newErrors.dob = "Date of birth is required";
+
+    if (!emailRegex.test(regForm.email))
+      newErrors.email = "Enter valid email address";
+
     if (!passwordRegex.test(regForm.password))
-      e.password = "Password must contain uppercase + number + 6 chars";
+      newErrors.password =
+        "Password must have 6+ chars, 1 uppercase & 1 number";
 
-    setErrors(e);
+    const existingUser = JSON.parse(localStorage.getItem("user"));
+    if (existingUser && existingUser.email === regForm.email)
+      newErrors.email = "Email already registered";
 
-    if (Object.keys(e).length !== 0) return;
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
 
     localStorage.setItem("user", JSON.stringify(regForm));
 
-    alert("Registration successful! Please login.");
-    setAuthMode("login");
     setRegForm({
       fname: "",
       lname: "",
@@ -57,187 +66,266 @@ const AuthPage = () => {
       email: "",
       password: "",
     });
+
+    setErrors({});
+    setAuthMode("login");
+    setShowRegPassword(false);
   };
 
   // ================= LOGIN =================
   const handleLogin = () => {
-    const stored = JSON.parse(localStorage.getItem("user"));
-    const e = {};
+    let newErrors = {};
 
-    if (!stored) {
-      alert("No user found. Please register.");
-      setAuthMode("register");
+    if (!loginForm.email.trim())
+      newErrors.loginEmail = "Email is required";
+
+    if (!loginForm.password.trim())
+      newErrors.loginPassword = "Password is required";
+
+    if (loginForm.email && !emailRegex.test(loginForm.email))
+      newErrors.loginEmail = "Invalid email format";
+
+    const stored = JSON.parse(localStorage.getItem("user"));
+
+    if (!stored)
+      newErrors.loginEmail = "No account found. Please register.";
+
+    if (
+      stored &&
+      (loginForm.email !== stored.email ||
+        loginForm.password !== stored.password)
+    ) {
+      newErrors.loginPassword = "Incorrect email or password";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
-    if (loginForm.email !== stored.email)
-      e.email = "Email not registered";
-    if (loginForm.password !== stored.password)
-      e.password = "Incorrect password";
-
-    setErrors(e);
-
-    if (Object.keys(e).length !== 0) return;
-
     localStorage.setItem("isLoggedIn", "true");
 
-    alert("Login successful!");
-    navigate("/");
+    setLoginForm({ email: "", password: "" });
+    setErrors({});
+    setShowPassword(false);
+
+    onLoginSuccess();
+    handleClose();
+  };
+
+  const handleInputChange = (formSetter, form, field, value) => {
+    formSetter({ ...form, [field]: value });
+    setErrors({ ...errors, [field]: "" });
   };
 
   return (
-    <div className="auth-page">
-      <Container className="auth-container">
+    <Modal show={show} onHide={handleClose} centered backdrop="static">
+      <Modal.Body className="p-4 text-center position-relative">
 
-        <div className="auth-card">
-          <img src={logoColor} alt="Logo" height="40" className="mb-3" />
+        <button
+          onClick={handleClose}
+          style={{
+            position: "absolute",
+            top: 12,
+            right: 15,
+            background: "transparent",
+            border: "none",
+            fontSize: 22,
+          }}
+        >
+          ✕
+        </button>
 
-          {authMode === "login" ? (
-            <>
-              <h4>Login</h4>
+        <img src={logoColor} height="40" className="mb-3" alt="logo" />
 
+        {authMode === "login" ? (
+          <>
+            <h5>Login</h5>
+
+            <input
+              className="form-control"
+              placeholder="Email"
+              value={loginForm.email}
+              onChange={(e) =>
+                handleInputChange(
+                  setLoginForm,
+                  loginForm,
+                  "email",
+                  e.target.value
+                )
+              }
+            />
+            {errors.loginEmail && (
+              <small className="text-danger">{errors.loginEmail}</small>
+            )}
+
+            <div className="position-relative mt-2">
               <input
-                className="form-control mb-2"
-                placeholder="Email"
-                value={loginForm.email}
+                type={showPassword ? "text" : "password"}
+                className="form-control"
+                placeholder="Password"
+                value={loginForm.password}
                 onChange={(e) =>
-                  setLoginForm({ ...loginForm, email: e.target.value })
+                  handleInputChange(
+                    setLoginForm,
+                    loginForm,
+                    "password",
+                    e.target.value
+                  )
                 }
               />
-              {errors.email && <div className="text-danger">{errors.email}</div>}
+              <span
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: "absolute",
+                  right: 10,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                }}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
+            {errors.loginPassword && (
+              <small className="text-danger">{errors.loginPassword}</small>
+            )}
 
-              <div className="position-relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  className="form-control mb-2"
-                  placeholder="Password"
-                  value={loginForm.password}
-                  onChange={(e) =>
-                    setLoginForm({ ...loginForm, password: e.target.value })
-                  }
-                />
-                <span
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="password-toggle"
-                >
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </span>
-              </div>
-              {errors.password && (
-                <div className="text-danger">{errors.password}</div>
-              )}
+            <Button className="w-100 mt-3" onClick={handleLogin}>
+              Login
+            </Button>
 
-              <Button className="w-100 mb-3" onClick={handleLogin}>
-                Login
-              </Button>
-
-              <p>
-                New user?{" "}
-                <span
-                  className="auth-link"
-                  onClick={() => {
-                    setAuthMode("register");
-                    setErrors({});
-                  }}
-                >
-                  Register here
-                </span>
-              </p>
-            </>
-          ) : (
-            <>
-              <h4>Create Account</h4>
-
-              <input
-                className="form-control mb-2"
-                placeholder="First Name"
-                value={regForm.fname}
-                onChange={(e) =>
-                  setRegForm({ ...regForm, fname: e.target.value })
-                }
-              />
-              {errors.fname && <div className="text-danger">{errors.fname}</div>}
-
-              <input
-                className="form-control mb-2"
-                placeholder="Last Name"
-                value={regForm.lname}
-                onChange={(e) =>
-                  setRegForm({ ...regForm, lname: e.target.value })
-                }
-              />
-              {errors.lname && <div className="text-danger">{errors.lname}</div>}
-
-              <input
-                className="form-control mb-2"
-                placeholder="Phone"
-                value={regForm.phone}
-                onChange={(e) =>
-                  setRegForm({ ...regForm, phone: e.target.value })
-                }
-              />
-              {errors.phone && <div className="text-danger">{errors.phone}</div>}
-
-              <input
-                type="date"
-                className="form-control mb-2"
-                value={regForm.dob}
-                onChange={(e) =>
-                  setRegForm({ ...regForm, dob: e.target.value })
-                }
-              />
-              {errors.dob && <div className="text-danger">{errors.dob}</div>}
-
-              <input
-                className="form-control mb-2"
-                placeholder="Email"
-                value={regForm.email}
-                onChange={(e) =>
-                  setRegForm({ ...regForm, email: e.target.value })
-                }
-              />
-              {errors.email && <div className="text-danger">{errors.email}</div>}
-
-              <div className="position-relative">
-                <input
-                  type={showRegPassword ? "text" : "password"}
-                  className="form-control mb-2"
-                  placeholder="Password"
-                  value={regForm.password}
-                  onChange={(e) =>
-                    setRegForm({ ...regForm, password: e.target.value })
-                  }
-                />
-                <span
-                  onClick={() => setShowRegPassword(!showRegPassword)}
-                  className="password-toggle"
-                >
-                  {showRegPassword ? <FaEyeSlash /> : <FaEye />}
-                </span>
-              </div>
-
-              <Button className="w-100 mb-3" onClick={handleRegister}>
+            <p className="mt-2">
+              New user?{" "}
+              <span
+                style={{ color: "#b12a87", cursor: "pointer" }}
+                onClick={() => {
+                  setAuthMode("register");
+                  setErrors({});
+                }}
+              >
                 Register
-              </Button>
+              </span>
+            </p>
+          </>
+        ) : (
+          <>
+            <h5>Create Account</h5>
 
-              <p>
-                Already have an account?{" "}
-                <span
-                  className="auth-link"
-                  onClick={() => {
-                    setAuthMode("login");
-                    setErrors({});
-                  }}
-                >
-                  Login
-                </span>
-              </p>
-            </>
-          )}
-        </div>
-      </Container>
-    </div>
+            {[
+              { name: "fname", placeholder: "First Name" },
+              { name: "lname", placeholder: "Last Name" },
+              { name: "phone", placeholder: "Phone" },
+            ].map((field) => (
+              <div key={field.name} className="mb-2">
+                <input
+                  className="form-control"
+                  placeholder={field.placeholder}
+                  value={regForm[field.name]}
+                  onChange={(e) =>
+                    handleInputChange(
+                      setRegForm,
+                      regForm,
+                      field.name,
+                      e.target.value
+                    )
+                  }
+                />
+                {errors[field.name] && (
+                  <small className="text-danger">
+                    {errors[field.name]}
+                  </small>
+                )}
+              </div>
+            ))}
+
+            <input
+              type="date"
+              className="form-control mb-1"
+              value={regForm.dob}
+              onChange={(e) =>
+                handleInputChange(
+                  setRegForm,
+                  regForm,
+                  "dob",
+                  e.target.value
+                )
+              }
+            />
+            {errors.dob && (
+              <small className="text-danger">{errors.dob}</small>
+            )}
+
+            <input
+              className="form-control mt-2"
+              placeholder="Email"
+              value={regForm.email}
+              onChange={(e) =>
+                handleInputChange(
+                  setRegForm,
+                  regForm,
+                  "email",
+                  e.target.value
+                )
+              }
+            />
+            {errors.email && (
+              <small className="text-danger">{errors.email}</small>
+            )}
+
+            <div className="position-relative mt-2">
+              <input
+                type={showRegPassword ? "text" : "password"}
+                className="form-control"
+                placeholder="Password"
+                value={regForm.password}
+                onChange={(e) =>
+                  handleInputChange(
+                    setRegForm,
+                    regForm,
+                    "password",
+                    e.target.value
+                  )
+                }
+              />
+              <span
+                onClick={() => setShowRegPassword(!showRegPassword)}
+                style={{
+                  position: "absolute",
+                  right: 10,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  cursor: "pointer",
+                }}
+              >
+                {showRegPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
+            {errors.password && (
+              <small className="text-danger">{errors.password}</small>
+            )}
+
+            <Button className="w-100 mt-3" onClick={handleRegister}>
+              Register
+            </Button>
+
+            <p className="mt-2">
+              Already have account?{" "}
+              <span
+                style={{ color: "#b12a87", cursor: "pointer" }}
+                onClick={() => {
+                  setAuthMode("login");
+                  setErrors({});
+                }}
+              >
+                Login
+              </span>
+            </p>
+          </>
+        )}
+      </Modal.Body>
+    </Modal>
   );
 };
 
-export default AuthPage;
+export default AuthModal;

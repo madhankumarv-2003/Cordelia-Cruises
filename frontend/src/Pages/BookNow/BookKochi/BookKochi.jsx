@@ -7,18 +7,21 @@ import whatsapp from "../../../components/ContactBar/images/whatsapp-new-icon.sv
 
 import { useNavigate } from "react-router-dom";
 import CruiseLayout from "./CruiseLayout/CruiseLayout";
+import BookingSummary from "./Summary/BookingSummary";
+
 import "./BookKochi.css";
 
 const BookKochi = ({ showContact = true }) => {
   const navigate = useNavigate();
 
   const [currentStep, setCurrentStep] = useState(1);
+  const [bookingData, setBookingData] = useState(null);
 
-  const steps = [
-    { id: 1, label: "Select Cabin" },
-    { id: 2, label: "Payment Summary" },
-    { id: 3, label: "Payments" },
-  ];
+  // ✅ Called from CruiseLayout
+  const handleNext = (data) => {
+    setBookingData(data);
+    setCurrentStep(2);
+  };
 
   const nextStep = () => {
     if (currentStep < 3) {
@@ -31,6 +34,12 @@ const BookKochi = ({ showContact = true }) => {
       setCurrentStep((prev) => prev - 1);
     }
   };
+
+  const steps = [
+    { id: 1, label: "Select Cabin" },
+    { id: 2, label: "Payment Summary" },
+    { id: 3, label: "Payments" },
+  ];
 
   return (
     <>
@@ -87,7 +96,11 @@ const BookKochi = ({ showContact = true }) => {
                   : ""
               }`}
             >
-              {currentStep > step.id ? "✔" : currentStep === step.id ? "" : step.id}
+              {currentStep > step.id
+                ? "✔"
+                : currentStep === step.id
+                ? ""
+                : step.id}
             </div>
 
             <p className="step-label">{step.label}</p>
@@ -96,35 +109,26 @@ const BookKochi = ({ showContact = true }) => {
       </div>
 
       {/* ================= STEP CONTENT ================= */}
+
+      {/* STEP 1 */}
       {currentStep === 1 && (
-        <CruiseLayout
+        <CruiseLayout nextStep={handleNext} />
+      )}
+
+      {/* STEP 2 */}
+      {currentStep === 2 && (
+        <BookingSummary
+          bookingData={bookingData}
           nextStep={nextStep}
+          prevStep={prevStep}
         />
       )}
 
-
-      {currentStep === 2 && (
-        <div className="step-content">  
-          <h3>Payment Summary</h3>
-          <button onClick={prevStep}>Back</button>
-          <button onClick={nextStep}>Proceed to Payment</button>
-        </div>
-      )}
-
+      {/* STEP 3 */}
       {currentStep === 3 && (
-        <div className="step-content">
+        <div className="step-content" style={{ padding: "40px" }}>
           <h3>Payment Page</h3>
           <button onClick={prevStep}>Back</button>
-        </div>
-      )}
-
-      {/* ================= FOOTER BUTTON ================= */}
-      {currentStep === 1 && (
-        <div className="bottom-btn">
-          <button onClick={nextStep} className="primary-btn">
-            Continue
-          </button>
-          
         </div>
       )}
     </>

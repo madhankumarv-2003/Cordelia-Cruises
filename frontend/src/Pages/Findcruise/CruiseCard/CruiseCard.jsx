@@ -39,7 +39,7 @@ const CruiseCard = () => {
       route: "Kochi Round Trip",
       ports: "Kochi • Kochi",
       price: "₹24,900",
-      viewing: 188,
+      viewing: 200,
       img: Img4
     },
     {
@@ -327,10 +327,15 @@ const CruiseCard = () => {
 
                 <button
                   className="crz-btn-booknow mb-2"
-                  onClick={() => navigate(`/book/${item.id}`)}
+                  onClick={() =>
+                    navigate(`/book/${item.id}`, {
+                      state: { selectedCruise: item }
+                    })
+                  }
                 >
                   Book Now
                 </button>
+
               </div>
             </div>
 

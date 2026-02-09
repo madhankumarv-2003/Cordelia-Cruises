@@ -6,9 +6,10 @@ import { FaShip, FaWalking, FaPencilAlt } from "react-icons/fa";
 import Kochi1Slider from "./Kochi1Slider/Kochi1Slider";
 import Inclusions from "./Inclusions/Inclusions";
 import Itinerary from "./Itinerary/Itinerary";
+
 import "./Kochi1.css";
 
-const Kochi1 = ({ openLogin }) => {
+const Kochi1 = () => {
   const navigate = useNavigate();
 
   const cruisedata = {
@@ -18,16 +19,6 @@ const Kochi1 = ({ openLogin }) => {
     disembark: "Jan 26, 2026",
     ports: ["Mumbai", "Goa", "Goa", "Mumbai"],
     price: "43,424",
-  };
-
-  const handleViewCabins = () => {
-    const token = localStorage.getItem("token");
-
-    if (token) {
-      navigate("/cabins"); // change to your cabins route
-    } else {
-      openLogin(); // open your existing login modal
-    }
   };
 
   return (
@@ -79,7 +70,7 @@ const Kochi1 = ({ openLogin }) => {
         <div>
           <button
             className="cps_btnCabin"
-            onClick={handleViewCabins}
+            onClick={() => navigate("/find-cruise")}
           >
             View Cabins
           </button>
