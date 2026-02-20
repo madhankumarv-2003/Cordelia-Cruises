@@ -1,160 +1,211 @@
 import React, { useState } from "react";
-import {
-  FaCalendarAlt,
-  FaBed,
-  FaUsers,
-  FaShip,
-  FaChevronRight
-} from "react-icons/fa";
 import "./BookingSummary.css";
 
-export default function BookingSummary({ bookingData }) {
+export default function BookingSummary({ booking }) {
+
+  const [isNRI, setIsNRI] = useState(false);
+  const [hasGST, setHasGST] = useState(false);
+
+  if (!booking) return <h2>No Booking Data</h2>;
+
   const {
-    bookingId = "C-JFUKQ97632",
-    selectedCabin = {},
+    selectedCabin,
     cabins = [],
-    totalGuests = 1,
-    totalPrice = 58405,
-  } = bookingData || {};
-
-  const [isAgreed, setIsAgreed] = useState(false);
-
-  if (!selectedCabin) return null;
+    totalGuests = 0,
+    totalPrice = 0,
+    getDuration,
+    cruise
+  } = booking;
 
   return (
-    <div className="booking_container">
+    <div className="booking-wrapper">
 
-      {/* LEFT SIDE */}
-      <div className="booking_left">
+      {/* ================= LEFT SIDE ================= */}
+      <div className="booking-left">
 
-        <div className="booking_card">
+        {/* BOOKING CARD */}
+        <div className="booking-card">
+          <h4 className="booking-id">Booking ID: C-JLYF061946</h4>
 
-          <p className="booking_id">
-            Booking ID: <span>{bookingId}</span>
+          <p>
+            {cruise?.ports?.replace(" • ", " - ")} ({getDuration?.()})
           </p>
 
-          <h2>Mumbai - Mumbai (2N/3D)</h2>
+          <hr />
 
-          <div className="divider" />
+          <h3>Visiting Ports:</h3>
+          <p className="p1">{cruise?.ports?.replace(" • ", " | ")}</p>
 
-          <div className="visiting_ports">
-            <h4>Visiting Ports:</h4>
-            <p>Mumbai | Mumbai</p>
-          </div>
+          <hr />
 
-          <div className="divider" />
-
-          <div className="info_row">
+          <div className="info-row">
             <div>
-              <FaCalendarAlt className="info_icon" />
-              <div>
-                <p>Sailing Dates</p>
-                <strong>7th Feb 2026 - 9th Feb 2026</strong>
-              </div>
+              <p className="label">Sailing Dates</p>
+              <p>{cruise?.start} - {cruise?.end}</p>
             </div>
 
             <div>
-              <FaBed className="info_icon" />
-              <div>
-                <p>Total Cabins</p>
-                <strong>{cabins.length}</strong>
-              </div>
+              <p className="label">Total Cabins</p>
+              <p>{cabins.length.toString().padStart(2, "0")}</p>
             </div>
 
             <div>
-              <FaUsers className="info_icon" />
-              <div>
-                <p>Total Guests</p>
-                <strong>{totalGuests}</strong>
-              </div>
+              <p className="label">Total Guests</p>
+              <p>{totalGuests.toString().padStart(2, "0")}</p>
             </div>
 
             <div>
-              <FaShip className="info_icon" />
-              <div>
-                <p>Cruise</p>
-                <strong>EMPRESS</strong>
-              </div>
+              <p className="label">Cruise</p>
+              <p>EMPRESS</p>
             </div>
           </div>
         </div>
 
         {/* CABIN CARD */}
-        {cabins.map((cabin, index) => (
-          <div key={cabin.id} className="cabin_card">
+        <div className="cabin-card mt-4">
+          <div className="cabin-left">
+            <p>Cabin 01</p>
+            <h3>{selectedCabin?.title}</h3>
+          </div>
 
-            <div className="cabin_left">
-              <p>Cabin {index + 1}</p>
-              <h3>{selectedCabin.title}</h3>
-            </div>
+          <div className="cabin-middle">
+            <h4>Total Guests: {totalGuests}</h4>
 
-            <div className="cabin_middle">
-              <h4>
-                <FaUsers className="guest_icon" /> Total Guests:{" "}
-                {cabin.adults + cabin.children + cabin.infants}
-              </h4>
-
-              <div className="guest_row">
-                <div>
-                  <p>Adults</p>
-                  <strong>{cabin.adults}</strong>
-                </div>
-                <div>
-                  <p>Children</p>
-                  <strong>{cabin.children}</strong>
-                </div>
-                <div>
-                  <p>Infants</p>
-                  <strong>{cabin.infants}</strong>
-                </div>
+            <div className="guest-row">
+              <div>
+                <p>Adults</p>
+                <strong>{cabins[0]?.adults || 0}</strong>
+              </div>
+              <div>
+                <p>Children</p>
+                <strong>{cabins[0]?.children || 0}</strong>
+              </div>
+              <div>
+                <p>Infants</p>
+                <strong>{cabins[0]?.infant || 0}</strong>
               </div>
             </div>
+          </div>
 
-            <div className="cabin_image">
-              <img
-                src={selectedCabin.image}
-                alt="cabin"
-              />
+          <div className="cabin-img">
+            <img src={selectedCabin?.image} alt="cabin" />
+          </div>
+        </div>
+
+        {/* APPLY COUPON */}
+        <div className="simple-card mt-4">
+          <h3>🎟️ Apply Coupon</h3>
+
+          <div className="coupon-box">
+            <input placeholder="Have a coupon code?" />
+            <button>Apply</button>
+          </div>
+        </div>
+
+        {/* BILLING DETAILS */}
+        <div className="billing-card mt-4">
+          <h3 className="billing-title">Billing Details</h3>
+
+          <label className="check-row">
+            <input
+              type="checkbox"
+              checked={isNRI}
+              onChange={(e) => setIsNRI(e.target.checked)}
+            />
+            <span>I am a NRI</span>
+          </label>
+
+          <div className={`billing-grid ${isNRI ? "nri" : ""}`}>
+
+            {!isNRI && <input placeholder="Pan Number" />}
+
+            <input
+              placeholder={
+                isNRI
+                  ? "Full Name as per Government ID"
+                  : "Full Name as per Pan Card"
+              }
+              className={isNRI ? "full-width" : ""}
+            />
+
+            <input placeholder="Email" />
+
+            <div className="phone-box">
+              <select>
+                <option>+91</option>
+              </select>
+              <input placeholder="Phone Number" />
             </div>
 
-          </div>
-        ))}
+            <input placeholder="Address" />
+            <input placeholder="Pincode" />
 
-      </div>
-
-      {/* RIGHT SIDE */}
-      <div className="booking_right">
-
-        <div className="price_card">
-          <div className="price_header">
-            <h3>Price Details</h3>
-            <span>View Price Breakup</span>
-          </div>
-
-          <div className="price_total">
-            <p>Grand Total</p>
-            <h2>₹ {totalPrice.toLocaleString()}</h2>
           </div>
         </div>
 
-        <div className="agree_box">
-          <input
-            type="checkbox"
-            checked={isAgreed}
-            onChange={() => setIsAgreed(!isAgreed)}
-          />
+        {/* GST DETAILS */}
+        <div className="gst-card mt-4">
+
+          <label className="check-row gst-check">
+            <input
+              type="checkbox"
+              checked={hasGST}
+              onChange={(e) => setHasGST(e.target.checked)}
+            />
+
+            <span>
+              I Have a GST Number
+              <small>
+                (Kindly submit GST details for seamless filing of your tax return)
+              </small>
+            </span>
+          </label>
+
+          {hasGST && (
+            <div className="gst-content">
+              <div className="gst-grid">
+                <input placeholder="GSTIN" />
+                <input placeholder="Name" />
+              </div>
+
+              <p className="gst-note">
+                Note: GST Number once submitted will not be subject to change.
+              </p>
+
+            </div>
+          )}
+
+        </div>
+
+      </div>
+      {/* ===== END LEFT SIDE ===== */}
+
+
+      {/* ================= RIGHT SIDE ================= */}
+      <div className="booking-right">
+
+        <div className="price-card">
+          <h3>Price Details</h3>
+
+          <div className="total-box">
+            <span>Grand Total</span>
+            <strong>₹ {totalPrice.toLocaleString()}</strong>
+          </div>
+
+          <p className="emi">
+            No-Cost EMI starts at ₹ {(totalPrice / 9).toFixed(0)} /month
+          </p>
+        </div>
+
+        <div className="agree-box">
+          <input type="checkbox" />
           <span>By clicking Agree and Continue, I hereby:</span>
-          <FaChevronRight />
         </div>
 
-        <button
-          className="proceed_btn"
-          disabled={!isAgreed}
-        >
-          Proceed
-        </button>
+        <button className="proceed-btn">Proceed</button>
 
       </div>
+
     </div>
   );
 }

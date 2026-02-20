@@ -749,13 +749,16 @@ body {
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: #111;
+  color:white;
   font-size: 15px;
   gap: 6px;
   padding: 10px 0px;
   left: -20px;
 }
 
+.navbar-scrolled .account-wrapper{
+  color: #000;
+}
 /* Purple icon (first icon) */
 .account-wrapper svg:first-child {
   color: #8e2b8a;

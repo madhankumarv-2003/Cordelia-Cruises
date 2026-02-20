@@ -4,12 +4,11 @@ import {
   FaPhoneAlt,
   FaUsers,
   FaShip,
-  FaCog
 } from "react-icons/fa";
 import maxcapacity from "./Images/max-capacity-icon.svg";
 import amenities from "./Images/view_amenities.svg";
 
-export default function CruiseLayout({nextStep}) {
+export default function CruiseLayout({ nextStep, cruise }){
 
   const cabinTypes = [
     {
@@ -53,13 +52,36 @@ export default function CruiseLayout({nextStep}) {
       title: "Balcony Suite",
       description: "Luxury suite with private balcony access.",
       price: 85999,
+      startTime:"Wed ",
       capacity: 2,
       image:
         "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2"
     }
   ];
+  
 
-  /* ================= STATES ================= */
+  const portsArray = cruise?.ports?.includes(" • ")
+    ? cruise.ports.split(" • ")
+    : [cruise?.ports || "Departure", cruise?.ports || "Arrival"];
+
+  const departurePort = portsArray[0] || "Departure";
+  const arrivalPort = portsArray[1] || "Arrival";
+
+  const getDuration = () => {
+    if (!cruise?.start || !cruise?.end) return "0N/0D";
+
+    const start = new Date(cruise.start);
+    const end = new Date(cruise.end);
+
+    if (isNaN(start) || isNaN(end)) return "0N/0D";
+
+    const diff = Math.ceil(
+      (end - start) / (1000 * 60 * 60 * 24)
+    );
+
+    return `${diff}N/${diff + 1}D`;
+  };
+
 
   const [selectedCabinId, setSelectedCabinId] = useState(null);
 
@@ -289,17 +311,20 @@ export default function CruiseLayout({nextStep}) {
       <div className="corz_itineraryCard">
 
         <h3 className="corz_tripTitle">
-          Kochi - Lakshadweep - Mumbai
-          <span>(3N/4D)</span>
+          {cruise?.title || "Cruise Route"}
+          <span > ({getDuration()})</span>
         </h3>
 
+        <div className="corz_divider" />
+        
+       
         {/* Timeline */}
         <div className="corz_timelineSection">
 
           <div className="corz_portBlock">
-            <h4>Kochi</h4>
-            <p>Feb 04, 2026</p>
-            <span>Wed, 05:00 PM</span>
+            <h4>{departurePort || "-"}</h4>
+            <p>{cruise?.start ?? "-"}</p>
+            <span>{cruise?.tripStart ?? cruise?.startTime ?? "-"}</span>
           </div>
 
           <div className="corz_timelineMiddle">
@@ -310,9 +335,9 @@ export default function CruiseLayout({nextStep}) {
           </div>
 
           <div className="corz_portBlock">
-            <h4>Mumbai</h4>
-            <p>Feb 07, 2026</p>
-            <span>Sat, 08:30 AM</span>
+            <h4>{arrivalPort || "-"}</h4>
+            <p>{cruise?.end ?? "-"}</p>
+            <span>{cruise?.tripEnd ?? cruise?.endTime ?? "-"}</span>
           </div>
 
         </div>
@@ -321,31 +346,39 @@ export default function CruiseLayout({nextStep}) {
 
         <div className="corz_visitingPorts">
           <h4>Visiting Ports:</h4>
-          <p>Kochi | Lakshadweep | Mumbai</p>
-        </div>
+          <p>
+            {cruise?.ports
+              ? cruise.ports.replace(/ • /g, " | ")
+              : "-"}
+          </p>
 
+        </div>
         <div className="corz_divider" />
 
-        <div className="corz_summaryRow">
+        {selectedCabin && (
+          <div className="corz_summaryRow">
 
-          <div className="corz_summaryLeft">
-            <strong>
-              {selectedCabin ? "01 Cabin" : "00 Cabin"}
-            </strong>
-            <span>
-              <FaUsers />{" "}
-              {selectedCabin ? `${totalGuests} Guests` : "00 Guests"}
-            </span>
+            <div className="corz_summaryLeft">
+              <strong>
+                <FaUsers /> {cabins.length.toString().padStart(2, "0")} Cabin
+                {cabins.length > 1 ? "s" : ""}
+              </strong>
+
+              <span>
+                <FaUsers /> {totalGuests}Guests
+              </span>
+            </div>
+
+            <div className="corz_summaryRight">
+              <h2>₹ {totalPrice.toLocaleString()}</h2>
+              <span>Excl. GST charges</span>
+            </div>
+
           </div>
+        )}
 
-          <div className="corz_summaryRight">
-            <h2>₹ {totalPrice.toLocaleString()}</h2>
-            <span>Excl. GST charges</span>
-          </div>
 
-        </div>
-
-        <button 
+       <button
           className="corz_proceedBtn"
           disabled={!isValid}
           onClick={() => {
@@ -353,7 +386,9 @@ export default function CruiseLayout({nextStep}) {
               selectedCabin,
               cabins,
               totalGuests,
-              totalPrice
+              totalPrice,
+              getDuration,
+              cruise
             });
           }}
         >

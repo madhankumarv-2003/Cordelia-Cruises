@@ -12,7 +12,7 @@
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
     "@fontsource/open-sans": "^5.2.7",
-    "axios": "^1.13.2",
+    "axios": "^1.13.5",
     "bootstrap": "^5.3.8",
     "lucide-react": "^0.554.0",
     "react": "^19.1.1",

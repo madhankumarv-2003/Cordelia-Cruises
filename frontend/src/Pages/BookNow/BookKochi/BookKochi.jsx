@@ -6,33 +6,33 @@ import leftarrow from "./Images/left-arrow.svg";
 import whatsapp from "../../../components/ContactBar/images/whatsapp-new-icon.svg";
 
 import { useNavigate } from "react-router-dom";
+
 import CruiseLayout from "./CruiseLayout/CruiseLayout";
 import BookingSummary from "./Summary/BookingSummary";
 
 import "./BookKochi.css";
 
-const BookKochi = ({ showContact = true }) => {
+const BookKochi = ({ showContact = true, cruise }) => {
   const navigate = useNavigate();
 
   const [currentStep, setCurrentStep] = useState(1);
   const [bookingData, setBookingData] = useState(null);
 
-  // ✅ Called from CruiseLayout
+  // STEP 1 → STEP 2
   const handleNext = (data) => {
-    setBookingData(data);
+    setBookingData({
+      cruise,
+      ...data
+    });
     setCurrentStep(2);
   };
 
   const nextStep = () => {
-    if (currentStep < 3) {
-      setCurrentStep((prev) => prev + 1);
-    }
+    setCurrentStep((prev) => prev + 1);
   };
 
   const prevStep = () => {
-    if (currentStep > 1) {
-      setCurrentStep((prev) => prev - 1);
-    }
+    setCurrentStep((prev) => prev - 1);
   };
 
   const steps = [
@@ -41,13 +41,16 @@ const BookKochi = ({ showContact = true }) => {
     { id: 3, label: "Payments" },
   ];
 
+  if (!cruise) {
+    return <h2>No cruise selected</h2>;
+  }
+
   return (
     <>
-      {/* ================= HEADER ================= */}
+      {/* HEADER */}
       <header className="cabin-header">
         <div className="cabin-left">
           <img src={logo} alt="logo" className="cabin-logo" />
-
           <div className="divider"></div>
 
           <img
@@ -108,25 +111,24 @@ const BookKochi = ({ showContact = true }) => {
         ))}
       </div>
 
-      {/* ================= STEP CONTENT ================= */}
-
-      {/* STEP 1 */}
+      {/* STEP CONTENT */}
       {currentStep === 1 && (
-        <CruiseLayout nextStep={handleNext} />
+        <CruiseLayout
+          nextStep={handleNext}
+          cruise={cruise}
+        />
       )}
 
-      {/* STEP 2 */}
       {currentStep === 2 && (
         <BookingSummary
-          bookingData={bookingData}
+          booking={bookingData}
           nextStep={nextStep}
           prevStep={prevStep}
         />
       )}
 
-      {/* STEP 3 */}
       {currentStep === 3 && (
-        <div className="step-content" style={{ padding: "40px" }}>
+        <div style={{ padding: "40px" }}>
           <h3>Payment Page</h3>
           <button onClick={prevStep}>Back</button>
         </div>

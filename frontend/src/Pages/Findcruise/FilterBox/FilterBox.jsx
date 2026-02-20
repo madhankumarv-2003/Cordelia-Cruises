@@ -17,15 +17,10 @@ const nightsList = [2, 3, 4, 5, 6, 7, 10, 34];
 
 const cruises = ["SKY", "SUN", "EMPRESS"];
 
-const FilterBox = () => {
+const FilterBox = ({ filters, setFilters }) => {
+
   const [open, setOpen] = useState(null);
-
-  const [destination, setDestination] = useState("");
-  const [month, setMonth] = useState("");
-  const [year, setYear] = useState(2026);
-  const [nights, setNights] = useState(null);
-  const [cruise, setCruise] = useState("");
-
+  const { destination, month, year, nights, cruise } = filters;
   const wrapperRef = useRef(null);
 
   useEffect(() => {
@@ -70,7 +65,7 @@ const FilterBox = () => {
                   <button
                     key={city}
                     className={`destination-chip ${destination === city ? "active" : ""}`}
-                    onClick={() => setDestination(city)}
+                    onClick={() => setFilters({ ...filters, destination: city })}
                   >
                     {city}
                   </button>
@@ -78,7 +73,7 @@ const FilterBox = () => {
               </div>
 
               <div className="panel-actions">
-                <button className="reset-btn" onClick={() => setDestination("")}>
+                <button className="reset-btn" onClick={() => setFilters({ ...filters, destination: "" })}>
                   RESET
                 </button>
                 <button className="done-btn" onClick={() => setOpen(null)}>
@@ -108,9 +103,9 @@ const FilterBox = () => {
               <h4>Which month would you prefer?</h4>
 
               <div className="year-switch">
-                <button onClick={() => setYear(y => y - 1)}>‹</button>
+                <button onClick={() => setFilters({ ...filters, year: year - 1 })}>‹</button>
                 <span>{year}</span>
-                <button onClick={() => setYear(y => y + 1)}>›</button>
+                <button onClick={() => setFilters({ ...filters, year: year + 1 })}>›</button>
               </div>
 
               <div className="month-grid">
@@ -118,7 +113,8 @@ const FilterBox = () => {
                   <button
                     key={m}
                     className={`destination-chip ${month === m ? "active" : ""}`}
-                    onClick={() => setMonth(m)}
+                    onClick={() => setFilters({ ...filters, month: m })
+                  }
                   >
                     {m}
                   </button>
@@ -129,8 +125,7 @@ const FilterBox = () => {
                 <button
                   className="reset-btn"
                   onClick={() => {
-                    setMonth("");
-                    setYear(2026);
+                    setFilters({ ...filters, month: "", year: 2026 });
                   }}
                 >
                   RESET
@@ -165,7 +160,7 @@ const FilterBox = () => {
                   <button
                     key={n}
                     className={`destination-chip ${nights === n ? "active" : ""}`}
-                    onClick={() => setNights(n)}
+                    onClick={() => setFilters({ ...filters, nights: n })}
                   >
                     {n} Nights
                   </button>
@@ -173,7 +168,7 @@ const FilterBox = () => {
               </div>
 
               <div className="panel-actions">
-                <button className="reset-btn" onClick={() => setNights(null)}>
+                <button className="reset-btn" onClick={() => setFilters({ ...filters, nights: null })}>
                   RESET
                 </button>
                 <button className="done-btn" onClick={() => setOpen(null)}>
@@ -206,7 +201,7 @@ const FilterBox = () => {
                   <button
                     key={c}
                     className={`destination-chip ${cruise === c ? "active" : ""}`}
-                    onClick={() => setCruise(c)}
+                   onClick={() => setFilters({ ...filters, cruise: c })}
                   >
                     {c}
                   </button>
@@ -214,7 +209,7 @@ const FilterBox = () => {
               </div>
 
               <div className="panel-actions">
-                <button className="reset-btn" onClick={() => setCruise("")}>
+                <button className="reset-btn" onClick={() => setFilters({ ...filters, cruise: "" })}>
                   RESET
                 </button>
                 <button className="done-btn" onClick={() => setOpen(null)}>
@@ -234,47 +229,73 @@ const FilterBox = () => {
           <button
             className="clear-all-btn"
             onClick={() => {
-              setDestination("");
-              setMonth("");
-              setYear(2026);
-              setNights(null);
-              setCruise("");
+              setFilters({
+                destination: "",
+                month: "",
+                year: 2026,
+                nights: null,
+                cruise: ""
+              });
             }}
           >
             Clear All ×
           </button>
         )}
+    {destination && (
+      <span className="filter-tag">
+        {destination}
+        <button
+          onClick={() =>
+            setFilters({ ...filters, destination: "" })
+          }
+        >
+          ×
+        </button>
+      </span>
+    )}
 
-        {destination && (
-          <span className="filter-tag">
-            {destination}
-            <button onClick={() => setDestination("")}>×</button>
-          </span>
-        )}
+    {month && (
+      <span className="filter-tag">
+        {formatMonth()}
+        <button
+          onClick={() =>
+            setFilters({ ...filters, month: "" })
+          }
+        >
+          ×
+        </button>
+      </span>
+    )}
 
-        {month && (
-          <span className="filter-tag">
-            {formatMonth()}
-            <button onClick={() => setMonth("")}>×</button>
-          </span>
-        )}
+    {nights && (
+      <span className="filter-tag">
+        {nights} Nights
+        <button
+          onClick={() =>
+            setFilters({ ...filters, nights: null })
+          }
+        >
+          ×
+        </button>
+      </span>
+    )}
 
-        {nights && (
-          <span className="filter-tag">
-            {nights} Nights
-            <button onClick={() => setNights(null)}>×</button>
-          </span>
-        )}
+    {cruise && (
+      <span className="filter-tag">
+        {cruise}
+        <button
+          onClick={() =>
+            setFilters({ ...filters, cruise: "" })
+          }
+        >
+          ×
+        </button>
+      </span>
+    )}
 
-        {cruise && (
-          <span className="filter-tag">
-            {cruise}
-            <button onClick={() => setCruise("")}>×</button>
-          </span>
-        )}
-      </div>
-    </section>
-  );
-};
+          </div>
+        </section>
+    );
+  };
 
 export default FilterBox;

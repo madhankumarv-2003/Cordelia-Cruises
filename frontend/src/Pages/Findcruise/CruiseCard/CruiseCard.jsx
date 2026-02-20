@@ -21,12 +21,26 @@ import Img10 from "../../AllDestinations/Images/cordelia-visakhapatnam-destinati
 import Img11 from "../../AllDestinations/Images/kochi-2-mobile.webp";
 import Img12 from "../../AllDestinations/Images/kochi-3-mobile.webp";
 
+import img1 from "../../ViewItinerary/Kochi1/Images/mumbai-mumbai-map-sep-desktop (1).webp";
+import img2 from "../../ViewItinerary/Kochi1/Images/mumbai-mumbai-map-sep-desktop (1).webp";
+import img3 from "../../ViewItinerary/Kochi1/Images/mumbai-mumbai-map-sep-desktop (1).webp";
+import img4 from "../../ViewItinerary/Kochi1/Images/mumbai-mumbai-map-sep-desktop (1).webp";
+import img5 from "../../ViewItinerary/Kochi1/Images/mumbai-mumbai-map-sep-desktop (1).webp";
+import img6 from "../../ViewItinerary/Kochi1/Images/mumbai-mumbai-map-sep-desktop (1).webp";
+import img7 from "../../ViewItinerary/Kochi1/Images/mumbai-mumbai-map-sep-desktop (1).webp";
+import img8 from "../../ViewItinerary/Kochi1/Images/mumbai-mumbai-map-sep-desktop (1).webp";
+import img9 from "../../ViewItinerary/Kochi1/Images/mumbai-mumbai-map-sep-desktop (1).webp";
+import img10 from "../../ViewItinerary/Kochi1/Images/mumbai-mumbai-map-sep-desktop (1).webp";
+import img11 from "../../ViewItinerary/Kochi1/Images/mumbai-mumbai-map-sep-desktop (1).webp";
+import img12 from "../../ViewItinerary/Kochi1/Images/mumbai-mumbai-map-sep-desktop (1).webp";
+
 import promo1 from "./Images/SNPL_UCP_web.webp";
 import promo2 from "./Images/FamilyFun_Upcoming.webp";
 import promo3 from "./Images/WhySettle_Upcoming.webp";
 import promo4 from "./Images/YourNext_Upcoming.webp";
 
-const CruiseCard = () => {
+const CruiseCard = ({ filters }) => {
+
   const navigate = useNavigate();
 
   const [items] = useState([
@@ -36,11 +50,14 @@ const CruiseCard = () => {
       title: "2-Night Kochi Weekend Cruise",
       start: "Feb 07, 2026",
       end: "Feb 09, 2026",
+      tripStart: "Wed, 05:00 PM",
+      tripEnd: "Sat, 08:30 AM",
       route: "Kochi Round Trip",
       ports: "Kochi • Kochi",
       price: "₹24,900",
       viewing: 200,
-      img: Img4
+      img: Img4,
+      image: img1
     },
     {
       id: 2,
@@ -48,11 +65,14 @@ const CruiseCard = () => {
       title: "3-Night Mumbai to Goa Cruise",
       start: "Feb 14, 2026",
       end: "Feb 17, 2026",
-      route: "Mumbai → Goa",
+      tripStart: "Wed, 05:00 PM",
+      tripEnd: "Sat, 08:30 AM",
+      route: "Mumbai Round Trip",
       ports: "Mumbai • Goa",
       price: "₹39,499",
       viewing: 312,
-      img: Img1
+      img: Img1,
+      image: img2
     },
     {
       id: 3,
@@ -60,11 +80,14 @@ const CruiseCard = () => {
       title: "4-Night Goa to Mumbai Cruise",
       start: "Mar 03, 2026",
       end: "Mar 07, 2026",
-      route: "Goa → Mumbai",
+      tripStart: "Wed, 05:00 PM",
+      tripEnd: "Sat, 08:30 AM",
+      route: "Mumbai One Way Trip",
       ports: "Goa • Mumbai",
       price: "₹41,999",
       viewing: 276,
-      img: Img5
+      img: Img5,
+      image: img3
     },
     {
       id: 4,
@@ -72,23 +95,29 @@ const CruiseCard = () => {
       title: "3-Night Chennai Weekend Cruise",
       start: "Mar 21, 2026",
       end: "Mar 24, 2026",
+      tripStart: "Wed, 05:00 PM",
+      tripEnd: "Sat, 08:30 AM",
       route: "Chennai Round Trip",
       ports: "Chennai • Chennai",
       price: "₹34,500",
       viewing: 201,
-      img: Img3
+      img: Img3,
+      image: img4
     },
     {
       id: 5,
-      ship: "EMPRESS",
+      ship: "SUN",
       title: "5-Night Mumbai to Lakshadweep Cruise",
       start: "Apr 12, 2026",
       end: "Apr 17, 2026",
-      route: "Mumbai → Lakshadweep",
+      tripStart: "Wed, 05:00 PM",
+      tripEnd: "Sat, 08:30 AM",
+      route: "Goa One Way Trip",
       ports: "Mumbai • Lakshadweep",
       price: "₹56,800",
       viewing: 414,
-      img: Img6
+      img: Img6,
+      image: img5
     },
     {
       id: 6,
@@ -96,23 +125,29 @@ const CruiseCard = () => {
       title: "3-Night Lakshadweep Return Cruise",
       start: "Apr 17, 2026",
       end: "Apr 20, 2026",
-      route: "Lakshadweep → Mumbai",
+      tripStart: "Wed, 05:00 PM",
+      tripEnd: "Sat, 08:30 AM",
+      route: "Mumbai Round Trip",
       ports: "Lakshadweep • Mumbai",
       price: "₹48,200",
       viewing: 297,
-      img: Img7
+      img: Img7,
+      image: img6
     },
     {
       id: 7,
-      ship: "EMPRESS",
+      ship: "SUN",
       title: "7-Night Mumbai to Colombo Cruise",
       start: "May 01, 2026",
       end: "May 08, 2026",
-      route: "Mumbai → Colombo",
+      tripStart: "Wed, 05:00 PM",
+      tripEnd: "Sat, 08:30 AM",
+      route: "Kochi One Way Trip",
       ports: "Mumbai • Colombo",
       price: "₹78,300",
       viewing: 359,
-      img: Img8
+      img: Img8,
+      image: img7
     },
     {
       id: 8,
@@ -120,23 +155,29 @@ const CruiseCard = () => {
       title: "7-Night Colombo Return Cruise",
       start: "May 08, 2026",
       end: "May 15, 2026",
+      tripStart: "Wed, 05:00 PM",
+      tripEnd: "Sat, 08:30 AM",
       route: "Colombo → Mumbai",
       ports: "Colombo • Mumbai",
       price: "₹83,700",
       viewing: 421,
-      img: Img9
+      img: Img9,
+      image: img8
     },
     {
       id: 9,
-      ship: "EMPRESS",
+      ship: "SUN",
       title: "4-Night Singapore to Chennai Cruise",
       start: "Jun 04, 2026",
       end: "Jun 08, 2026",
+      tripStart: "Wed, 05:00 PM",
+      tripEnd: "Sat, 08:30 AM",
       route: "Singapore → Chennai",
       ports: "Singapore • Chennai",
       price: "₹65,900",
       viewing: 312,
-      img: Img10
+      img: Img10,
+      image: img9
     },
     {
       id: 10,
@@ -144,44 +185,97 @@ const CruiseCard = () => {
       title: "4-Night Chennai Return Cruise",
       start: "Jun 08, 2026",
       end: "Jun 12, 2026",
+      tripStart: "Wed, 05:00 PM",
+      tripEnd: "Sat, 08:30 AM",
       route: "Chennai Round Trip",
       ports: "Chennai • Chennai",
       price: "₹51,499",
       viewing: 249,
-      img: Img2
+      img: Img2,
+      image: img10
     },
     {
       id: 11,
-      ship: "EMPRESS",
+      ship: "SKY",
       title: "6-Night Singapore to Visakhapatnam Cruise",
       start: "Jul 10, 2026",
       end: "Jul 16, 2026",
+      tripStart: "Wed, 05:00 PM",
+      tripEnd: "Sat, 08:30 AM", 
       route: "Singapore → Visakhapatnam",
       ports: "Singapore • Visakhapatnam",
       price: "₹92,800",
       viewing: 501,
-      img: Img12
+      img: Img12,
+      image: img11
     },
     {
       id: 12,
-      ship: "EMPRESS",
+      ship: "SKY",
       title: "3-Night Visakhapatnam Return Cruise",
       start: "Jul 16, 2026",
       end: "Jul 19, 2026",
+      tripStart: "Wed, 05:00 PM",
+      tripEnd: "Sat, 08:30 AM",
       route: "Visakhapatnam Round Trip",
       ports: "Visakhapatnam • Visakhapatnam",
       price: "₹37,300",
       viewing: 195,
-      img: Img11
+      img: Img11,
+      image: img12
     }
   ]);
 
-  const [filteredItems, setFilteredItems] = useState(items);
+  const promoImages = [promo1, promo2, promo3, promo4];
+  
   const [openFilter, setOpenFilter] = useState(false);
   const [sortOpen, setSortOpen] = useState(false);
   const [selectedTrip, setSelectedTrip] = useState(null);
   const [selectedDeparture, setSelectedDeparture] = useState(null);
   const sortRef = useRef(null);
+  const [filteredItems, setFilteredItems] = useState([]);
+
+useEffect(() => {
+  let filtered = [...items];
+
+  // Destination filter
+  if (filters.destination) {
+    filtered = filtered.filter(item =>
+      item.ports.toLowerCase().includes(filters.destination.toLowerCase())
+    );
+  }
+
+  // Cruise name filter
+  if (filters.cruise) {
+    filtered = filtered.filter(item =>
+      item.ship === filters.cruise
+    );
+  }
+
+  // Nights filter (based on title)
+  if (filters.nights) {
+    filtered = filtered.filter(item =>
+      item.title.includes(`${filters.nights}-Night`)
+    );
+  }
+
+  // Month + Year filter
+  if (filters.month && filters.year) {
+    filtered = filtered.filter(item => {
+      const date = new Date(item.start);
+      const itemMonth = date.toLocaleString("default", { month: "short" });
+      const itemYear = date.getFullYear();
+      return (
+        itemMonth === filters.month &&
+        itemYear === filters.year
+      );
+    });
+  }
+
+  setFilteredItems(filtered);
+
+}, [filters, items]);
+
 
   useEffect(() => {
     const handler = (e) => {
@@ -299,7 +393,19 @@ const CruiseCard = () => {
                   <span>{item.start}</span>
                   <span className="crz-arrow">➜</span>
                   <span>{item.end}</span>
-                  <span className="crz-arrow"> <TbArrowsExchange size={18}/></span>
+                 <span className="crz-arrow">
+                  {(() => {
+                    const routeText = (item.route || "").toLowerCase().trim();
+
+                    if (routeText.includes("round trip")) {
+                      return <TbArrowsExchange size={20} />;
+                    }
+
+                    if (routeText.includes("one way")) {
+                      return  <span className="crz-arrow">➜</span>;
+                    }
+                  })()}
+                </span>
                   <span>{item.route}</span>
                 </div>
                 <hr className="crz-divider" />
@@ -319,35 +425,38 @@ const CruiseCard = () => {
                 {/* ROUTING HERE */}
                 <button
                   className="crz-btn-itinerary"
-                  onClick={() => navigate(`/itinerary/${item.id}`)}
-                >
-                  View Itinerary
-                </button>
-
-
-                <button
-                  className="crz-btn-booknow mb-2"
                   onClick={() =>
-                    navigate(`/book/${item.id}`, {
+                    navigate(`/itinerary/${item.id}`, {
                       state: { selectedCruise: item }
                     })
                   }
                 >
-                  Book Now
+                  View Itinerary
                 </button>
 
+                <button
+                  className="crz-btn-booknow mb-2"
+                  onClick={() => {
+                    localStorage.setItem("selectedCruise", JSON.stringify(item));
+
+                    navigate(`/book/${item.id}`, {
+                      state: { selectedCruise: item } 
+                    });
+                  }}
+                >
+                  Book Now
+                </button>
+              
               </div>
             </div>
-
+            
             {(index + 1) % 3 === 0 && (
               <div className="promo-strip">
                 <img
                   src={
-                    (index + 1 === 3 && promo1) ||
-                    (index + 1 === 6 && promo2) ||
-                    (index + 1 === 9 && promo3) ||
-                    (index + 1 === 12 && promo4) ||
-                    null
+                    promoImages[
+                      (Math.floor((index + 1) / 3) - 1) % promoImages.length
+                    ]
                   }
                   alt="Promo Banner"
                 />

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 import {
   Navbar,
   Nav,
@@ -58,62 +60,112 @@ const NavBar = () => {
   const passwordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-zA-Z]).{6,}$/;
 
   // ===================== REGISTER =====================
-  const handleRegister = () => {
-    const e = {};
+  const handleRegister = async () => {
 
-    if (!regForm.fname.trim()) e.fname = "First name required";
-    if (!regForm.lname.trim()) e.lname = "Last name required";
-    if (!phoneRegex.test(regForm.phone)) e.phone = "Phone must be 10 digits";
-    if (!regForm.dob) e.dob = "Date of birth required";
-    if (!emailRegex.test(regForm.email)) e.email = "Valid email required";
-    if (!passwordRegex.test(regForm.password))
-      e.password = "Password must contain uppercase + number + 6 chars";
+  const e = {};
 
-    setErrors(e);
-    if (Object.keys(e).length !== 0) {
-      alert("Please fix validation errors!");
-      return;
-    }
+  if (!regForm.fname.trim()) e.fname = "First name required";
+  if (!regForm.lname.trim()) e.lname = "Last name required";
+  if (!phoneRegex.test(regForm.phone)) e.phone = "Phone must be 10 digits";
+  if (!regForm.dob) e.dob = "Date of birth required";
+  if (!emailRegex.test(regForm.email)) e.email = "Valid email required";
+  if (!passwordRegex.test(regForm.password))
+    e.password = "Password must contain uppercase + number + 6 chars";
 
-    localStorage.setItem(
-      "user",
-      JSON.stringify({ ...regForm })
+  setErrors(e);
+
+  if (Object.keys(e).length !== 0) {
+    alert("Please fix validation errors!");
+    return;
+  }
+
+  try {
+
+    const response = await axios.post(
+      "http://localhost:5000/api/auth/register",
+      regForm
     );
 
-    alert("Registration successful! Please login now.");
+    alert(response.data.msg || "Registration successful!");
+
     setAuthMode("login");
-    setRegForm({ fname: "", lname: "", phone: "", dob: "", email: "", password: "" });
+
+    setRegForm({
+      fname: "",
+      lname: "",
+      phone: "",
+      dob: "",
+      email: "",
+      password: ""
+    });
+
     setErrors({});
-  };
+
+  } catch (error) {
+
+    alert(
+      error.response?.data?.msg ||
+      "Registration failed"
+    );
+
+  }
+
+};
+
 
   // ===================== LOGIN =====================
-  const handleLogin = () => {
-    const stored = JSON.parse(localStorage.getItem("user"));
-    const e = {};
+ const handleLogin = async () => {
 
-    if (!stored) {
-      alert("No user found. Please register first!");
-      setAuthMode("register");
-      setShowLogin(true);
-      return;
-    }
+  const e = {};
 
-    if (loginForm.email !== stored.email) e.email = "Email not registered";
-    if (loginForm.password !== stored.password) e.password = "Incorrect password";
+  if (!loginForm.email) e.email = "Email required";
+  if (!loginForm.password) e.password = "Password required";
 
-    setErrors(e);
+  setErrors(e);
 
-    if (Object.keys(e).length !== 0) {
-      alert("Invalid credentials!");
-      return;
-    }
+  if (Object.keys(e).length !== 0) {
+    alert("Enter credentials!");
+    return;
+  }
+
+  try {
+
+    const res = await axios.post(
+      "http://localhost:5000/api/auth/login",
+      loginForm
+    );
+
+    // save user session
+    localStorage.setItem(
+      "user",
+      JSON.stringify(res.data.user)
+    );
+
+    localStorage.setItem("isLoggedIn", "true");
 
     setIsLoggedIn(true);
+
     setShowLogin(false);
-    setLoginForm({ email: "", password: "" });
+
+    setLoginForm({
+      email: "",
+      password: ""
+    });
+
     setErrors({});
+
     alert("Login successful!");
-  };
+
+    window.location.href = "/dashboard";
+
+  } catch (err) {
+
+    alert(err.response?.data?.msg || "Login failed");
+
+  }
+
+};
+
 
   const closeMenu = (path) => {
     navigate(path);

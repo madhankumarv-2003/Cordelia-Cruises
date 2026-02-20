@@ -17,11 +17,9 @@ import Destinations from "./Pages/AllDestinations/Destinations";
 import WebCheckIn from "./Pages/WebCheckIn/WebCheckIn";
 import Bookings from "./Pages/MyBookings/Bookings";
 import Profile from "./Pages/MyProfile/Profile";
-
 import ViewItinerary from "./Pages/ViewItinerary/ViewItinerary";
 import BookNow from "./Pages/BookNow/BookNow";
 import AuthPage from "./AuthPage/AuthPage";
-
 
 import "./App.css";
 
@@ -29,10 +27,13 @@ function App() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
 
-  // Detect Book page
   const isBookPage = location.pathname.startsWith("/book/");
 
   useEffect(() => {
+    // ✅ Always scroll to top when route changes
+    window.scrollTo(0, 0);
+
+    // Home page scroll effect
     if (location.pathname !== "/") {
       setScrolled(false);
       return;
@@ -62,7 +63,6 @@ function App() {
         )}
       </div>
 
-      {/* Routes */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />

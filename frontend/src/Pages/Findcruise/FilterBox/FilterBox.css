@@ -20,7 +20,6 @@
   display: flex;
   align-items: center;
   gap: 15px;
-
   background: #fff;
   border-radius: 14px;
   box-shadow: 0 0 5px 1px #e6e6e6;
@@ -261,4 +260,161 @@
 .filter-item {
   position: relative;
   width: 400px;
+}
+
+/* ===============================
+   LAPTOP (1200px ↓)
+================================ */
+@media (max-width: 1200px) {
+
+  .filter-box {
+    width: 90%;
+  }
+
+  .destination-panel {
+    width: 350px;
+  }
+
+}
+
+
+/* ===============================
+   TABLET LANDSCAPE (992px ↓)
+================================ */
+@media (max-width: 992px) {
+
+  .explore-cruise {
+    padding: 80px 20px;
+  }
+
+  .filter-box {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .filter-item {
+    flex: 1 1 48%;
+    width: auto;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+
+  .apply-bttn {
+    width: 100%;
+  }
+
+  .destination-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+
+}
+
+
+/* ===============================
+   TABLET PORTRAIT (768px ↓)
+================================ */
+@media (max-width: 768px) {
+
+  .explore-cruise {
+    padding: 70px 15px;
+  }
+
+  .explore-cruise h2 {
+    font-size: 24px;
+  }
+
+  .filter-box {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .filter-item {
+    width: 100%;
+    flex: unset;
+    border-bottom: 1px solid #eee;
+  }
+
+  .apply-bttn {
+    width: 100%;
+  }
+
+  .destination-panel {
+    position: relative;
+    top: 10px;
+    width: 100%;
+  }
+
+}
+
+
+/* ===============================
+   MOBILE LARGE (576px ↓)
+================================ */
+@media (max-width: 576px) {
+
+  .explore-cruise {
+    padding: 60px 12px;
+  }
+
+  .explore-cruise h2 {
+    font-size: 22px;
+  }
+
+  .filter-box {
+    padding: 14px;
+  }
+
+  .filter-item label {
+    font-size: 12px;
+  }
+
+  .filter-item select {
+    font-size: 14px;
+  }
+
+  .apply-bttn {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+}
+
+
+/* ===============================
+   MOBILE SMALL (480px ↓)
+================================ */
+@media (max-width: 480px) {
+
+  .explore-cruise {
+    padding: 50px 10px;
+  }
+
+  .explore-cruise h2 {
+    font-size: 20px;
+  }
+
+  .destination-panel {
+    padding: 15px;
+  }
+
+}
+
+
+/* ===============================
+   EXTRA SMALL MOBILE (360px ↓)
+================================ */
+@media (max-width: 360px) {
+
+  .explore-cruise h2 {
+    font-size: 18px;
+  }
+
+  .apply-bttn {
+    font-size: 13px;
+    padding: 10px;
+  }
+
 }

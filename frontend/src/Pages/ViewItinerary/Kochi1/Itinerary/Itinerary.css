@@ -179,7 +179,242 @@
   background: none;
   border: none;
   color: #2563eb;
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
 }
+
+/* ===============================
+   LARGE DESKTOP (1400px and up)
+================================ */
+@media (min-width: 1400px) {
+  .ci-cardContainer {
+    width: 85%;
+  }
+
+  .ci-card {
+    min-width: 30%;
+  }
+}
+
+
+/* ===============================
+   DESKTOP (1200px to 1399px)
+================================ */
+@media (max-width: 1399px) {
+  .ci-cardContainer {
+    width: 90%;
+    padding: 30px;
+  }
+
+  .ci-card {
+    min-width: 33%;
+  }
+
+  .itinerary-desc {
+    margin-left: -60px;
+  }
+}
+
+
+/* ===============================
+   LAPTOP (992px to 1199px)
+================================ */
+@media (max-width: 1199px) {
+  .ci-wrapper {
+    padding: 0px 30px 30px;
+  }
+
+  .ci-cardContainer {
+    width: 95%;
+    padding: 25px;
+  }
+
+  .ci-card {
+    min-width: 45%;
+  }
+
+  .itinerary-desc {
+    margin-left: -40px;
+    font-size: 15px;
+  }
+
+  .ci-dayBadge {
+    min-width: 55px;
+    height: 55px;
+  }
+}
+
+
+/* ===============================
+   TABLET (768px to 991px)
+================================ */
+@media (max-width: 991px) {
+
+  .ci-wrapper {
+    padding: 0px 20px 25px;
+  }
+
+  .ci-cardContainer {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .ci-dayRow {
+    gap: 15px;
+  }
+
+  .ci-card {
+    min-width: 60%;
+  }
+
+  .ci-cardImage img {
+    height: 150px;
+  }
+
+  .itinerary-content h3 {
+    font-size: 18px;
+  }
+
+  .itinerary-desc {
+    margin-left: 0;
+    padding-top: 15px;
+  }
+
+  .ci-divider {
+    width: calc(100% + 40px);
+    margin: 25px -20px;
+  }
+}
+
+
+/* ===============================
+   MOBILE LARGE (576px to 767px)
+================================ */
+@media (max-width: 767px) {
+
+  .ci-wrapper {
+    padding: 0px 15px 20px;
+  }
+
+  .ci-header h2 {
+    font-size: 20px;
+  }
+
+  .ci-header p {
+    font-size: 14px;
+  }
+
+  .ci-dayRow {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ci-dayBadge {
+    width: 55px;
+    height: 55px;
+  }
+
+  .ci-card {
+    min-width: 80%;
+  }
+
+  .ci-cardImage img {
+    height: 140px;
+  }
+
+  .ci-nav {
+    font-size: 18px;
+    padding: 5px 8px;
+  }
+
+  .itinerary-content h3 {
+    font-size: 17px;
+  }
+
+  .itinerary-subtitle {
+    font-size: 15px;
+  }
+
+  .itinerary-desc {
+    font-size: 14px;
+    padding-top: 10px;
+  }
+}
+
+
+/* ===============================
+   MOBILE SMALL (575px and below)
+================================ */
+@media (max-width: 575px) {
+
+  .ci-wrapper {
+    padding: 0px 10px 20px;
+  }
+
+  .ci-cardContainer {
+    padding: 15px;
+    border-radius: 6px;
+  }
+
+  .ci-header h2 {
+    font-size: 18px;
+  }
+
+  .ci-header p {
+    font-size: 13px;
+  }
+
+  .ci-dayBadge {
+    width: 50px;
+    height: 50px;
+  }
+
+  .ci-dayBadge span {
+    font-size: 12px;
+  }
+
+  .ci-dayBadge strong {
+    font-size: 16px;
+  }
+
+  .ci-card {
+    min-width: 100%;
+    padding: 10px;
+  }
+
+  .ci-cardImage img {
+    height: 130px;
+  }
+
+  .ci-cardBody h5 {
+    font-size: 13px;
+  }
+
+  .ci-cardBody p {
+    font-size: 11px;
+  }
+
+  .ci-readMore {
+    font-size: 11px;
+  }
+
+  .ci-nav {
+    display: none;
+  }
+
+  .itinerary-content h3 {
+    font-size: 16px;
+  }
+
+  .itinerary-subtitle {
+    font-size: 14px;
+  }
+
+  .itinerary-desc {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+}
+

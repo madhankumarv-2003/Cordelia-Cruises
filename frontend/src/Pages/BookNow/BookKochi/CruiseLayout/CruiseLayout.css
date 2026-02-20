@@ -346,14 +346,16 @@
 }
 
 .corz_tripTitle {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 17px;
+  font-weight: 900 !important;
+  color: #000 !important;
 }
 
 .corz_tripTitle span {
   display: block;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 900 !important;
+  color: #000 !important;
   margin-top: 4px;
 }
 
@@ -363,17 +365,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   margin-top: 18px;
 }
 
 .corz_portBlock h4 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
+  margin-right: 8px;
 }
 
 .corz_portBlock p {
-  font-size: 13px;
+  font-size: 16px;
   margin: 4px 0;
+  max-width: 80px;
 }
 
 .corz_portBlock span {
@@ -388,8 +393,10 @@
 }
 
 .corz_shipCircle {
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 22px;
   background: #e74c6a;
   color: #fff;
   border-radius: 50%;
@@ -399,8 +406,9 @@
 }
 
 .corz_dottedLine {
+  width: 80px;
   height: 40px;
-  border-left: 2px dashed #ccc;
+  border-top: 2px dashed #ccc;
   margin-top: 6px;
 }
 
@@ -415,10 +423,12 @@
 .corz_visitingPorts h4 {
   font-size: 14px;
   margin-bottom: 6px;
+  font-weight: bold;
 }
 
 .corz_visitingPorts p {
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 /* Summary Row */
@@ -439,11 +449,13 @@
 .corz_summaryRight h2 {
   font-size: 20px;
   font-weight: 700;
+  text-align: right;
 }
 
 .corz_summaryRight span {
   font-size: 12px;
   color: #666;
+  text-align: right;
 }
 
 /* Proceed Button */

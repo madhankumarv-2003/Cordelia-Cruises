@@ -325,6 +325,7 @@ const AuthModal = ({ show, handleClose, onLoginSuccess }) => {
         )}
       </Modal.Body>
     </Modal>
+    
   );
 };
 

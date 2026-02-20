@@ -1,29 +1,19 @@
-import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import React from "react";
+import { useParams, useLocation } from "react-router-dom";
 
 import Kochi1 from "./Kochi1/Kochi1";
 
-const itineraryMap = {
-  1: Kochi1,
-};
-
 const ViewItinerary = () => {
   const { id } = useParams();
-  const [showLogin, setShowLogin] = useState(false);
+  const location = useLocation();
 
-  const SelectedItinerary = itineraryMap[id];
+  const cruise =
+    location.state?.selectedCruise ||
+    JSON.parse(localStorage.getItem("selectedCruise"));
 
   return (
     <>
-      {SelectedItinerary ? (
-        <SelectedItinerary openLogin={() => setShowLogin(true)} />
-      ) : (
-        <h2>Itinerary Not Found</h2>
-      )}
-
-      {showLogin && (
-        <LoginModal closeModal={() => setShowLogin(false)} />
-      )}
+      <Kochi1 id={id} cruise={cruise} />
     </>
   );
 };
