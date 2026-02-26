@@ -335,6 +335,20 @@ hr {
   border: 1px solid #eee;
 }
 
+/* CHECK ROW */
+.gst-check {
+  margin-bottom: 0;
+  position: relative;
+  left: -15px;
+}
+
+.gst-check span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 16px;
+}
 
 .gst-check small {
   font-size: 14px;
