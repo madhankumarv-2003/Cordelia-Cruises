@@ -1,21 +1,20 @@
 import React from "react";
 import {
   FaFacebookF,
-  FaTwitter,
   FaInstagram,
   FaYoutube,
   FaPhoneAlt,
   FaEnvelope,
-  FaLinkedin,
   FaLinkedinIn,
 } from "react-icons/fa";
 import img from "./images/cordelia-new-white-logo.svg";
 import seawave from "../SafetyProtocols/images/footer-wave-desktop.svg";
-
+import { useNavigate } from "react-router-dom";
 import "./Footer.css";
 import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (    
     <div>
     <img src={seawave} className="footer-wave"></img>
@@ -62,7 +61,9 @@ const Footer = () => {
         <ul>
             <li>Group Booking Quotation</li>
             <li>Group Booking Form</li>
-            <li>Agent Login</li>
+            <li onClick={() => navigate("/admin")}>
+              Admin Login
+            </li>
             <li>About Us</li>
             <li>Valet Services Mumbai</li>
             <li>Ports</li>

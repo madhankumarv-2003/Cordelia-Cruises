@@ -19,7 +19,10 @@ import Bookings from "./Pages/MyBookings/Bookings";
 import Profile from "./Pages/MyProfile/Profile";
 import ViewItinerary from "./Pages/ViewItinerary/ViewItinerary";
 import BookNow from "./Pages/BookNow/BookNow";
+
 import AuthPage from "./AuthPage/AuthPage";
+import AdminLogin from "./AuthPage/AdminLogin";
+import AdminHome from "./AdminHome/AdminHome";
 
 import "./App.css";
 
@@ -27,13 +30,13 @@ function App() {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
 
-  const isBookPage = location.pathname.startsWith("/book/");
+  const isBookPage =
+    location.pathname.startsWith("/admin") ||
+    location.pathname.startsWith("/book/");
 
   useEffect(() => {
-    // ✅ Always scroll to top when route changes
     window.scrollTo(0, 0);
 
-    // Home page scroll effect
     if (location.pathname !== "/") {
       setScrolled(false);
       return;
@@ -79,6 +82,10 @@ function App() {
         <Route path="/manage-bookings" element={<Bookings />} />
         <Route path="/itinerary/:id" element={<ViewItinerary />} />
         <Route path="/book/:id" element={<BookNow />} />
+
+        {/* Admin Login */}
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/admin/*" element={<AdminHome />} />
       </Routes>
 
       {!isBookPage && <Footer />}

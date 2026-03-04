@@ -1,0 +1,147 @@
+import React from "react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer
+} from "recharts";
+
+import {
+  FaShip,
+  FaUsers,
+  FaMoneyBill,
+  FaChartBar
+} from "react-icons/fa";
+
+const dashboarddata = [
+  { name: "Jan", value: 200 },
+  { name: "Feb", value: 450 },
+  { name: "Mar", value: 500 },
+  { name: "Apr", value: 350 },
+  { name: "May", value: 700 },
+  { name: "Jun", value: 600 }
+];
+
+export default function Dashboard() {
+  return (
+    <div className="admin-container">
+
+      {/* Main Content */}
+
+      <div className="main-content">
+
+        {/* Navbar */}
+
+        <div className="navbar-admin">
+
+          <input
+            type="text"
+            placeholder="Search bookings, guests or reports..."
+          />
+
+          <button className="create-btn">Create New</button>
+
+        </div>
+
+
+        {/* Stats */}
+
+        <div className="stats">
+
+          <div className="card">
+            <FaChartBar className="icon blue"/>
+            <h5>Total Bookings</h5>
+            <h3>12,840</h3>
+          </div>
+
+          <div className="card">
+            <FaUsers className="icon purple"/>
+            <h5>Total Guests</h5>
+            <h3>45,200</h3>
+          </div>
+
+          <div className="card">
+            <FaShip className="icon orange"/>
+            <h5>Active Cruises</h5>
+            <h3>24</h3>
+          </div>
+
+          <div className="card">
+            <FaMoneyBill className="icon green"/>
+            <h5>Total Revenue</h5>
+            <h3>$4.2M</h3>
+          </div>
+
+        </div>
+
+
+        {/* Chart */}
+
+        <div className="chart-box">
+
+          <h4>Monthly Booking Trends</h4>
+
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart data={dashboarddata}>
+              <XAxis dataKey="name" />
+              <YAxis />
+              <Tooltip />
+              <Line
+                type="monotone"
+                dataKey="value"
+                stroke="#4f46e5"
+                strokeWidth={3}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+
+        </div>
+
+
+        {/* Activity Table */}
+
+        <div className="activity">
+
+          <h4>Recent Admin Activity</h4>
+
+          <table className="table">
+
+            <thead>
+              <tr>
+                <th>Activity</th>
+                <th>Performed By</th>
+                <th>Time</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>New package 'Summer Odyssey' published</td>
+                <td>Sarah Miller</td>
+                <td>2 mins ago</td>
+              </tr>
+
+              <tr>
+                <td>Cabin prices updated</td>
+                <td>James Wilson</td>
+                <td>45 mins ago</td>
+              </tr>
+
+              <tr>
+                <td>Bulk booking cancelled</td>
+                <td>Automated Bot</td>
+                <td>2 hours ago</td>
+              </tr>
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </div>
+  );
+}

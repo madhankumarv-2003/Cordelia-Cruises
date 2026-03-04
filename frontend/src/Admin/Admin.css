@@ -1,0 +1,220 @@
+/* ===== GLOBAL ===== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+background:#f4f6fb;
+}
+
+/* ===== MAIN LAYOUT ===== */
+
+.admin-container{
+display:flex;
+min-height:100vh;
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar{
+width:240px;
+background:#ffffff;
+border-right:1px solid #e6e8ef;
+padding:20px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+.logo{
+font-size:22px;
+font-weight:700;
+color:#4f46e5;
+margin-bottom:30px;
+}
+
+.sidebar ul{
+list-style:none;
+}
+
+.sidebar li{
+padding:12px 15px;
+margin-bottom:6px;
+border-radius:8px;
+cursor:pointer;
+color:#555;
+font-weight:500;
+transition:0.2s;
+}
+
+.sidebar li:hover{
+background:#eef1ff;
+color:#4f46e5;
+}
+
+/* ===== MAIN CONTENT ===== */
+
+.main-content{
+flex:1;
+padding:30px;
+}
+
+/* ===== NAVBAR ===== */
+
+.navbar-admin{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:25px;
+}
+
+.navbar-admin input{
+width:60%;
+padding:10px 14px;
+border-radius:8px;
+border:1px solid #dcdfe6;
+font-size:14px;
+}
+
+.create-btn{
+background:#4f46e5;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+}
+
+.create-btn:hover{
+background:#4338ca;
+}
+
+/* ===== STATS CARDS ===== */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-3px);
+box-shadow:0 6px 16px rgba(0,0,0,0.08);
+}
+
+.card h5{
+color:#777;
+font-size:14px;
+margin-top:8px;
+}
+
+.card h3{
+margin-top:8px;
+font-size:22px;
+}
+
+/* ICON COLORS */
+
+.icon{
+font-size:22px;
+}
+
+.blue{
+color:#3b82f6;
+}
+
+.purple{
+color:#9333ea;
+}
+
+.orange{
+color:#f97316;
+}
+
+.green{
+color:#10b981;
+}
+
+/* ===== CHART SECTION ===== */
+
+.chart-box{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+margin-bottom:30px;
+}
+
+.chart-box h4{
+margin-bottom:20px;
+color:#333;
+}
+
+/* ===== ACTIVITY TABLE ===== */
+
+.activity{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.activity h4{
+margin-bottom:20px;
+}
+
+.table{
+width:100%;
+border-collapse:collapse;
+}
+
+.table th{
+text-align:left;
+font-size:14px;
+color:#777;
+padding:12px 10px;
+border-bottom:1px solid #eee;
+}
+
+.table td{
+padding:14px 10px;
+border-bottom:1px solid #f2f2f2;
+font-size:14px;
+}
+
+.table tr:hover{
+background:#f9fafc;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width:900px){
+
+.sidebar{
+display:none;
+}
+
+.main-content{
+padding:20px;
+}
+
+.navbar-admin input{
+width:50%;
+}
+
+}
