@@ -35,6 +35,10 @@ export default function Admin() {
           <FaTachometerAlt /> Dashboard
         </Link>
 
+        <Link to="/admin/user" className="cruise-menu">
+          <FaTachometerAlt /> User Module
+        </Link>
+
         <Link to="/admin/cruises" className="cruise-menu">
           <FaShip /> Cruises Management
         </Link>

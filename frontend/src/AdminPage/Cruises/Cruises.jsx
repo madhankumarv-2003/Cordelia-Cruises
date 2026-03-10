@@ -1,292 +1,324 @@
 import React, { useState } from "react";
-import "./Cruise.css";
+import "./Cruises.css";
+import { FaSearch, FaShip, FaEye, FaEdit, FaTrash } from "react-icons/fa";
 
 export default function Cruises() {
 
-  const [cruises, setCruises] = useState([
-    {
-      id: 1,
-      name: "Arabian Sea Odyssey",
-      ship: "Cordelia Empress",
-      destination: "Mumbai - Kochi - Lakshadweep",
-      duration: "5 Nights / 6 Days",
-      price: "₹45,000",
-      capacity: 2000,
-      departure: "2026-04-12",
-      status: "Active"
-    },
-    {
-      id: 2,
-      name: "Gems of Sri Lanka",
-      ship: "Cordelia Star",
-      destination: "Chennai - Hambantota - Trincomalee",
-      duration: "4 Nights / 5 Days",
-      price: "₹38,000",
-      capacity: 1800,
-      departure: "2026-05-02",
-      status: "Active"
-    }
-  ]);
-
-  const [form, setForm] = useState({
-    name: "",
-    ship: "",
-    destination: "",
-    duration: "",
-    price: "",
-    capacity: "",
-    departure: ""
-  });
-
-  const [editId, setEditId] = useState(null);
-
-  const handleChange = (e) => {
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (editId) {
-
-      const updated = cruises.map((c) =>
-        c.id === editId ? { ...form, id: editId, status: c.status } : c
-      );
-
-      setCruises(updated);
-      setEditId(null);
-
-    } else {
-
-      const newCruise = {
-        id: Date.now(),
-        ...form,
-        status: "Active"
-      };
-
-      setCruises([...cruises, newCruise]);
-    }
-
-    setForm({
-      name: "",
-      ship: "",
-      destination: "",
-      duration: "",
-      price: "",
-      capacity: "",
-      departure: ""
-    });
-  };
-
-  const handleEdit = (cruise) => {
-    setForm(cruise);
-    setEditId(cruise.id);
-  };
-
-  const handleDelete = (id) => {
-    const filtered = cruises.filter((c) => c.id !== id);
-    setCruises(filtered);
-  };
-
-  const toggleStatus = (id) => {
-    const updated = cruises.map((c) =>
-      c.id === id
-        ? { ...c, status: c.status === "Active" ? "Inactive" : "Active" }
-        : c
-    );
-
-    setCruises(updated);
-  };
-
-  return (
-
-    <div className="cruise-page">
+const [cruises, setCruises] = useState([
+{
+name: "Arabian Sea Odyssey",
+ship: "Cordelia Empress",
+destination: "Mumbai - Kochi - Lakshadweep",
+duration: "5 Nights / 6 Days",
+status: "Active"
+},
+{
+name: "Gems of Sri Lanka",
+ship: "Cordelia Star",
+destination: "Chennai - Hambantota - Trincomalee",
+duration: "4 Nights / 5 Days",
+status: "Active"
+},
+{
+name: "Lakshadweep Weekend",
+ship: "Cordelia Empress",
+destination: "Kochi - Lakshadweep - Kochi",
+duration: "2 Nights / 3 Days",
+status: "Inactive"
+}
+]);
 
-      <div className="container-fluid">
+const [search, setSearch] = useState("");
 
-        <div className="page-header">
+const [form, setForm] = useState({
+name: "",
+ship: "",
+destination: "",
+duration: "",
+status: "Active"
+});
 
-          <h2>Cruise Management</h2>
+const [editIndex, setEditIndex] = useState(null);
 
-          <span className="total-badge">
-            Total Cruises: {cruises.length}
-          </span>
 
-        </div>
+/* HANDLE INPUT */
 
-        {/* TABLE */}
+const handleChange = (e) => {
 
-        <div className="admin-card">
+setForm({
+...form,
+[e.target.name]: e.target.value
+});
 
-          <table className="table cruise-table">
+};
 
-            <thead>
 
-              <tr>
-                <th>Cruise</th>
-                <th>Ship</th>
-                <th>Destination</th>
-                <th>Duration</th>
-                <th>Price</th>
-                <th>Capacity</th>
-                <th>Departure</th>
-                <th>Status</th>
-                <th>Actions</th>
-              </tr>
+/* ADD / UPDATE */
 
-            </thead>
+const saveCruise = () => {
 
-            <tbody>
+if(!form.name || !form.ship){
+alert("Fill required fields");
+return;
+}
 
-              {cruises.map((cruise) => (
+if(editIndex !== null){
 
-                <tr key={cruise.id}>
+const updated = [...cruises];
+updated[editIndex] = form;
+setCruises(updated);
+setEditIndex(null);
 
-                  <td>{cruise.name}</td>
-                  <td>{cruise.ship}</td>
-                  <td>{cruise.destination}</td>
-                  <td>{cruise.duration}</td>
-                  <td>{cruise.price}</td>
-                  <td>{cruise.capacity}</td>
-                  <td>{cruise.departure}</td>
+}else{
 
-                  <td>
+setCruises([...cruises, form]);
 
-                    <span
-                      className={
-                        cruise.status === "Active"
-                          ? "status-active"
-                          : "status-inactive"
-                      }
-                    >
-                      {cruise.status}
-                    </span>
-
-                  </td>
-
-                  <td className="action-buttons">
-
-                    <button
-                      className="btn-edit"
-                      onClick={() => handleEdit(cruise)}
-                    >
-                      Edit
-                    </button>
-
-                    <button
-                      className="btn-delete"
-                      onClick={() => handleDelete(cruise.id)}
-                    >
-                      Delete
-                    </button>
-
-                    <button
-                      className="btn-toggle"
-                      onClick={() => toggleStatus(cruise.id)}
-                    >
-                      Toggle
-                    </button>
+}
 
-                  </td>
+setForm({
+name:"",
+ship:"",
+destination:"",
+duration:"",
+status:"Active"
+});
 
-                </tr>
+};
 
-              ))}
 
-            </tbody>
+/* DELETE */
 
-          </table>
+const deleteCruise = (index) => {
 
-        </div>
+if(window.confirm("Delete this cruise?")){
 
-        {/* FORM */}
+const updated = cruises.filter((_,i)=> i !== index);
+setCruises(updated);
 
-        <div className="admin-card form-card">
+}
 
-          <h5>{editId ? "Update Cruise" : "Add New Cruise"}</h5>
+};
 
-          <form onSubmit={handleSubmit}>
 
-            <div className="form-grid">
+/* EDIT */
 
-              <input
-                type="text"
-                placeholder="Cruise Name"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-              />
+const editCruise = (index) => {
 
-              <input
-                type="text"
-                placeholder="Ship Name"
-                name="ship"
-                value={form.ship}
-                onChange={handleChange}
-                required
-              />
+setForm(cruises[index]);
+setEditIndex(index);
 
-              <input
-                type="text"
-                placeholder="Destination"
-                name="destination"
-                value={form.destination}
-                onChange={handleChange}
-                required
-              />
+};
 
-              <input
-                type="text"
-                placeholder="Duration"
-                name="duration"
-                value={form.duration}
-                onChange={handleChange}
-                required
-              />
 
-              <input
-                type="text"
-                placeholder="Price"
-                name="price"
-                value={form.price}
-                onChange={handleChange}
-                required
-              />
+/* SEARCH FILTER */
 
-              <input
-                type="number"
-                placeholder="Capacity"
-                name="capacity"
-                value={form.capacity}
-                onChange={handleChange}
-                required
-              />
+const filteredCruises = cruises.filter((c)=>
 
-              <input
-                type="date"
-                name="departure"
-                value={form.departure}
-                onChange={handleChange}
-                required
-              />
+c.name.toLowerCase().includes(search.toLowerCase()) ||
+c.ship.toLowerCase().includes(search.toLowerCase()) ||
+c.destination.toLowerCase().includes(search.toLowerCase())
 
-              <button className="submit-btn">
-                {editId ? "Update" : "Add Cruise"}
-              </button>
+);
 
-            </div>
 
-          </form>
+return (
 
-        </div>
+<div className="cm-page-container">
 
-      </div>
 
-    </div>
+{/* HEADER */}
 
-  );
+<div className="cm-page-header">
+
+<div>
+
+<h2>Cruise Management</h2>
+
+<p>Manage and schedule cruise itineraries and ship assignments.</p>
+
+</div>
+
+</div>
+
+
+{/* SEARCH */}
+
+<div className="cm-filter-box">
+
+<div className="cm-search-box">
+
+<FaSearch />
+
+<input
+type="text"
+placeholder="Search by name, ship or destination..."
+value={search}
+onChange={(e)=>setSearch(e.target.value)}
+/>
+
+</div>
+
+</div>
+
+
+{/* TABLE */}
+
+<div className="cm-table-card">
+
+<table className="cm-table">
+
+<thead>
+
+<tr>
+
+<th>CRUISE NAME</th>
+
+<th>SHIP NAME</th>
+
+<th>DESTINATION</th>
+
+<th>DURATION</th>
+
+<th>STATUS</th>
+
+<th>ACTIONS</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{filteredCruises.map((c,index)=> (
+
+<tr key={index}>
+
+<td className="cm-name-cell">
+
+<FaShip className="cm-ship-icon"/>
+
+{c.name}
+
+</td>
+
+<td>{c.ship}</td>
+
+<td>{c.destination}</td>
+
+<td>{c.duration}</td>
+
+<td>
+
+<span className={
+c.status === "Active"
+? "cm-status cm-status-active"
+: "cm-status cm-status-inactive"
+}>
+
+{c.status}
+
+</span>
+
+</td>
+
+<td className="cm-action-icons">
+
+<FaEye />
+
+<FaEdit
+onClick={()=>editCruise(index)}
+/>
+
+<FaTrash
+onClick={()=>deleteCruise(index)}
+/>
+
+</td>
+
+</tr>
+
+))}
+
+</tbody>
+
+</table>
+
+</div>
+
+
+{/* FORM */}
+
+<div className="cm-form-card">
+
+<h3>
+
+{editIndex !== null ? "Edit Cruise" : "Add New Cruise"}
+
+</h3>
+
+<div className="cm-form-grid">
+
+<input
+name="name"
+placeholder="Cruise Name"
+value={form.name}
+onChange={handleChange}
+/>
+
+<select
+name="ship"
+value={form.ship}
+onChange={handleChange}
+>
+
+<option value="">Select Ship</option>
+
+<option>Cordelia Empress</option>
+
+<option>Cordelia Star</option>
+
+</select>
+
+<input
+name="destination"
+placeholder="Destination"
+value={form.destination}
+onChange={handleChange}
+/>
+
+<input
+name="duration"
+placeholder="Duration"
+value={form.duration}
+onChange={handleChange}
+/>
+
+<select
+name="status"
+value={form.status}
+onChange={handleChange}
+>
+
+<option>Active</option>
+
+<option>Inactive</option>
+
+</select>
+
+</div>
+
+<button
+className="cm-create-btn"
+onClick={saveCruise}
+>
+
+{editIndex !== null ? "Update Cruise" : "Create Cruise"}
+
+</button>
+
+</div>
+
+</div>
+
+);
 }
