@@ -1,5 +1,16 @@
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import {
+  FaShip,
+  FaClipboardList,
+  FaUsers,
+  FaBed,
+  FaCog,
+  FaBell,
+  FaUserCircle,
+  FaSearch,
+  FaTachometerAlt
+} from "react-icons/fa";
 import "./Admin.css";
 
 export default function Admin() {
@@ -12,65 +23,77 @@ export default function Admin() {
   };
 
   return (
-    <div style={{ display: "flex", minHeight: "100vh", fontFamily: "Segoe UI" }}>
+    <div className="cruise-admin-layout">
 
       {/* SIDEBAR */}
 
-      <div
-        style={{
-          width: "260px",
-          background: "linear-gradient(180deg,#ff4da6,#b266ff)",
-          color: "white",
-          padding: "25px"
-        }}
-      >
-        <h4 className="mb-4">Cordelia Cruises</h4>
+      <div className="cruise-sidebar">
 
-        <div className="mb-3">
-          <Link to="/admin/dashboard" className="text-white text-decoration-none">
-            Dashboard
-          </Link>
-        </div>
+        <h4 className="cruise-admin-logo">Cordelia Cruises</h4>
 
-        <div className="mb-3">
-          <Link to="/admin/cruises" className="text-white text-decoration-none">
-            Cruises Management
-          </Link>
-        </div>
+        <Link to="/admin/dashboard" className="cruise-menu">
+          <FaTachometerAlt /> Dashboard
+        </Link>
 
-        <div className="mb-3">
-          <Link to="/admin/bookings" className="text-white text-decoration-none">
-            Bookings Management
-          </Link>
-        </div>
+        <Link to="/admin/cruises" className="cruise-menu">
+          <FaShip /> Cruises Management
+        </Link>
 
-        <div className="mb-3">
-          <Link to="/admin/guests" className="text-white text-decoration-none">
-            Guests Management
-          </Link>
-        </div>
+        <Link to="/admin/bookings" className="cruise-menu">
+          <FaClipboardList /> Bookings Management
+        </Link>
 
-        <div className="mb-3">
-          <Link to="/admin/cabin" className="text-white text-decoration-none">
-            Cabin Management
-          </Link>
-        </div>
+        <Link to="/admin/guests" className="cruise-menu">
+          <FaUsers /> Guests Management
+        </Link>
 
-        <div className="mb-3">
-          <Link to="/admin/settings" className="text-white text-decoration-none">
-            Settings
-          </Link>
-        </div>
+        <Link to="/admin/cabin" className="cruise-menu">
+          <FaBed /> Cabin Management
+        </Link>
 
-        <button onClick={logout} className="btn btn-light mt-4 w-100">
+        <Link to="/admin/payments" className="cruise-menu">
+          <FaBed />Payments & Invoice
+        </Link>
+
+        <Link to="/admin/settings" className="cruise-menu">
+          <FaCog /> Settings
+        </Link>
+
+        <button className="cruise-logout-btn" onClick={logout}>
           Logout
         </button>
+
       </div>
+
 
       {/* MAIN CONTENT */}
 
-      <div style={{ flex: 1, padding: "30px", background: "#faf6ff" }}>
-        <Outlet />
+      <div className="cruise-main-content">
+
+        {/* TOPBAR */}
+
+        <div className="cruise-topbar">
+
+          <div className="cruise-search-box">
+            <FaSearch />
+            <input type="text" placeholder="Search..." />
+          </div>
+
+          <div className="cruise-topbar-right">
+            <FaBell className="cruise-bell-icon" />
+
+            <div className="cruise-profile">
+              <FaUserCircle size={22} />
+              <span>Admin</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div className="cruise-page-content">
+          <Outlet />
+        </div>
+
       </div>
 
     </div>

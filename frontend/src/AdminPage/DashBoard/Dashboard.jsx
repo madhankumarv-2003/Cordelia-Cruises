@@ -2,6 +2,8 @@ import React from "react";
 import {
   LineChart,
   Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   Tooltip,
@@ -14,6 +16,8 @@ import {
   FaMoneyBill,
   FaChartBar
 } from "react-icons/fa";
+
+import "./Dashboard.css";
 
 const dashboarddata = [
   { name: "Jan", value: 200 },
@@ -28,77 +32,82 @@ export default function Dashboard() {
   return (
     <div className="admin-container">
 
-      {/* Main Content */}
-
       <div className="main-content">
-
-        {/* Navbar */}
-
-        <div className="navbar-admin">
-
-          <input
-            type="text"
-            placeholder="Search bookings, guests or reports..."
-          />
-
-          <button className="create-btn">Create New</button>
-
-        </div>
-
-
-        {/* Stats */}
-
         <div className="stats">
 
           <div className="card">
             <FaChartBar className="icon blue"/>
             <h5>Total Bookings</h5>
-            <h3>12,840</h3>
+            <h3>128</h3>
           </div>
 
           <div className="card">
             <FaUsers className="icon purple"/>
             <h5>Total Guests</h5>
-            <h3>45,200</h3>
+            <h3>4</h3>
           </div>
 
           <div className="card">
             <FaShip className="icon orange"/>
             <h5>Active Cruises</h5>
-            <h3>24</h3>
+            <h3>03</h3>
           </div>
 
           <div className="card">
             <FaMoneyBill className="icon green"/>
             <h5>Total Revenue</h5>
-            <h3>$4.2M</h3>
+            <h3>$0.1M</h3>
           </div>
 
         </div>
 
 
-        {/* Chart */}
+        {/* Charts */}
 
-        <div className="chart-box">
+        <div className="charts">
 
-          <h4>Monthly Booking Trends</h4>
+          {/* Line Chart */}
 
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={dashboarddata}>
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Line
-                type="monotone"
-                dataKey="value"
-                stroke="#4f46e5"
-                strokeWidth={3}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+          <div className="chart-box">
+            <h4>Monthly Booking Trends</h4>
 
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={dashboarddata}>
+                <XAxis dataKey="name"/>
+                <YAxis/>
+                <Tooltip/>
+                <Line
+                  type="monotone"
+                  dataKey="value"
+                  stroke="#4f46e5"
+                  strokeWidth={3}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+
+          </div>
+
+
+          {/* Bar Chart */}
+
+          <div className="chart-box">
+            <h4>Monthly Revenue</h4>
+
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={dashboarddata}>
+                <XAxis dataKey="name"/>
+                <YAxis/>
+                <Tooltip/>
+                <Bar
+                  dataKey="value"
+                  fill="#ec4899"
+                  barSize={40}
+                  radius={[6,6,0,0]}
+                />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
-
 
         {/* Activity Table */}
 
@@ -117,6 +126,7 @@ export default function Dashboard() {
             </thead>
 
             <tbody>
+
               <tr>
                 <td>New package 'Summer Odyssey' published</td>
                 <td>Sarah Miller</td>
@@ -134,6 +144,7 @@ export default function Dashboard() {
                 <td>Automated Bot</td>
                 <td>2 hours ago</td>
               </tr>
+
             </tbody>
 
           </table>
